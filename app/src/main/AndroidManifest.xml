@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".views.RankingActivity"></activity>
         <activity android:name=".views.GameActivity" />
-        <activity android:name=".views.NewPartyActivity" />
+        <activity android:name=".views.NewGameActivity" />
         <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

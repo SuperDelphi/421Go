@@ -7,12 +7,12 @@
     tools:context=".views.MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/newGameBTN"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="146dp"
         android:layout_height="46dp"
         android:background="#FAB44D"
-        android:text="Nouvelle partie"
+        android:text="@string/new_game"
         android:textColor="#FF5722"
         android:textColorHighlight="#FF9800"
         android:textColorLink="#FF9800"
@@ -24,12 +24,12 @@
         app:layout_constraintVertical_bias="0.541" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/rankBTN"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="145dp"
         android:layout_height="51dp"
         android:background="#FAB44D"
-        android:text="Scores"
+        android:text="@string/rank_welcome"
         android:textColor="#FF5722"
         android:textColorLink="#FF5722"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,9 +39,10 @@
         app:layout_constraintVertical_bias="0.717" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/exitBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/exit_welcome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.783"
@@ -51,9 +52,10 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/settingBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/setting_welcome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
@@ -63,9 +65,10 @@
         app:srcCompat="@android:drawable/ic_menu_manage" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoIV"
         android:layout_width="232dp"
         android:layout_height="154dp"
+        android:contentDescription="@string/logo_welcome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

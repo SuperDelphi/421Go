@@ -7,10 +7,9 @@
     tools:context=".views.GameActivity">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/playergameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gabriel, à toi de jouer !"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -19,10 +18,10 @@
         app:layout_constraintVertical_bias="0.116" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/remainingThrowsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lancers restants : 2"
+        android:text="@string/remaining_throws"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -31,10 +30,10 @@
         app:layout_constraintVertical_bias="0.155" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/gameInfoBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="INFO DE JEU"
+        android:text="@string/info_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -43,10 +42,10 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/restartBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Relancer"
+        android:text="@string/remaining_throws"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -55,10 +54,10 @@
         app:layout_constraintVertical_bias="0.787" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/reserveTV"
         android:layout_width="342dp"
         android:layout_height="32dp"
-        android:text="------------------------------- Réserve ------------------------------"
+        android:text="@string/reserve_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"

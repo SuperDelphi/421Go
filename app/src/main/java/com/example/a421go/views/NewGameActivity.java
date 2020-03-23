@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.a421go.R;
 
-public class NewPartyActivity extends AppCompatActivity {
+public class NewGameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
