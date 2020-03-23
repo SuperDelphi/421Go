@@ -1,8 +1,10 @@
-package com.example.a421go;
+package com.example.a421go.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.a421go.R;
 
 public class GameActivity extends AppCompatActivity {
 
