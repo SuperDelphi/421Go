@@ -1,16 +1,14 @@
-package com.example.a421go.views;
+package com.example.a421go;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.a421go.R;
-
-public class MainActivity extends AppCompatActivity {
+public class RankingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_party);
+        setContentView(R.layout.activity_ranking);
     }
 }
