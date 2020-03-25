@@ -1,5 +1,9 @@
 package com.example.a421go.controllers;
 
+import com.example.a421go.models.Player;
+
+import java.util.ArrayList;
+
 /**
  * Contrôleur qui gère, entre autres, le menu.
  */
@@ -26,6 +30,16 @@ public class GameController {
         return instance;
     }
 
-    public void creerPartie() {}
+    /**
+     * Crée une nouvelle partie à partir des informations saisies par
+     * l'utilisateur.
+     */
+    public void playGame() {}
+
+    /**
+     * Relance une partie dans les mêmes conditions de la dernière
+     * partie lancée.
+     */
+    public void replayLastGame() {}
 
 }
