@@ -1,5 +1,8 @@
 package com.example.a421go.models;
 
+/**
+ * Représente une combinaison.
+ */
 public enum Combination {
     _421("421"),
     FICHE("Fiche"),
