@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
@@ -69,12 +70,20 @@ public class NewGameActivity extends AppCompatActivity {
     private void listenaddPlayerBTN(){
         ((Button) findViewById(R.id.addPlayerBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                if (addPlayerET.getText().toString() != null){
+                String playerName = addPlayerET.getText().toString().trim();
+                if (!playerName.equals("") && listPlayersLL.getChildCount() < 4){
                     int place = listPlayersLL.getChildCount()+1;
                     TextView joueurET = new TextView(NewGameActivity.this);
-                    joueurET.setText(place+". "+addPlayerET.getText().toString());
+                    joueurET.setText(place+". "+addPlayerET.getText().toString().trim());
                     listPlayersLL.addView(joueurET);
                     addPlayerET.setText("");
+                } else {
+                    if (listPlayersLL.getChildCount() >= 4){
+                        Toast.makeText(NewGameActivity.this, "Le nombre de joueurs est limité à 4", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(NewGameActivity.this, "Aucun nom de joueur saisie", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
