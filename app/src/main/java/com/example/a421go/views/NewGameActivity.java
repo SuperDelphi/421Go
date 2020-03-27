@@ -37,6 +37,7 @@ public class NewGameActivity extends AppCompatActivity {
 
     /**
      * Initialisation des liens avec les objets graphiques
+     * Et création des listner sur les boutons de l'application
      */
     private void init(){
         returnBTN = (ImageButton) findViewById(R.id.returnBTN);
@@ -54,6 +55,7 @@ public class NewGameActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton returnBTN
+     * Retour vers l'accueil
      */
     private void listenreturnBTN(){
         ((ImageView) findViewById(R.id.returnBTN)).setOnClickListener(new Button.OnClickListener() {
@@ -66,6 +68,9 @@ public class NewGameActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton addPlayerBTN
+     * Ajout un nom de joueur dans la liste listPlayersLL si il y a du texte
+     * dans addPlayerET et si il y a moins de 4 joueurs dans la liste
+     * Si les conditions ne sont plus remplis, des toats envoie un message explicatif à l'utilsateur
      */
     private void listenaddPlayerBTN(){
         ((Button) findViewById(R.id.addPlayerBTN)).setOnClickListener(new Button.OnClickListener() {
@@ -83,7 +88,6 @@ public class NewGameActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(NewGameActivity.this, "Aucun nom de joueur saisie", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
         });
@@ -91,6 +95,7 @@ public class NewGameActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton startGameBTN
+     * Démarre l'activité GameActivity
      */
     private void listenStartGamerBTN(){
         ((Button) findViewById(R.id.startGameBTN)).setOnClickListener(new Button.OnClickListener() {
