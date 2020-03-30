@@ -79,9 +79,9 @@ public class NewGameActivity extends AppCompatActivity {
                     addPlayerET.setText("");
                 } else {
                     if (listPlayersLL.getChildCount() >= 4){
-                        Toast.makeText(NewGameActivity.this, "Le nombre de joueurs est limité à 4", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewGameActivity.this, "Le nombre de joueurs est limité à 4.", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(NewGameActivity.this, "Aucun nom de joueur saisie", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewGameActivity.this, "Veuillez saisir un nom valide.", Toast.LENGTH_SHORT).show();
                     }
 
                 }
