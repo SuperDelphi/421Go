@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         this.controller = GameController.getInstance();
         listenNewGameBTN();
         listenRankBTN();
+        listenExitBTN();
+        listensettingBTN();
     }
 
     /**
