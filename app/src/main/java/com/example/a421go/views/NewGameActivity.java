@@ -112,7 +112,7 @@ public class NewGameActivity extends AppCompatActivity {
                 for (int i = 0; i < listPlayersLL.getChildCount(); i++){
                     playerslist.add(new Player((String) listPlayersLL.getChildAt(i).getTooltipText()));
                 }
-                controller.playGame();
+                controller.playGame(targetScore, now, playerslist);
                 intent = new Intent(NewGameActivity.this, GameActivity.class);
                 startActivity(intent);
             }
