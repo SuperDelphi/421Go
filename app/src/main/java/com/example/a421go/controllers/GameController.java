@@ -2,10 +2,12 @@ package com.example.a421go.controllers;
 
 import android.content.Context;
 
+import com.example.a421go.models.Game;
 import com.example.a421go.models.GameDatabase;
 import com.example.a421go.models.Player;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Contrôleur qui gère, entre autres, le menu.
@@ -37,7 +39,9 @@ public class GameController extends Controller {
      * Crée une nouvelle partie à partir des informations saisies par
      * l'utilisateur.
      */
-    public void playGame() {}
+    public void playGame(int targetScore, Date creationDate, ArrayList<Player> listPlayers) {
+        Game newGame = new Game(creationDate, targetScore, listPlayers);
+    }
 
     /**
      * Relance une partie dans les mêmes conditions de la dernière
