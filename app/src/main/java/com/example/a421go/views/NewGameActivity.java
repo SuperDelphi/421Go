@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,10 @@ import android.widget.Toast;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
+import com.example.a421go.models.Player;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 public class NewGameActivity extends AppCompatActivity {
 
@@ -46,7 +51,7 @@ public class NewGameActivity extends AppCompatActivity {
         targetScoreET = (EditText) findViewById(R.id.targetScoreET);
         addPlayerET = (EditText) findViewById(R.id.addPlayerET);
         listPlayersLL = (LinearLayout) findViewById(R.id.listPlayersLL);
-        this.controller = GameController.getInstance();
+        this.controller = GameController.getInstance(this);
         targetScoreET.setText("25");
         listenaddPlayerBTN();
         listenreturnBTN();
@@ -80,6 +85,7 @@ public class NewGameActivity extends AppCompatActivity {
                     int place = listPlayersLL.getChildCount()+1;
                     TextView joueurET = new TextView(NewGameActivity.this);
                     joueurET.setText(place+". "+addPlayerET.getText().toString().trim());
+                    joueurET.setTooltipText(addPlayerET.getText().toString().trim());
                     listPlayersLL.addView(joueurET);
                     addPlayerET.setText("");
                 } else {
@@ -100,6 +106,12 @@ public class NewGameActivity extends AppCompatActivity {
     private void listenStartGamerBTN(){
         ((Button) findViewById(R.id.startGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                Date now = new Date();
+                int targetScore = Integer.parseInt(targetScoreET.getText().toString());
+                ArrayList<Player> playerslist = new ArrayList<Player>();
+                for (int i = 0; i < listPlayersLL.getChildCount(); i++){
+                    playerslist.add(new Player((String) listPlayersLL.getChildAt(i).getTooltipText()));
+                }
                 controller.playGame();
                 intent = new Intent(NewGameActivity.this, GameActivity.class);
                 startActivity(intent);

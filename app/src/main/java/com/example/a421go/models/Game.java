@@ -1,5 +1,6 @@
 package com.example.a421go.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -10,6 +11,7 @@ public class Game {
 
     private Date creationDate = new Date();
     private int targetScore = 25;
+    private ArrayList<Player> playersList;
 
     // Constructors
 
@@ -34,9 +36,10 @@ public class Game {
      * @param creationDate la date de création de la partie.
      * @param targetScore le score-cible à atteindre.
      */
-    public Game(Date creationDate, int targetScore) {
+    public Game(Date creationDate, int targetScore, ArrayList<Player> playersList) {
         this(targetScore);
         this.creationDate = creationDate;
+        this.playersList = playersList;
     }
 
     // Getters
