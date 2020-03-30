@@ -29,8 +29,10 @@ public class GameDatabase {
         Log.i("var", "addPlayer: " + content.toString());
         String req = "INSERT INTO JOUEUR (NOM) VALUES ('J-C')";
         content.execSQL(req);
-        String req2 = "SELECT * FROM JOUEUR";
+        Log.i("var", "insert : " + content.toString());
+        String req2 = "SELECT * FROM JOUEUR WHERE 1";
         Cursor cursor = content.rawQuery(req2, new String[]{});
-        Log.i("var", "addPlayer: " + cursor.getString(0));
+        cursor.moveToFirst();
+        Log.i("var", "addPlayer: " + cursor.getString(1));
     }
 }

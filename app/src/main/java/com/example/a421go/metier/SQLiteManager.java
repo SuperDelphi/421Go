@@ -18,13 +18,13 @@ public class SQLiteManager extends SQLiteOpenHelper {
             "CREATE TABLE JOUEUR (\n" +
                     "  ID_JOUEUR INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
                     "  NOM VARCHAR(45) NOT NULL,\n" +
-                    "  NB_VICTOIRE INTEGER NOT NULL DEFAULT 0,\n" +
+                    "  NB_VICTOIRE INTEGER NOT NULL DEFAULT 0\n" +
                     ");\n" +
                     "\n" +
                     "CREATE TABLE PARTIE (\n" +
                     "  ID_PARTIE INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
                     "  DATE_CREATION DATE NOT NULL,\n" +
-                    "  TARGET_SCORE INTEGER NOT NULL,\n" +
+                    "  TARGET_SCORE INTEGER NOT NULL\n" +
                     ");\n" +
                     "\n" +
                     "CREATE TABLE TOUR (\n" +
