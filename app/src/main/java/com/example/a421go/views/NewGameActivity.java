@@ -46,7 +46,7 @@ public class NewGameActivity extends AppCompatActivity {
         targetScoreET = (EditText) findViewById(R.id.targetScoreET);
         addPlayerET = (EditText) findViewById(R.id.addPlayerET);
         listPlayersLL = (LinearLayout) findViewById(R.id.listPlayersLL);
-        this.controller = GameController.getInstance();
+        this.controller = GameController.getInstance(this);
         targetScoreET.setText("25");
         listenaddPlayerBTN();
         listenreturnBTN();
