@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         quitGameBTN = (ImageButton) findViewById(R.id.exitBTN);
         settingBTN = (ImageButton) findViewById(R.id.settingBTN);
         this.controller = GameController.getInstance(this);
+        this.controller.getDatabase().addPlayer(null);
         listenNewGameBTN();
         listenRankBTN();
         listenExitBTN();

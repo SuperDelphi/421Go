@@ -1,7 +1,9 @@
 package com.example.a421go.models;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.a421go.metier.SQLiteManager;
 
@@ -22,8 +24,13 @@ public class GameDatabase {
         manager = new SQLiteManager(context, name, null, version);
     }
 
-//    public void addPlayer(Player player) {
-//        content = manager.getWritableDatabase();
-//        String req = "INSERT INTO "
-//    }
+    public void addPlayer(Player player) {
+        content = manager.getWritableDatabase();
+        Log.i("var", "addPlayer: " + content.toString());
+        String req = "INSERT INTO JOUEUR (NOM) VALUES ('J-C')";
+        content.execSQL(req);
+        String req2 = "SELECT * FROM JOUEUR";
+        Cursor cursor = content.rawQuery(req2, new String[]{});
+        Log.i("var", "addPlayer: " + cursor.getString(0));
+    }
 }

@@ -15,51 +15,28 @@ public class SQLiteManager extends SQLiteOpenHelper {
      * Script SQL permettant la création des tables.
      */
     private String creationSQL =
-            "SET SQL_MODE = \"NO_AUTO_VALUE_ON_ZERO\";\n" +
-            "SET AUTOCOMMIT = 0;\n" +
-            "START TRANSACTION;\n" +
-            "SET time_zone = \"+00:00\";\n" +
-            "\n" +
-            "/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;\n" +
-            "/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;\n" +
-            "/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;\n" +
-            "/*!40101 SET NAMES utf8mb4 */;\n" +
-            "\n" +
-            "DROP TABLE IF EXISTS `joueur`;\n" +
-            "CREATE TABLE IF NOT EXISTS `joueur` (\n" +
-            "  `id_joueur` int(11) NOT NULL AUTO_INCREMENT,\n" +
-            "  `nom` varchar(45) NOT NULL,\n" +
-            "  `nb_victoire` int(11) NOT NULL DEFAULT '0',\n" +
-            "  PRIMARY KEY (`id_joueur`)\n" +
-            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;\n" +
-            "\n" +
-            "DROP TABLE IF EXISTS `partie`;\n" +
-            "CREATE TABLE IF NOT EXISTS `partie` (\n" +
-            "  `id_partie` int(11) NOT NULL AUTO_INCREMENT,\n" +
-            "  `date_creation` date NOT NULL,\n" +
-            "  `target_score` int(11) NOT NULL,\n" +
-            "  PRIMARY KEY (`id_partie`)\n" +
-            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;\n" +
-            "\n" +
-            "DROP TABLE IF EXISTS `tour`;\n" +
-            "CREATE TABLE IF NOT EXISTS `tour` (\n" +
-            "  `id_partie` int(11) NOT NULL,\n" +
-            "  `num_manche` int(11) NOT NULL,\n" +
-            "  `id_joueur` int(11) NOT NULL,\n" +
-            "  `gain` int(11) NOT NULL,\n" +
-            "  `combinaison` varchar(45) NOT NULL,\n" +
-            "  PRIMARY KEY (`id_partie`,`num_manche`,`id_joueur`),\n" +
-            "  KEY `id_joueur_idx` (`id_joueur`)\n" +
-            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;\n" +
-            "\n" +
-            "ALTER TABLE `tour`\n" +
-            "  ADD CONSTRAINT `id_joueur_fk` FOREIGN KEY (`id_joueur`) REFERENCES `joueur` (`id_joueur`),\n" +
-            "  ADD CONSTRAINT `id_partie_fk` FOREIGN KEY (`id_partie`) REFERENCES `partie` (`id_partie`);\n" +
-            "COMMIT;\n" +
-            "\n" +
-            "/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;\n" +
-            "/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;\n" +
-            "/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;";
+            "CREATE TABLE JOUEUR (\n" +
+                    "  ID_JOUEUR INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
+                    "  NOM VARCHAR(45) NOT NULL,\n" +
+                    "  NB_VICTOIRE INTEGER NOT NULL DEFAULT 0,\n" +
+                    ");\n" +
+                    "\n" +
+                    "CREATE TABLE PARTIE (\n" +
+                    "  ID_PARTIE INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
+                    "  DATE_CREATION DATE NOT NULL,\n" +
+                    "  TARGET_SCORE INTEGER NOT NULL,\n" +
+                    ");\n" +
+                    "\n" +
+                    "CREATE TABLE TOUR (\n" +
+                    "  ID_PARTIE INTEGER NOT NULL,\n" +
+                    "  NUM_MANCHE INTEGER NOT NULL,\n" +
+                    "  ID_JOUEUR INTEGER NOT NULL,\n" +
+                    "  GAIN INTEGER NOT NULL,\n" +
+                    "  COMBINAISON VARCHAR(45) NOT NULL,\n" +
+                    "  PRIMARY KEY(ID_PARTIE, NUM_MANCHE, ID_JOUEUR),\n" +
+                    "  FOREIGN KEY(ID_PARTIE) REFERENCES PARTIE(ID_PARTIE),\n" +
+                    "  FOREIGN KEY(ID_JOUEUR) REFERENCES JOUEUR(ID_JOUEUR)\n" +
+                    ");";
 
     /**
      * Le constructeur de la classe.
