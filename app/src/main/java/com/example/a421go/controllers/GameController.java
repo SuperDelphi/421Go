@@ -1,5 +1,8 @@
 package com.example.a421go.controllers;
 
+import android.content.Context;
+
+import com.example.a421go.models.GameDatabase;
 import com.example.a421go.models.Player;
 
 import java.util.ArrayList;
@@ -7,15 +10,15 @@ import java.util.ArrayList;
 /**
  * Contrôleur qui gère, entre autres, le menu.
  */
-public class GameController {
+public class GameController extends Controller {
 
     private static GameController instance = null;
 
     /**
      * Constructeur protégé de la classe GameController.
      */
-    protected GameController() {
-        super();
+    protected GameController(Context context) {
+        super(context);
     }
 
     /**
@@ -23,9 +26,9 @@ public class GameController {
      * retourne l'instance existante.
      * @return L'unique instance de la classe.
      */
-    public static GameController getInstance() {
+    public static GameController getInstance(Context context) {
         if (GameController.instance == null) {
-            GameController.instance = new GameController();
+            GameController.instance = new GameController(context);
         }
         return instance;
     }

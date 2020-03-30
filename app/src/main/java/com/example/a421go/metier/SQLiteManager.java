@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+/**
+ * Gère les échanges avec la base de données SQLite.
+ */
 public class SQLiteManager extends SQLiteOpenHelper {
 
     /**
