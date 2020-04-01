@@ -16,9 +16,15 @@ import android.widget.TextView;
 import com.example.a421go.R;
 import com.example.a421go.controllers.BoardController;
 import com.example.a421go.controllers.GameController;
+import com.example.a421go.metier.SimpleBoard;
+import com.example.a421go.models.Dice;
 import com.example.a421go.models.Game;
 
+import java.util.ArrayList;
+
 public class GameActivity extends AppCompatActivity {
+
+    private SimpleBoard board;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +33,27 @@ public class GameActivity extends AppCompatActivity {
         init();
     }
 
-    //Propriété
+    // Propriété
     private BoardController controller;
 
-    private void init(){
+    private void init() {
         this.controller = BoardController.getInstance(this);
-        controller.searchDices();
+        this.board = new SimpleBoard();
+        this.board.addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
+    }
+
+    private void listenRollDices() {
+        Button rollBTN = (Button) findViewById(R.id.rollBTN);
+        rollBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BoardController.getInstance(getApplicationContext()).searchDices(
+                        SimpleBoard.getInstance().getDice(0),
+                        SimpleBoard.getInstance().getDice(1),
+                        SimpleBoard.getInstance().getDice(2)
+                );
+            }
+        });
     }
 
 }
