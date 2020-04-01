@@ -12,6 +12,7 @@ public class Game {
     private Date creationDate = new Date();
     private int targetScore = 25;
     private ArrayList<Player> playersList;
+    private ArrayList<Round> roundsList;
 
     // Constructors
 
@@ -36,10 +37,11 @@ public class Game {
      * @param creationDate la date de création de la partie.
      * @param targetScore le score-cible à atteindre.
      */
-    public Game(Date creationDate, int targetScore, ArrayList<Player> playersList) {
+    public Game(Date creationDate, int targetScore, ArrayList<Player> playersList, ArrayList<Round> roundsList) {
         this(targetScore);
         this.creationDate = creationDate;
         this.playersList = playersList;
+        this.roundsList = roundsList;
     }
 
     // Getters

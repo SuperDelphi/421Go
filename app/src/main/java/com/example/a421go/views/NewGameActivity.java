@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.models.Player;
+import com.example.a421go.models.Round;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -85,7 +86,7 @@ public class NewGameActivity extends AppCompatActivity {
                     int place = listPlayersLL.getChildCount()+1;
                     TextView joueurET = new TextView(NewGameActivity.this);
                     joueurET.setText(place+". "+addPlayerET.getText().toString().trim());
-                    joueurET.setTooltipText(addPlayerET.getText().toString().trim());
+                    joueurET.setTransitionName(addPlayerET.getText().toString().trim());
                     listPlayersLL.addView(joueurET);
                     addPlayerET.setText("");
                 } else {
@@ -109,10 +110,13 @@ public class NewGameActivity extends AppCompatActivity {
                 Date now = new Date();
                 int targetScore = Integer.parseInt(targetScoreET.getText().toString());
                 ArrayList<Player> playerslist = new ArrayList<Player>();
+                ArrayList<Round> roundsList = new ArrayList<Round>();
                 for (int i = 0; i < listPlayersLL.getChildCount(); i++){
-                    playerslist.add(new Player((String) listPlayersLL.getChildAt(i).getTooltipText()));
+                    Player player = new Player((String) listPlayersLL.getChildAt(i).getTransitionName());
+                    playerslist.add(player);
+                    roundsList.add(new Round(player));
                 }
-                controller.playGame(targetScore, now, playerslist);
+                controller.playGame(targetScore, now, playerslist, roundsList);
                 intent = new Intent(NewGameActivity.this, GameActivity.class);
                 startActivity(intent);
             }
