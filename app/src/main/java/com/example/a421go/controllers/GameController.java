@@ -17,12 +17,19 @@ import java.util.Date;
 public class GameController extends Controller {
 
     private static GameController instance = null;
+    private Game newGame;
 
     /**
      * Constructeur protégé de la classe GameController.
      */
     protected GameController(Context context) {
         super(context);
+    }
+
+
+    //Getters
+    public Game getNewGame() {
+        return newGame;
     }
 
     /**
@@ -42,7 +49,7 @@ public class GameController extends Controller {
      * l'utilisateur.
      */
     public void playGame(int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<Round> roundsList) {
-        Game newGame = new Game(creationDate, targetScore, listPlayers, roundsList);
+        newGame = new Game(creationDate, targetScore, listPlayers, roundsList);
     }
 
     /**

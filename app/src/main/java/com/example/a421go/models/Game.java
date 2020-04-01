@@ -59,4 +59,11 @@ public class Game {
     public int getTargetScore() {
         return targetScore;
     }
+
+    /**
+     * @return La liste des tours d'une manche
+     */
+    public ArrayList<Round> getRoundsList() {
+        return roundsList;
+    }
 }

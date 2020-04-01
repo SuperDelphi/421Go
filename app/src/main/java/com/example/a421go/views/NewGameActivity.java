@@ -107,18 +107,22 @@ public class NewGameActivity extends AppCompatActivity {
     private void listenStartGamerBTN(){
         ((Button) findViewById(R.id.startGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                Date now = new Date();
-                int targetScore = Integer.parseInt(targetScoreET.getText().toString());
-                ArrayList<Player> playerslist = new ArrayList<Player>();
-                ArrayList<Round> roundsList = new ArrayList<Round>();
-                for (int i = 0; i < listPlayersLL.getChildCount(); i++){
-                    Player player = new Player((String) listPlayersLL.getChildAt(i).getTransitionName());
-                    playerslist.add(player);
-                    roundsList.add(new Round(player));
+                if (listPlayersLL.getChildCount() > 1) {
+                    Date now = new Date();
+                    int targetScore = Integer.parseInt(targetScoreET.getText().toString());
+                    ArrayList<Player> playerslist = new ArrayList<Player>();
+                    ArrayList<Round> roundsList = new ArrayList<Round>();
+                    for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
+                        Player player = new Player((String) listPlayersLL.getChildAt(i).getTransitionName());
+                        playerslist.add(player);
+                        roundsList.add(new Round(player));
+                    }
+                    controller.playGame(targetScore, now, playerslist, roundsList);
+                    intent = new Intent(NewGameActivity.this, GameActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(NewGameActivity.this, "Il faut minimum 2 joueurs pour démarrer", Toast.LENGTH_SHORT).show();
                 }
-                controller.playGame(targetScore, now, playerslist, roundsList);
-                intent = new Intent(NewGameActivity.this, GameActivity.class);
-                startActivity(intent);
             }
         });
     }

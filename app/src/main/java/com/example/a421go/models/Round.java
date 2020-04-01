@@ -57,4 +57,8 @@ public class Round {
         this.combination = combination;
     }
 
+
+    public Player getPlayer() {
+        return player;
+    }
 }
