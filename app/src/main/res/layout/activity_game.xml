@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <Button
-        android:id="@+id/restartBTN"
+        android:id="@+id/rollBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/remaining_throws"
@@ -64,4 +64,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.848" />
+
+    <LinearLayout
+        android:id="@+id/boardLayout"
+        android:layout_width="409dp"
+        android:layout_height="407dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
