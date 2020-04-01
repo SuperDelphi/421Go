@@ -4,7 +4,13 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.a421go.metier.DiceComparator;
+import com.example.a421go.models.Autre;
+import com.example.a421go.models.Baraque;
+import com.example.a421go.models.Combination;
 import com.example.a421go.models.Dice;
+import com.example.a421go.models.Fiche;
+import com.example.a421go.models.Suite;
+import com.example.a421go.models._421;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,26 +44,23 @@ public class BoardController extends Controller {
 
     /**
      * Fonction qui récupère les trois dés du jeu, les trie dans l'ordre croissant et cherche la combinaison obtenu (s'il y en a une)
-     * @return la liste des dés dans une arraylist de dice
+     * @return renvoie un objet combination contenant le nom de la combinaison, les points obtenus et una Arraylist des 3 dés
      */
-    public ArrayList<Dice> searchDices(){//Dice dice1, Dice dice2, Dice dice3){
+    public Combination searchDices(Dice dice1, Dice dice2, Dice dice3){
         ArrayList<Dice> dicesList = new ArrayList<Dice>();
-        // Dés de test (retirer asap)
-        Dice dice1 = new Dice(1);Dice dice2 = new Dice(2);Dice dice3 = new Dice(4);
         dicesList.add(dice1);dicesList.add(dice2);dicesList.add(dice3);
         Collections.sort(dicesList, new DiceComparator());
+        Combination combination = new Autre(dicesList);
         if (search421(dicesList)){
-            //421
+            combination = new _421(dicesList);
         } else if (searchFiche(dicesList)){
-            //fiche
+            combination = new Fiche(dicesList);
         } else if (searchBaraque(dicesList)){
-            //baraque
+            combination = new Baraque(dicesList);
         } else if (searchSuite(dicesList)) {
-            //suite
-        } else {
-            //autre
+            combination = new Suite(dicesList);
         }
-        return dicesList;
+        return combination;
     }
 
 
