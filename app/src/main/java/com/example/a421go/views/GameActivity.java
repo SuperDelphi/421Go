@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.a421go.R;
+import com.example.a421go.controllers.BoardController;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.models.Game;
 
@@ -23,7 +24,15 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        init();
     }
 
+    //Propriété
+    private BoardController controller;
+
+    private void init(){
+        this.controller = BoardController.getInstance(this);
+        controller.searchDices();
+    }
 
 }

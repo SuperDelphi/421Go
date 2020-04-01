@@ -1,6 +1,6 @@
 package com.example.a421go.models;
 
-public class Dice {
+public class Dice implements Comparable<Dice>{
     private int faceCount = 6;
     private int face = 1;
     private Coordinates coords;
@@ -43,5 +43,12 @@ public class Dice {
 
     public boolean toggleSelection() {
         return this.selected = !isSelected();
+    }
+
+    @Override
+    public int compareTo(Dice dice) {
+        if (face == dice.face) return 0;
+        else if (face > dice.face) return 1;
+        else return -1;
     }
 }
