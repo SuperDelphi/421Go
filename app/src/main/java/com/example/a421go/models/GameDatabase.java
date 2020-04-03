@@ -35,4 +35,6 @@ public class GameDatabase {
         cursor.moveToFirst();
         Log.i("var", "addPlayer: " + cursor.getString(1));
     }
+
+    public void sertARien(){}
 }
