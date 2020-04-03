@@ -9,6 +9,8 @@ import com.example.a421go.models.Baraque;
 import com.example.a421go.models.Combination;
 import com.example.a421go.models.Dice;
 import com.example.a421go.models.Fiche;
+import com.example.a421go.models.Game;
+import com.example.a421go.models.Player;
 import com.example.a421go.models.Suite;
 import com.example.a421go.models._421;
 
@@ -33,6 +35,7 @@ public class BoardController extends Controller {
     /**
      * Si aucune instance n'existe, crée une instance de la classe. Sinon,
      * retourne l'instance existante.
+     *
      * @return L'unique instance de la classe.
      */
     public static BoardController getInstance(Context context) {
@@ -44,18 +47,21 @@ public class BoardController extends Controller {
 
     /**
      * Fonction qui récupère les trois dés du jeu, les trie dans l'ordre croissant et cherche la combinaison obtenu (s'il y en a une)
+     *
      * @return renvoie un objet combination contenant le nom de la combinaison, les points obtenus et una Arraylist des 3 dés
      */
-    public Combination searchDices(Dice dice1, Dice dice2, Dice dice3){
+    public Combination searchDices(Dice dice1, Dice dice2, Dice dice3) {
         ArrayList<Dice> dicesList = new ArrayList<Dice>();
-        dicesList.add(dice1);dicesList.add(dice2);dicesList.add(dice3);
+        dicesList.add(dice1);
+        dicesList.add(dice2);
+        dicesList.add(dice3);
         Collections.sort(dicesList, new DiceComparator());
         Combination combination = new Autre(dicesList);
-        if (search421(dicesList)){
+        if (search421(dicesList)) {
             combination = new _421(dicesList);
-        } else if (searchFiche(dicesList)){
+        } else if (searchFiche(dicesList)) {
             combination = new Fiche(dicesList);
-        } else if (searchBaraque(dicesList)){
+        } else if (searchBaraque(dicesList)) {
             combination = new Baraque(dicesList);
         } else if (searchSuite(dicesList)) {
             combination = new Suite(dicesList);
@@ -66,13 +72,14 @@ public class BoardController extends Controller {
 
     /**
      * Cherche s'il y a la combianison 421
+     *
      * @param dicesList liste des dés trié dans l'ordre croissant
      * @return vrai s'il y a la combinaison, sinon faux
      */
-    public boolean search421(ArrayList<Dice> dicesList){
-        if (dicesList.get(0).getFace() == 1){
-            if (dicesList.get(1).getFace() == 2){
-                if (dicesList.get(2).getFace() == 4){
+    public boolean search421(ArrayList<Dice> dicesList) {
+        if (dicesList.get(0).getFace() == 1) {
+            if (dicesList.get(1).getFace() == 2) {
+                if (dicesList.get(2).getFace() == 4) {
                     return true;
                 } else {
                     return false;
@@ -83,17 +90,24 @@ public class BoardController extends Controller {
         } else {
             return false;
         }
+    }
 
+    public Player getCurrentPlayer() {
+        return GameController.getInstance(getContext()).getNewGame().getCurrentPlayer();
+    }
+
+    public void submitRound(Player player, ArrayList<Dice> dices) {
 
     }
 
     /**
      * Recherche s'il y a la combinaison "Fiche" soit 2 dés 1 et un autre dés quelconque
+     *
      * @param dicesList liste des dés trié dans l'ordre croissant
      * @return vrai s'il y a la combianison sinon faux
      */
-    public boolean searchFiche(ArrayList<Dice> dicesList){
-        if (dicesList.get(0).getFace() == 1 && dicesList.get(1).getFace() == 1){
+    public boolean searchFiche(ArrayList<Dice> dicesList) {
+        if (dicesList.get(0).getFace() == 1 && dicesList.get(1).getFace() == 1) {
             return true;
         } else {
             return false;
@@ -103,12 +117,13 @@ public class BoardController extends Controller {
 
     /**
      * Recherche la combinaison "Baraque" soit 3 dés de même face
+     *
      * @param dicesList liste des dés trié dans l'ordre croissant
      * @return vrai s'il y a la combianison sinon faux
      */
-    public boolean searchBaraque(ArrayList<Dice> dicesList){
-        if (dicesList.get(0).getFace() == dicesList.get(1).getFace()){
-            if (dicesList.get(1).getFace() == dicesList.get(2).getFace()){
+    public boolean searchBaraque(ArrayList<Dice> dicesList) {
+        if (dicesList.get(0).getFace() == dicesList.get(1).getFace()) {
+            if (dicesList.get(1).getFace() == dicesList.get(2).getFace()) {
                 return true;
             } else {
                 return false;
@@ -120,12 +135,13 @@ public class BoardController extends Controller {
 
     /**
      * Recherche la combinaison "Suite" soit 3 dés dont les faces se suivent
+     *
      * @param dicesList liste des dés trié dans l'ordre croissant
      * @return vrai s'il y a la combianison sinon faux
      */
-    public boolean searchSuite(ArrayList<Dice> dicesList){
-        if (dicesList.get(0).getFace() == dicesList.get(1).getFace()-1){
-            if (dicesList.get(1).getFace() == dicesList.get(2).getFace()-1){
+    public boolean searchSuite(ArrayList<Dice> dicesList) {
+        if (dicesList.get(0).getFace() == dicesList.get(1).getFace() - 1) {
+            if (dicesList.get(1).getFace() == dicesList.get(2).getFace() - 1) {
                 return true;
             } else {
                 return false;
