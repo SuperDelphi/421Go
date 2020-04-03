@@ -23,6 +23,13 @@ public class SimpleBoard {
         init();
     }
 
+    public static SimpleBoard getInstance() {
+        if (SimpleBoard.instance == null)
+            return null;
+
+        return instance;
+    }
+
     public static SimpleBoard getInstance(ViewGroup context) {
         if (SimpleBoard.instance == null) {
             SimpleBoard.instance = new SimpleBoard(context);
@@ -37,8 +44,20 @@ public class SimpleBoard {
         return instance;
     }
 
+    public void rollDices() {
+        for (Dice dice :
+                getDices()) {
+            dice.roll();
+        }
+    }
+
     public void rollDices(ArrayList<Dice> dices) {
-        // TODO
+        for (Dice dice :
+                getDices()) {
+            if (dices.indexOf(dice) != -1) {
+                dice.roll();
+            }
+        }
     }
 
     public Dice getDice(int index) {

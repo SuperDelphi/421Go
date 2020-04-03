@@ -2,9 +2,11 @@ package com.example.a421go.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,12 +23,19 @@ public class GameActivity extends AppCompatActivity {
     // Propriété
     private BoardController boardController;
     private GameController gameController;
-    private SimpleBoard board;
     private TextView playergameTV;
     private TextView remainingThrowsTV;
     private Button gameInfoBTN;
     private Button rollBTN;
     private LinearLayout boardLayout;
+    private int[] diceIds = {
+            R.drawable.dice_1,
+            R.drawable.dice_2,
+            R.drawable.dice_3,
+            R.drawable.dice_4,
+            R.drawable.dice_5,
+            R.drawable.dice_6
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,35 +46,69 @@ public class GameActivity extends AppCompatActivity {
 
     private void init() {
         boardController = BoardController.getInstance(this);
-        board.addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
+        boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+        SimpleBoard.getInstance(boardLayout).addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
         playergameTV = (TextView) findViewById(R.id.playergameTV);
         remainingThrowsTV = (TextView) findViewById(R.id.remainingThrowsTV);
         gameInfoBTN = (Button) findViewById(R.id.gameInfoBTN);
         rollBTN = (Button) findViewById(R.id.rollBTN);
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+
+        // Affichage
+        remainingThrowsTV.setText(R.string.remaining_throws);
+
+        // Dés
+//        boardController.
+        // TODO: 03/04/2020 Continuer ici...
+
+        listenRollDices();
     }
 
     private void listenRollDices() {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LinearLayout boardLayout = (LinearLayout)findViewById(R.id.boardLayout);
-                BoardController controller = BoardController.getInstance(getApplicationContext());
-                SimpleBoard board = SimpleBoard.getInstance(boardLayout);
-
-                ArrayList<Dice> dices = new ArrayList<>();
-                dices.add(board.getDice(0));
-                dices.add(board.getDice(1));
-                dices.add(board.getDice(2));
-
-                controller.submitRound(
-                        gameController.getCurrentRound(),
-                        dices
-                );
-
-                gameController.getGame().nextPlayer();
+                Intent intent = new Intent(getApplicationContext(), RankingActivity.class);
+                startActivity(intent);
+//                if (rollBTN.getText().equals((String)getText(R.string.submit))) {
+//                    LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+//                    BoardController controller = BoardController.getInstance(getApplicationContext());
+//                    SimpleBoard board = SimpleBoard.getInstance(boardLayout);
+//
+//                    ArrayList<Dice> dices = new ArrayList<>();
+//                    dices.add(board.getDice(0));
+//                    dices.add(board.getDice(1));
+//                    dices.add(board.getDice(2));
+//
+//                    controller.submitRound(
+//                            gameController.getCurrentRound(),
+//                            dices
+//                    );
+//
+//                    gameController.getGame().nextPlayer();
+//                } else {
+//                    rollBTN.setText(R.string.submit);
+//                    boardController.roll();
+//                }
+//
+//                update();
             }
         });
     }
 
+    private void update() {
+        // Affichage
+        String textTemplate = (String) getText(R.string.your_turn);
+        this.playergameTV.setText(gameController.getCurrentPlayer().getName() + textTemplate);
+
+        // Dés
+        ArrayList<Dice> dices = boardController.getDices();
+
+        boardLayout.removeAllViews();
+        for (Dice dice :
+                dices) {
+//            boardLayout.addView((new ImageView(getApplicationContext())).setImageDrawable(diceIds[dice.getFace() - 1]));
+            // TODO Continuer ici...
+        }
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.a421go.metier.DiceComparator;
+import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Autre;
 import com.example.a421go.models.Baraque;
 import com.example.a421go.models.Combination;
@@ -87,6 +88,14 @@ public class BoardController extends Controller {
         } else {
             return false;
         }
+    }
+
+    public void roll() {
+        SimpleBoard.getInstance().rollDices();
+    }
+
+    public ArrayList<Dice> getDices() {
+        return SimpleBoard.getInstance().getDices();
     }
 
     public void submitRound(Round currentRound, ArrayList<Dice> dices) {

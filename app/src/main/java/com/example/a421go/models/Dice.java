@@ -45,6 +45,11 @@ public class Dice implements Comparable<Dice>{
         return this.selected = !isSelected();
     }
 
+    public int roll() {
+        this.face = (int)Math.round(Math.random() * getFaceCount() - 1) + 1;
+        return getFace();
+    }
+
     @Override
     public int compareTo(Dice dice) {
         if (face == dice.face) return 0;

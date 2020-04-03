@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">421Go</string>
+    <string name="app_name">421 Go</string>
     <string name="logo_welcome">Logo accueil</string>
     <string name="new_game">Nouvelle partie</string>
     <string name="rank_welcome">Scores</string>
@@ -12,8 +12,11 @@
     <string name="add_one_player">Ajouter</string>
     <string name="start_game">Démarrer la partie</string>
     <string name="info_game">Info de jeu</string>
+    <string name="your_turn">, à toi de jouer !</string>
     <string name="remaining_throws">Lancers restants : </string>
+    <string name="start_throws">Lancer les dés</string>
     <string name="restart_throws">Relancer</string>
+    <string name="submit">Confirmer</string>
     <string name="reserve_game">------------------------------- Réserve ------------------------------</string>
     <string name="game_finish">Partie terminée !</string>
     <string name="restart_game">Rejouer</string>

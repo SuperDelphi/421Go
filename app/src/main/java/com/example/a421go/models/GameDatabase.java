@@ -25,14 +25,14 @@ public class GameDatabase {
     }
 
     public void addPlayer(Player player) {
-        content = manager.getWritableDatabase();
-        Log.i("var", "addPlayer: " + content.toString());
-        String req = "INSERT INTO JOUEUR (NOM) VALUES ('J-C')";
-        content.execSQL(req);
-        Log.i("var", "insert : " + content.toString());
-        String req2 = "SELECT * FROM JOUEUR WHERE 1";
-        Cursor cursor = content.rawQuery(req2, new String[]{});
-        cursor.moveToFirst();
-        Log.i("var", "addPlayer: " + cursor.getString(1));
+//        content = manager.getWritableDatabase();
+//        Log.i("var", "addPlayer: " + content.toString());
+//        String req = "INSERT INTO JOUEUR (NOM) VALUES ('J-C')";
+//        content.execSQL(req);
+//        Log.i("var", "insert : " + content.toString());
+//        String req2 = "SELECT * FROM JOUEUR WHERE 1";
+//        Cursor cursor = content.rawQuery(req2, new String[]{});
+//        cursor.moveToFirst();
+//        Log.i("var", "addPlayer: " + cursor.getString(1));
     }
 }
