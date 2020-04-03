@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.a421go.metier.SQLiteManager;
-// Coucou
+
 /**
  * Représente la base de données du jeu.
  */
@@ -35,6 +35,4 @@ public class GameDatabase {
         cursor.moveToFirst();
         Log.i("var", "addPlayer: " + cursor.getString(1));
     }
-
-    public void sertARien(){}
 }
