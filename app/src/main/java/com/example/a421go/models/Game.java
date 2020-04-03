@@ -83,6 +83,20 @@ public class Game {
         return currentPlayer;
     }
 
+    public Round getCurrentRound() {
+        Player cPlayer = getCurrentPlayer();
+        Round cRound = null;
+
+        for (Round round:
+             getRoundsList()) {
+            if (round.getPlayer() == cPlayer) {
+                cRound = round;
+            }
+        }
+
+        return cRound;
+    }
+
     // Public methods
 
     public Player nextPlayer() {

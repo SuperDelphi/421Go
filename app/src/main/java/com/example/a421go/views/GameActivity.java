@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.BoardController;
+import com.example.a421go.controllers.GameController;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Dice;
 
@@ -16,6 +17,9 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
+    // Propriété
+    private BoardController boardController;
+    private GameController gameController;
     private SimpleBoard board;
 
     @Override
@@ -25,11 +29,8 @@ public class GameActivity extends AppCompatActivity {
         init();
     }
 
-    // Propriété
-    private BoardController controller;
-
     private void init() {
-        this.controller = BoardController.getInstance(this);
+        this.boardController = BoardController.getInstance(this);
         this.board.addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
     }
 
@@ -48,9 +49,11 @@ public class GameActivity extends AppCompatActivity {
                 dices.add(board.getDice(2));
 
                 controller.submitRound(
-                        controller.getCurrentPlayer(),
+                        gameController.getCurrentRound(),
                         dices
                 );
+
+                gameController.getGame().nextPlayer();
             }
         });
     }

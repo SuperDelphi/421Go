@@ -11,6 +11,7 @@ import com.example.a421go.models.Dice;
 import com.example.a421go.models.Fiche;
 import com.example.a421go.models.Game;
 import com.example.a421go.models.Player;
+import com.example.a421go.models.Round;
 import com.example.a421go.models.Suite;
 import com.example.a421go.models._421;
 
@@ -50,21 +51,17 @@ public class BoardController extends Controller {
      *
      * @return renvoie un objet combination contenant le nom de la combinaison, les points obtenus et una Arraylist des 3 dés
      */
-    public Combination searchDices(Dice dice1, Dice dice2, Dice dice3) {
-        ArrayList<Dice> dicesList = new ArrayList<Dice>();
-        dicesList.add(dice1);
-        dicesList.add(dice2);
-        dicesList.add(dice3);
-        Collections.sort(dicesList, new DiceComparator());
-        Combination combination = new Autre(dicesList);
-        if (search421(dicesList)) {
-            combination = new _421(dicesList);
-        } else if (searchFiche(dicesList)) {
-            combination = new Fiche(dicesList);
-        } else if (searchBaraque(dicesList)) {
-            combination = new Baraque(dicesList);
-        } else if (searchSuite(dicesList)) {
-            combination = new Suite(dicesList);
+    public Combination searchDices(ArrayList<Dice> dices) {
+        Collections.sort(dices, new DiceComparator());
+        Combination combination = new Autre(dices);
+        if (search421(dices)) {
+            combination = new _421(dices);
+        } else if (searchFiche(dices)) {
+            combination = new Fiche(dices);
+        } else if (searchBaraque(dices)) {
+            combination = new Baraque(dices);
+        } else if (searchSuite(dices)) {
+            combination = new Suite(dices);
         }
         return combination;
     }
@@ -92,12 +89,9 @@ public class BoardController extends Controller {
         }
     }
 
-    public Player getCurrentPlayer() {
-        return GameController.getInstance(getContext()).getNewGame().getCurrentPlayer();
-    }
-
-    public void submitRound(Player player, ArrayList<Dice> dices) {
-
+    public void submitRound(Round currentRound, ArrayList<Dice> dices) {
+        Combination combination = searchDices(dices);
+        currentRound.addGain(combination.getPoints());
     }
 
     /**

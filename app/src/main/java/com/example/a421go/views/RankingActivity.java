@@ -44,7 +44,7 @@ public class RankingActivity extends AppCompatActivity {
         listLoserLL = (LinearLayout) findViewById(R.id.listLoserLL);
         restartGameBTN = (Button) findViewById(R.id.restartGameBTN);
         quitGameBTN = (Button) findViewById(R.id.quitGameBTN);
-        ArrayList<Round> roundsList = controller.getNewGame().getRoundsList();
+        ArrayList<Round> roundsList = controller.getGame().getRoundsList();
         Collections.sort(roundsList, new RoundComparator());
         winnerTV.setText(roundsList.get(0).getPlayer().getName()+" #1 "+roundsList.get(0).getGain()+" pts");
         for (int i = 1; i < roundsList.size(); i++){

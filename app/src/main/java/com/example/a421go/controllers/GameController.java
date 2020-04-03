@@ -3,11 +3,9 @@ package com.example.a421go.controllers;
 import android.content.Context;
 
 import com.example.a421go.models.Game;
-import com.example.a421go.models.GameDatabase;
 import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +15,7 @@ import java.util.Date;
 public class GameController extends Controller {
 
     private static GameController instance = null;
-    private Game newGame;
+    private Game game;
 
     /**
      * Constructeur protégé de la classe GameController.
@@ -28,8 +26,8 @@ public class GameController extends Controller {
 
 
     //Getters
-    public Game getNewGame() {
-        return newGame;
+    public Game getGame() {
+        return game;
     }
 
     /**
@@ -44,12 +42,20 @@ public class GameController extends Controller {
         return instance;
     }
 
+    public Player getCurrentPlayer() {
+        return GameController.getInstance(getContext()).getGame().getCurrentPlayer();
+    }
+
     /**
      * Crée une nouvelle partie à partir des informations saisies par
      * l'utilisateur.
      */
     public void playGame(int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<Round> roundsList) {
-        newGame = new Game(creationDate, targetScore, listPlayers, roundsList);
+        game = new Game(creationDate, targetScore, listPlayers, roundsList);
+    }
+
+    public Round getCurrentRound() {
+        return getGame().getCurrentRound();
     }
 
     /**
