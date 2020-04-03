@@ -13,6 +13,7 @@ public class Game {
     private int targetScore = 25;
     private ArrayList<Player> playersList;
     private ArrayList<Round> roundsList;
+    private Player currentPlayer;
 
     // Constructors
 
@@ -42,6 +43,7 @@ public class Game {
         this.creationDate = creationDate;
         this.playersList = playersList;
         this.roundsList = roundsList;
+        this.currentPlayer = playersList.get(0);
     }
 
     // Getters
@@ -65,5 +67,35 @@ public class Game {
      */
     public ArrayList<Round> getRoundsList() {
         return roundsList;
+    }
+
+    /**
+     * @return La liste des joueurs de la partie.
+     */
+    public ArrayList<Player> getPlayersList() {
+        return playersList;
+    }
+
+    /**
+     * @return Le joueur dont c'est au tour de jouer.
+     */
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    // Public methods
+
+    public Player nextPlayer() {
+        int cPlayerIndex = getPlayersList().indexOf(getCurrentPlayer());
+        Player nextPlayer;
+
+        if (cPlayerIndex >= getPlayersList().size() - 1) {
+            nextPlayer = getPlayersList().get(0);
+        } else {
+            nextPlayer = getPlayersList().get(cPlayerIndex + 1);
+        }
+
+        this.currentPlayer = nextPlayer;
+        return getCurrentPlayer();
     }
 }
