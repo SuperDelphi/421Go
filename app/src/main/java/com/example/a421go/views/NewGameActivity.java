@@ -118,7 +118,7 @@ public class NewGameActivity extends AppCompatActivity {
                         roundsList.add(new Round(player));
                     }
                     controller.playGame(targetScore, now, playerslist, roundsList);
-                    intent = new Intent(NewGameActivity.this, RankingActivity.class);
+                    intent = new Intent(NewGameActivity.this, GameActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(NewGameActivity.this, "Il faut minimum 2 joueurs pour démarrer", Toast.LENGTH_SHORT).show();
