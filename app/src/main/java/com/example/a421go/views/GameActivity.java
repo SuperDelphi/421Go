@@ -2,23 +2,15 @@ package com.example.a421go.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.BoardController;
-import com.example.a421go.controllers.GameController;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Dice;
-import com.example.a421go.models.Game;
 
 import java.util.ArrayList;
 
@@ -38,7 +30,6 @@ public class GameActivity extends AppCompatActivity {
 
     private void init() {
         this.controller = BoardController.getInstance(this);
-        this.board = new SimpleBoard();
         this.board.addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
     }
 
@@ -47,10 +38,18 @@ public class GameActivity extends AppCompatActivity {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BoardController.getInstance(getApplicationContext()).searchDices(
-                        SimpleBoard.getInstance().getDice(0),
-                        SimpleBoard.getInstance().getDice(1),
-                        SimpleBoard.getInstance().getDice(2)
+                LinearLayout boardLayout = (LinearLayout)findViewById(R.id.boardLayout);
+                BoardController controller = BoardController.getInstance(getApplicationContext());
+                SimpleBoard board = SimpleBoard.getInstance(boardLayout);
+
+                ArrayList<Dice> dices = new ArrayList<>();
+                dices.add(board.getDice(0));
+                dices.add(board.getDice(1));
+                dices.add(board.getDice(2));
+
+                controller.submitRound(
+                        controller.getCurrentPlayer(),
+                        dices
                 );
             }
         });
