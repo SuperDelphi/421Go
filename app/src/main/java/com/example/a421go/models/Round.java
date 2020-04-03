@@ -7,7 +7,6 @@ public class Round {
 
     private Player player;
     private int gain;
-    private Combination combination;
 
     /**
      * Le constructeur de la classe.
@@ -41,22 +40,6 @@ public class Round {
         this.gain += amount;
         return getGain();
     }
-
-    /**
-     * @return la combinaison effectuée avec les dés.
-     */
-    public Combination getCombination() {
-        return combination;
-    }
-
-    /**
-     * Définit la combinaison effectuée avec les dés.
-     * @param combination la combinaison effectuée avec les dés.
-     */
-    public void setCombination(Combination combination) {
-        this.combination = combination;
-    }
-
 
     public Player getPlayer() {
         return player;
