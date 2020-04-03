@@ -3,7 +3,7 @@ package com.example.a421go.models;
 /**
  * Représente
  */
-public class Round {
+public class Round implements Comparable<Round>{
 
     private Player player;
     private int gain;
@@ -43,5 +43,12 @@ public class Round {
 
     public Player getPlayer() {
         return player;
+    }
+
+    @Override
+    public int compareTo(Round r) {
+        if (gain == r.gain) return 0;
+        else if (gain > r.gain) return 1;
+        else return -1;
     }
 }
