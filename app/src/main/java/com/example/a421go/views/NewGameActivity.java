@@ -33,8 +33,8 @@ public class NewGameActivity extends AppCompatActivity {
 
     // Properties
     private ImageButton returnBTN;
-    private Button addPalyerBTN;
-    private Button startGameBTN;
+    private ImageButton addPalyerBTN;
+    private ImageButton startGameBTN;
     private EditText targetScoreET;
     private EditText addPlayerET;
     private LinearLayout listPlayersLL;
@@ -47,8 +47,8 @@ public class NewGameActivity extends AppCompatActivity {
      */
     private void init(){
         returnBTN = (ImageButton) findViewById(R.id.returnBTN);
-        addPalyerBTN = (Button) findViewById(R.id.addPlayerBTN);
-        startGameBTN = (Button) findViewById(R.id.startGameBTN);
+        addPalyerBTN = (ImageButton) findViewById(R.id.addPlayerBTN);
+        startGameBTN = (ImageButton) findViewById(R.id.startGameBTN);
         targetScoreET = (EditText) findViewById(R.id.targetScoreET);
         addPlayerET = (EditText) findViewById(R.id.addPlayerET);
         listPlayersLL = (LinearLayout) findViewById(R.id.listPlayersLL);
@@ -79,7 +79,7 @@ public class NewGameActivity extends AppCompatActivity {
      * Si les conditions ne sont plus remplis, des toats envoie un message explicatif à l'utilsateur
      */
     private void listenaddPlayerBTN(){
-        ((Button) findViewById(R.id.addPlayerBTN)).setOnClickListener(new Button.OnClickListener() {
+        ((ImageButton) findViewById(R.id.addPlayerBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 String playerName = addPlayerET.getText().toString().trim();
                 if (!playerName.equals("") && listPlayersLL.getChildCount() < 4){
@@ -105,7 +105,7 @@ public class NewGameActivity extends AppCompatActivity {
      * Démarre l'activité GameActivity
      */
     private void listenStartGamerBTN(){
-        ((Button) findViewById(R.id.startGameBTN)).setOnClickListener(new Button.OnClickListener() {
+        ((ImageButton) findViewById(R.id.startGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 if (listPlayersLL.getChildCount() > 1) {
                     Date now = new Date();
@@ -118,7 +118,7 @@ public class NewGameActivity extends AppCompatActivity {
                         roundsList.add(new Round(player));
                     }
                     controller.playGame(targetScore, now, playerslist, roundsList);
-                    intent = new Intent(NewGameActivity.this, GameActivity.class);
+                    intent = new Intent(NewGameActivity.this, RankingActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(NewGameActivity.this, "Il faut minimum 2 joueurs pour démarrer", Toast.LENGTH_SHORT).show();

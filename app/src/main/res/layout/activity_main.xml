@@ -6,63 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".views.MainActivity">
 
-    <Button
-        android:id="@+id/newGameBTN"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="146dp"
-        android:layout_height="46dp"
-        android:background="#FAB44D"
-        android:text="@string/new_game"
-        android:textColor="#FF5722"
-        android:textColorHighlight="#FF9800"
-        android:textColorLink="#FF9800"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
-
-    <Button
-        android:id="@+id/rankBTN"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="145dp"
-        android:layout_height="51dp"
-        android:background="#FAB44D"
-        android:text="@string/rank_welcome"
-        android:textColor="#FF5722"
-        android:textColorLink="#FF5722"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
-
     <ImageButton
         android:id="@+id/exitBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="77dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/exit_welcome"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.783"
+        app:layout_constraintHorizontal_bias="0.704"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/quit_btn" />
 
     <ImageButton
         android:id="@+id/settingBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@android:style/Widget.DeviceDefault.ImageButton"
+        android:layout_width="78dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/setting_welcome"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958"
-        app:srcCompat="@android:drawable/ic_menu_manage" />
+        app:layout_constraintVertical_bias="0.975"
+        app:srcCompat="@drawable/gear_btn" />
 
     <ImageView
         android:id="@+id/logoIV"
@@ -75,5 +48,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121"
         app:srcCompat="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/newGameBTN"
+        android:layout_width="322dp"
+        android:layout_height="82dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/new_game"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546"
+        app:srcCompat="@drawable/new_game_btn" />
+
+    <ImageButton
+        android:id="@+id/rankBTN"
+        android:layout_width="322dp"
+        android:layout_height="82dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/rank_welcome"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.728"
+        app:srcCompat="@drawable/scores_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

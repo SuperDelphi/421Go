@@ -3,9 +3,11 @@ package com.example.a421go.views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,8 +25,8 @@ public class RankingActivity extends AppCompatActivity {
     private GameController controller;
     private TextView winnerTV;
     private LinearLayout listLoserLL;
-    private Button restartGameBTN;
-    private Button quitGameBTN;
+    private ImageButton restartGameBTN;
+    private ImageButton quitGameBTN;
     private Intent intent = null;
 
 
@@ -42,8 +44,8 @@ public class RankingActivity extends AppCompatActivity {
         controller = GameController.getInstance(this);
         winnerTV = (TextView) findViewById(R.id.winnerTV);
         listLoserLL = (LinearLayout) findViewById(R.id.listLoserLL);
-        restartGameBTN = (Button) findViewById(R.id.restartGameBTN);
-        quitGameBTN = (Button) findViewById(R.id.quitGameBTN);
+        restartGameBTN = (ImageButton) findViewById(R.id.restartGameBTN);
+        quitGameBTN = (ImageButton) findViewById(R.id.quitGameBTN);
         ArrayList<Round> roundsList = controller.getGame().getRoundsList();
         Collections.sort(roundsList, new RoundComparator());
         winnerTV.setText(roundsList.get(0).getPlayer().getName()+" #1 "+roundsList.get(0).getGain()+" pts");
@@ -60,7 +62,7 @@ public class RankingActivity extends AppCompatActivity {
      * Ecoute de l'événement sur le bouton restartGameBTN
      */
     private void listenRestartGameBTN(){
-        ((Button) findViewById(R.id.restartGameBTN)).setOnClickListener(new Button.OnClickListener() {
+        ((ImageButton) findViewById(R.id.restartGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 intent = new Intent(RankingActivity.this, GameActivity.class);
                 startActivity(intent);
@@ -72,7 +74,7 @@ public class RankingActivity extends AppCompatActivity {
      * Ecoute de l'événement sur le bouton quitGameBTN
      */
     private void listenQuitGameBTN(){
-        ((Button) findViewById(R.id.quitGameBTN)).setOnClickListener(new Button.OnClickListener() {
+        ((ImageButton) findViewById(R.id.quitGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 intent = new Intent(RankingActivity.this, MainActivity.class);
                 startActivity(intent);

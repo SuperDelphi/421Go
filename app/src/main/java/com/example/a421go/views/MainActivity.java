@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Properties
-    private Button newGameBTN;
-    private Button rankBTN;
+    private ImageButton newGameBTN;
+    private ImageButton rankBTN;
     private ImageButton quitGameBTN;
     private ImageButton settingBTN;
     private GameController controller;
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
      * Initialisation des liens avec les objets graphiques
      */
     private void init(){
-        newGameBTN = (Button) findViewById(R.id.newGameBTN);
-        rankBTN = (Button) findViewById(R.id.rankBTN);
+        newGameBTN = (ImageButton) findViewById(R.id.newGameBTN);
+        rankBTN = (ImageButton) findViewById(R.id.rankBTN);
         quitGameBTN = (ImageButton) findViewById(R.id.exitBTN);
         settingBTN = (ImageButton) findViewById(R.id.settingBTN);
         this.controller = GameController.getInstance(this);
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
      * Ecoute de l'événement sur le bouton newGameBTN
      */
     private void listenNewGameBTN(){
-        ((Button) findViewById(R.id.newGameBTN)).setOnClickListener(new Button.OnClickListener() {
+        ((ImageButton) findViewById(R.id.newGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 intent = new Intent(MainActivity.this, NewGameActivity.class);
                 startActivity(intent);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
      * Ecoute de l'événement sur le bouton rankBTN
      */
     private void listenRankBTN(){
-        ((Button) findViewById(R.id.rankBTN)).setOnClickListener(new Button.OnClickListener() {
+        ((ImageButton) findViewById(R.id.rankBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
             }
