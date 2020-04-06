@@ -14,6 +14,7 @@ public class Game {
     private ArrayList<Player> playersList;
     private ArrayList<RoundGroup> roundsGroupsList;
     private Player currentPlayer;
+    private Round currentRound;
 
     // Constructors
 
@@ -44,6 +45,7 @@ public class Game {
         this.playersList = playersList;
         this.roundsGroupsList = roundsGroupsList;
         this.currentPlayer = playersList.get(0);
+        currentRound();
     }
 
     // Getters
@@ -89,6 +91,18 @@ public class Game {
      */
     public RoundGroup getCurrentRoundGroup() { return roundsGroupsList.get(roundsGroupsList.size()-1); }
 
+    /**
+     * Renvoie le tour en cours en fonction de la manche et du joueur
+     * @return
+     */
+    public void currentRound(){
+        for (Round r : getCurrentRoundGroup().getRoundsList()){
+            if (r.getPlayer() == currentPlayer){
+                currentRound = r;
+            }
+        }
+    }
+
     public Player nextPlayer() {
         int cPlayerIndex = getPlayersList().indexOf(getCurrentPlayer());
         Player nextPlayer;
@@ -100,6 +114,7 @@ public class Game {
         }
 
         this.currentPlayer = nextPlayer;
+        currentRound();
         return getCurrentPlayer();
     }
 }
