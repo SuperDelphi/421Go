@@ -51,6 +51,8 @@ public class GameActivity extends AppCompatActivity {
         // Dés
         SimpleBoard.getInstance().init();
 
+        update();
+
         listenRollDices();
     }
 
@@ -58,30 +60,28 @@ public class GameActivity extends AppCompatActivity {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RankingActivity.class);
-                startActivity(intent);
-//                if (rollBTN.getText().equals((String)getText(R.string.submit))) {
-//                    LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
-//                    BoardController controller = BoardController.getInstance(getApplicationContext());
-//                    SimpleBoard board = SimpleBoard.getInstance(boardLayout);
-//
-//                    ArrayList<Dice> dices = new ArrayList<>();
-//                    dices.add(board.getDice(0));
-//                    dices.add(board.getDice(1));
-//                    dices.add(board.getDice(2));
-//
+                if (rollBTN.getText().equals((String)getText(R.string.submit))) {
+                    LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+                    BoardController controller = BoardController.getInstance(getApplicationContext());
+                    SimpleBoard board = SimpleBoard.getInstance(boardLayout);
+
+                    ArrayList<Dice> dices = new ArrayList<>();
+                    dices.add(board.getDice(0));
+                    dices.add(board.getDice(1));
+                    dices.add(board.getDice(2));
+
 //                    controller.submitRound(
 //                            gameController.getCurrentRound(),
 //                            dices
 //                    );
-//
-//                    gameController.getGame().nextPlayer();
-//                } else {
-//                    rollBTN.setText(R.string.submit);
-//                    boardController.roll();
-//                }
-//
-//                update();
+
+                    gameController.getGame().nextPlayer();
+                } else {
+                    rollBTN.setText(R.string.submit);
+                    boardController.roll();
+                }
+
+                update();
             }
         });
     }
@@ -89,7 +89,7 @@ public class GameActivity extends AppCompatActivity {
     private void update() {
         // Affichage
         String textTemplate = (String) getText(R.string.your_turn);
-        this.playergameTV.setText(gameController.getCurrentPlayer().getName() + textTemplate);
+        this.playergameTV.setText(gameController.getInstance(getApplicationContext()).getCurrentPlayer().getName() + textTemplate);
 
         // Dés
         ArrayList<Dice> dices = boardController.getDices();

@@ -1,5 +1,8 @@
 package com.example.a421go.models;
 
+import android.util.Log;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,18 +24,6 @@ public class Game {
     /**
      * Le constructeur de la classe.
      */
-    public Game() {}
-
-    /**
-     * Le constructeur de la classe.
-     * La date de création de la partie équivaut alors
-     * au timestamp de l'instanciation de la classe.
-     * @param targetScore le score-cible à atteindre.
-     */
-    public Game(int targetScore) {
-        if (targetScore > 0)
-            this.targetScore = targetScore;
-    }
 
     /**
      * Le constructeur de la classe.
@@ -40,12 +31,13 @@ public class Game {
      * @param targetScore le score-cible à atteindre.
      */
     public Game(Date creationDate, int targetScore, ArrayList<Player> playersList, ArrayList<RoundGroup> roundsGroupsList) {
-        this(targetScore);
+        if (targetScore > 0)
+            this.targetScore = targetScore;
+        setPlayersList(playersList);
         this.creationDate = creationDate;
-        this.playersList = playersList;
         this.roundsGroupsList = roundsGroupsList;
+        addRoundGroupToGame();
         this.currentPlayer = playersList.get(0);
-        currentRound();
     }
 
     // Getters
@@ -89,7 +81,9 @@ public class Game {
      * Renvoie le dernier élément de la liste RoudsGroupslist
      * @return
      */
-    public RoundGroup getCurrentRoundGroup() { return roundsGroupsList.get(roundsGroupsList.size()-1); }
+    public RoundGroup getCurrentRoundGroup() {
+        return roundsGroupsList.get(roundsGroupsList.size()-1);
+    }
 
     /**
      * Renvoie le tour en cours en fonction de la manche et du joueur
@@ -101,6 +95,11 @@ public class Game {
                 currentRound = r;
             }
         }
+    }
+
+    public void setPlayersList(ArrayList<Player> playersList) {
+        this.playersList = playersList;
+        currentRound();
     }
 
     public Player nextPlayer() {
@@ -116,5 +115,35 @@ public class Game {
         this.currentPlayer = nextPlayer;
         currentRound();
         return getCurrentPlayer();
+    }
+
+    /**
+     * Créé et renvoie une Arraylist de Round en fonction des joueurs de la partie
+     * @param playersList liste des joueurs de la partie
+     * @return l'objet roundlist qui est la liste des tours de la manche
+     */
+    private ArrayList<Round> roundsCreation(ArrayList<Player> playersList){
+        ArrayList<Round> roundsList = new ArrayList<Round>();
+        for(Player p : playersList){
+            roundsList.add(new Round(p));
+        }
+        return roundsList;
+    }
+
+    /**
+     * Créé et renvoie un objet RoundGroup (ou appelé "manche") qui contient sa liste de tours
+     * @param roundsList liste des tours de la manche
+     * @return un objet RoundGroup
+     */
+    private RoundGroup roundGroupCreation(ArrayList<Round> roundsList){
+        return new RoundGroup(roundsList);
+    }
+
+    /**
+     * Ajout à la liste RoundsGroupsList de game, un nouvel objet RoundGroup qui prend un paramêtre
+     * un nouvel objet RoundsList qui prend en paramêtre la liste des joueurs
+     */
+    private void addRoundGroupToGame(){
+        this.roundsGroupsList.add(roundGroupCreation(roundsCreation(getPlayersList())));
     }
 }

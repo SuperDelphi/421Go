@@ -1,6 +1,7 @@
 package com.example.a421go.controllers;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Game;
@@ -24,38 +25,6 @@ public class GameController extends Controller {
      */
     protected GameController(Context context) {
         super(context);
-    }
-
-    //Méthodes privées
-
-    /**
-     * Créé et renvoie une Arraylist de Round en fonction des joueurs de la partie
-     * @param playersList liste des joueurs de la partie
-     * @return l'objet roundlist qui est la liste des tours de la manche
-     */
-    private ArrayList<Round> roundsCreation(ArrayList<Player> playersList){
-        ArrayList<Round> roundsList = new ArrayList<Round>();
-        for(Player p : playersList){
-            roundsList.add(new Round(p));
-        }
-        return roundsList;
-    }
-
-    /**
-     * Créé et renvoie un objet RoundGroup (ou appelé "manche") qui contient sa liste de tours
-     * @param roundsList liste des tours de la manche
-     * @return un objet RoundGroup
-     */
-    private RoundGroup roundGroupCreation(ArrayList<Round> roundsList){
-        return new RoundGroup(roundsList);
-    }
-
-    /**
-     * Ajout à la liste RoundsGroupsList de game, un nouvel objet RoundGroup qui prend un paramêtre
-     * un nouvel objet RoundsList qui prend en paramêtre la liste des joueurs
-     */
-    private void addRoundGroupToGame(){
-        game.getRoundsGroupsList().add(roundGroupCreation(roundsCreation(game.getPlayersList())));
     }
 
     //Méthodes publiques
