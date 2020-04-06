@@ -28,14 +28,6 @@ public class GameActivity extends AppCompatActivity {
     private Button gameInfoBTN;
     private Button rollBTN;
     private LinearLayout boardLayout;
-    private int[] diceIds = {
-            R.drawable.dice_1,
-            R.drawable.dice_2,
-            R.drawable.dice_3,
-            R.drawable.dice_4,
-            R.drawable.dice_5,
-            R.drawable.dice_6
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
