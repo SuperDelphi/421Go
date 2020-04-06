@@ -15,6 +15,7 @@ import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.metier.RoundComparator;
 import com.example.a421go.models.Round;
+import com.example.a421go.models.RoundGroup;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,12 +47,12 @@ public class RankingActivity extends AppCompatActivity {
         listLoserLL = (LinearLayout) findViewById(R.id.listLoserLL);
         restartGameBTN = (ImageButton) findViewById(R.id.restartGameBTN);
         quitGameBTN = (ImageButton) findViewById(R.id.quitGameBTN);
-        ArrayList<Round> roundsList = controller.getGame().getRoundsList();
-        Collections.sort(roundsList, new RoundComparator());
-        winnerTV.setText(roundsList.get(0).getPlayer().getName()+" #1 "+roundsList.get(0).getGain()+" pts");
-        for (int i = 1; i < roundsList.size(); i++){
+        ArrayList<RoundGroup> roundsGroupsList = controller.getGame().getRoundsGroupsList();
+        //Collections.sort(roundsList, new RoundComparator());
+        winnerTV.setText("nom_du_vainqueur #1 - nombre_de_points pts");
+        for (int i = 1; i < controller.getGame().getPlayersList().size(); i++){
             TextView joueurET = new TextView(RankingActivity.this);
-            joueurET.setText(roundsList.get(i).getPlayer().getName()+" #"+(listLoserLL.getChildCount()+2)+" "+roundsList.get(i).getGain()+" pts");
+            joueurET.setText("nom_du_perdant #"+(listLoserLL.getChildCount()+2)+" - nombre_de_points pts");
             listLoserLL.addView(joueurET);
         }
         listenQuitGameBTN();
