@@ -1,7 +1,15 @@
 package com.example.a421go.metier;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.example.a421go.R;
+import com.example.a421go.lib.DimensionConverter;
 import com.example.a421go.models.Dice;
 
 import java.util.ArrayList;
@@ -10,17 +18,23 @@ public class SimpleBoard {
     private ViewGroup layout;
     private static SimpleBoard instance = null;
     private ArrayList<Dice> dices = new ArrayList<>();
+    private int[] faceIds = {
+            R.drawable.dice_1,
+            R.drawable.dice_2,
+            R.drawable.dice_3,
+            R.drawable.dice_4,
+            R.drawable.dice_5,
+            R.drawable.dice_6
+    };
 
     public SimpleBoard(ViewGroup layout) {
         this.layout = layout;
-        init();
     }
 
     public SimpleBoard(ViewGroup layout, ArrayList<Dice> dices) {
         this.layout = layout;
         // TODO Compléter
         setDices(dices);
-        init();
     }
 
     public static SimpleBoard getInstance() {
@@ -68,6 +82,10 @@ public class SimpleBoard {
         return this.dices;
     }
 
+    public ViewGroup getLayout() {
+        return layout;
+    }
+
     public ArrayList<Dice> getSelectedDices() {
         ArrayList<Dice> result = new ArrayList<>();
         for (Dice dice :
@@ -90,19 +108,47 @@ public class SimpleBoard {
         return getDices().remove(dice);
     }
 
+    public void removeAllDices() {
+        getDices().clear();
+    }
+
     public SimpleBoard addDice(Dice dice) {
         getDices().add(dice);
         return this;
     }
 
-    public void init() {
-        for (Dice dice :
-                getDices()) {
-
+    public Drawable getFaceDrawable(int faceNumber) {
+        Context context = getLayout().getContext();
+        Drawable face = null;
+        if ((faceNumber <= this.faceIds.length) && (faceNumber >= 1)) {
+            face = context.getDrawable(this.faceIds[faceNumber - 1]);
         }
+        return face;
     }
 
-    public void update() {
+    public void init() {
+        // Ajout des trois dés du début
+        removeAllDices();
+        addDice(new Dice());
+        addDice(new Dice());
+        addDice(new Dice());
+        updateLayout();
+    }
 
+    public void updateLayout() {
+        Context context = getLayout().getContext();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                DimensionConverter.convertPixelToDP(context, 100),
+                DimensionConverter.convertPixelToDP(context, 100)
+        );
+        ImageView tmpView;
+        getLayout().removeAllViews();
+        for (Dice dice :
+                getDices()) {
+            tmpView = new ImageView(context);
+            tmpView.setLayoutParams(layoutParams);
+            tmpView.setImageDrawable(getFaceDrawable(dice.getFace()));
+            getLayout().addView(tmpView);
+        }
     }
 }

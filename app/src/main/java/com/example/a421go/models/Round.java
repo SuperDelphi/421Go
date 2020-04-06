@@ -7,6 +7,7 @@ public class Round implements Comparable<Round>{
 
     private Player player;
     private int gain;
+    private Combination combination;
 
     /**
      * Le constructeur de la classe.
@@ -29,6 +30,18 @@ public class Round implements Comparable<Round>{
      */
     public void setGain(int gain) {
         this.gain = gain;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Combination getCombination() {
+        return combination;
+    }
+
+    public void setCombination(Combination combination) {
+        this.combination = combination;
     }
 
     /**

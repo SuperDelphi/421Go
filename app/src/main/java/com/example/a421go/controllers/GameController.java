@@ -2,6 +2,7 @@ package com.example.a421go.controllers;
 
 import android.content.Context;
 
+import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Game;
 import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;

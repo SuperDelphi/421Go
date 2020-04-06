@@ -46,16 +46,16 @@ public class RankingActivity extends AppCompatActivity {
         listLoserLL = (LinearLayout) findViewById(R.id.listLoserLL);
         restartGameBTN = (ImageButton) findViewById(R.id.restartGameBTN);
         quitGameBTN = (ImageButton) findViewById(R.id.quitGameBTN);
-        ArrayList<Round> roundsList = controller.getGame().getRoundsList();
-        Collections.sort(roundsList, new RoundComparator());
-        winnerTV.setText(roundsList.get(0).getPlayer().getName()+" #1 "+roundsList.get(0).getGain()+" pts");
-        for (int i = 1; i < roundsList.size(); i++){
-            TextView joueurET = new TextView(RankingActivity.this);
-            joueurET.setText(roundsList.get(i).getPlayer().getName()+" #"+(listLoserLL.getChildCount()+2)+" "+roundsList.get(i).getGain()+" pts");
-            listLoserLL.addView(joueurET);
-        }
-        listenQuitGameBTN();
-        listenRestartGameBTN();
+//        ArrayList<Round> roundsList = controller.getGame().get(); TODO Corriger...
+//        Collections.sort(roundsList, new RoundComparator());
+//        winnerTV.setText(roundsList.get(0).getPlayer().getName()+" #1 "+roundsList.get(0).getGain()+" pts");
+//        for (int i = 1; i < roundsList.size(); i++){
+//            TextView joueurET = new TextView(RankingActivity.this);
+//            joueurET.setText(roundsList.get(i).getPlayer().getName()+" #"+(listLoserLL.getChildCount()+2)+" "+roundsList.get(i).getGain()+" pts");
+//            listLoserLL.addView(joueurET);
+//        }
+//        listenQuitGameBTN();
+//        listenRestartGameBTN();
     }
 
     /**
