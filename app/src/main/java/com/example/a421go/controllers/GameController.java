@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.a421go.models.Game;
 import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;
+import com.example.a421go.models.RoundGroup;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,12 +51,8 @@ public class GameController extends Controller {
      * Crée une nouvelle partie à partir des informations saisies par
      * l'utilisateur.
      */
-    public void playGame(int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<Round> roundsList) {
-        game = new Game(creationDate, targetScore, listPlayers, roundsList);
-    }
-
-    public Round getCurrentRound() {
-        return getGame().getCurrentRound();
+    public void playGame(int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<RoundGroup> roundsGroupList) {
+        game = new Game(creationDate, targetScore, listPlayers, roundsGroupList);
     }
 
     /**

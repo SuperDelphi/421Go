@@ -12,7 +12,7 @@ public class Game {
     private Date creationDate = new Date();
     private int targetScore = 25;
     private ArrayList<Player> playersList;
-    private ArrayList<Round> roundsList;
+    private ArrayList<RoundGroup> roundsGroupsList;
     private Player currentPlayer;
 
     // Constructors
@@ -38,11 +38,11 @@ public class Game {
      * @param creationDate la date de création de la partie.
      * @param targetScore le score-cible à atteindre.
      */
-    public Game(Date creationDate, int targetScore, ArrayList<Player> playersList, ArrayList<Round> roundsList) {
+    public Game(Date creationDate, int targetScore, ArrayList<Player> playersList, ArrayList<RoundGroup> roundsGroupsList) {
         this(targetScore);
         this.creationDate = creationDate;
         this.playersList = playersList;
-        this.roundsList = roundsList;
+        this.roundsGroupsList = roundsGroupsList;
         this.currentPlayer = playersList.get(0);
     }
 
@@ -65,8 +65,8 @@ public class Game {
     /**
      * @return La liste des tours d'une manche
      */
-    public ArrayList<Round> getRoundsList() {
-        return roundsList;
+    public ArrayList<RoundGroup> getRoundsGroupsList() {
+        return roundsGroupsList;
     }
 
     /**
@@ -81,20 +81,6 @@ public class Game {
      */
     public Player getCurrentPlayer() {
         return currentPlayer;
-    }
-
-    public Round getCurrentRound() {
-        Player cPlayer = getCurrentPlayer();
-        Round cRound = null;
-
-        for (Round round:
-             getRoundsList()) {
-            if (round.getPlayer() == cPlayer) {
-                cRound = round;
-            }
-        }
-
-        return cRound;
     }
 
     // Public methods

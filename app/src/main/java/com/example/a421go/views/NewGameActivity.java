@@ -18,6 +18,7 @@ import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;
+import com.example.a421go.models.RoundGroup;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -111,13 +112,11 @@ public class NewGameActivity extends AppCompatActivity {
                     Date now = new Date();
                     int targetScore = Integer.parseInt(targetScoreET.getText().toString());
                     ArrayList<Player> playerslist = new ArrayList<Player>();
-                    ArrayList<Round> roundsList = new ArrayList<Round>();
+                    ArrayList<RoundGroup> roundsGroupsList = new ArrayList<RoundGroup>();
                     for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
-                        Player player = new Player((String) listPlayersLL.getChildAt(i).getTransitionName());
-                        playerslist.add(player);
-                        roundsList.add(new Round(player));
+                        playerslist.add(new Player((String) listPlayersLL.getChildAt(i).getTransitionName()));
                     }
-                    controller.playGame(targetScore, now, playerslist, roundsList);
+                    controller.playGame(targetScore, now, playerslist, roundsGroupsList);
                     intent = new Intent(NewGameActivity.this, GameActivity.class);
                     startActivity(intent);
                 } else {
