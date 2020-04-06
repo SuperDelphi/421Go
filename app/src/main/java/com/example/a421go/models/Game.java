@@ -38,6 +38,7 @@ public class Game {
         this.roundsGroupsList = roundsGroupsList;
         addRoundGroupToGame();
         this.currentPlayer = playersList.get(0);
+        currentRound();
     }
 
     // Getters
@@ -99,7 +100,6 @@ public class Game {
 
     public void setPlayersList(ArrayList<Player> playersList) {
         this.playersList = playersList;
-        currentRound();
     }
 
     public Player nextPlayer() {
