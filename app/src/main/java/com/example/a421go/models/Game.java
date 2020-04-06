@@ -83,7 +83,11 @@ public class Game {
         return currentPlayer;
     }
 
-    // Public methods
+    /**
+     * Renvoie le dernier élément de la liste RoudsGroupslist
+     * @return
+     */
+    public RoundGroup getCurrentRoundGroup() { return roundsGroupsList.get(roundsGroupsList.size()-1); }
 
     public Player nextPlayer() {
         int cPlayerIndex = getPlayersList().indexOf(getCurrentPlayer());
