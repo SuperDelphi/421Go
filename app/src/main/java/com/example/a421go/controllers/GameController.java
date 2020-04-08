@@ -3,6 +3,7 @@ package com.example.a421go.controllers;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.a421go.metier.PlayerComparator;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Game;
 import com.example.a421go.models.Player;
@@ -10,6 +11,8 @@ import com.example.a421go.models.Round;
 import com.example.a421go.models.RoundGroup;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -68,4 +71,17 @@ public class GameController extends Controller {
      */
     public void replayLastGame() {}
 
+
+    public ArrayList<Player> playersRanking(){
+        ArrayList<RoundGroup> roundsGroupsList = game.getRoundsGroupsList();
+        ArrayList<Player> playersList = game.getPlayersList();
+        for (RoundGroup RG : roundsGroupsList){
+            for (int cpt = 0; cpt < playersList.size(); cpt++) {
+                int newScoreFinal = playersList.get(cpt).getScoreFinal() + RG.getRoundsList().get(cpt).getGain();
+                playersList.get(cpt).setScoreFinal(newScoreFinal);
+            }
+        }
+        Collections.sort(playersList, new PlayerComparator());
+        return playersList;
+    }
 }

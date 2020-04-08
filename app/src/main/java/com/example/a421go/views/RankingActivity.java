@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
-import com.example.a421go.metier.RoundComparator;
+import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;
 import com.example.a421go.models.RoundGroup;
 
@@ -47,12 +47,11 @@ public class RankingActivity extends AppCompatActivity {
         listLoserLL = (LinearLayout) findViewById(R.id.listLoserLL);
         restartGameBTN = (ImageButton) findViewById(R.id.restartGameBTN);
         quitGameBTN = (ImageButton) findViewById(R.id.quitGameBTN);
-        ArrayList<RoundGroup> roundsGroupsList = controller.getGame().getRoundsGroupsList();
-        //Collections.sort(roundsList, new RoundComparator());
-        winnerTV.setText("nom_du_vainqueur #1 - nombre_de_points pts");
+        ArrayList<Player> playersList = controller.playersRanking();
+        winnerTV.setText(playersList.get(0).getName()+" #1 - "+ playersList.get(0).getScoreFinal()+" pts");
         for (int i = 1; i < controller.getGame().getPlayersList().size(); i++){
             TextView joueurET = new TextView(RankingActivity.this);
-            joueurET.setText("nom_du_perdant #"+(listLoserLL.getChildCount()+2)+" - nombre_de_points pts");
+            joueurET.setText(playersList.get(i).getName()+" #"+(listLoserLL.getChildCount()+2)+" - "+playersList.get(i).getScoreFinal()+" pts");
             listLoserLL.addView(joueurET);
         }
         listenQuitGameBTN();
