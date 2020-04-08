@@ -22,4 +22,5 @@
     <string name="restart_game">Rejouer</string>
     <string name="quit_game">Quitter</string>
     <string name="winner_crown">La courronne du vainqueur</string>
+    <string name="end_game">Fin</string>
 </resources>

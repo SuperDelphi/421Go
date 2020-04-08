@@ -74,10 +74,14 @@ public class GameActivity extends AppCompatActivity {
                                 gameController.getCurrentRound(),
                                 board.getDices()
                         );
-
-                        gameController.getGame().nextPlayer();
                         // Boutton
-                        rollBTN.setText(R.string.restart_throws);
+                        if (lastRound == gameController.getCurrentRound()){
+                            rollBTN.setText(R.string.end_game);
+                        } else {
+                            rollBTN.setText(R.string.start_throws);
+                        }
+                        // Tour suivant
+                        gameController.getGame().nextPlayer();
                     } else {
                         rollBTN.setText(R.string.submit);
                         boardController.roll();
