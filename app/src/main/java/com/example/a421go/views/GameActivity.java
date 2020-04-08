@@ -29,6 +29,7 @@ public class GameActivity extends AppCompatActivity {
     private Button rollBTN;
     private LinearLayout boardLayout;
     private Intent intent = null;
+    private Round lastRound = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,7 @@ public class GameActivity extends AppCompatActivity {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Round lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size()-1);
+                lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size()-1);
                 if (lastRound.getCombination() == null){
                     if (rollBTN.getText().equals((String)getText(R.string.submit))) {
                         LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
@@ -99,8 +100,13 @@ public class GameActivity extends AppCompatActivity {
 
     private void update() {
         // Affichage
-        String textTemplate = (String) getText(R.string.your_turn);
-        this.playergameTV.setText(gameController.getInstance(getApplicationContext()).getCurrentPlayer().getName() + textTemplate);
+        String fin = (String) getText(R.string.end_game);
+        if (rollBTN.getText() == fin) {
+            this.playergameTV.setText(R.string.game_finish);
+        } else {
+            String textTemplate = (String) getText(R.string.your_turn);
+            this.playergameTV.setText(gameController.getInstance(getApplicationContext()).getCurrentPlayer().getName() + textTemplate);
+        }
 
         // Dés
         ArrayList<Dice> dices = boardController.getDices();
