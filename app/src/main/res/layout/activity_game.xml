@@ -70,7 +70,7 @@
         android:layout_width="355dp"
         android:layout_height="407dp"
         android:layout_marginTop="88dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV"></LinearLayout>
