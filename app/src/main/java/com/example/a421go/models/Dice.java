@@ -1,5 +1,7 @@
 package com.example.a421go.models;
 
+import android.util.Log;
+
 public class Dice implements Comparable<Dice>{
     private int faceCount = 6;
     private int face = 1;
@@ -46,7 +48,7 @@ public class Dice implements Comparable<Dice>{
     }
 
     public int roll() {
-        this.face = (int)Math.round(Math.random() * getFaceCount() - 1) + 1;
+        this.face = (int)Math.round(Math.random() * (getFaceCount() - 1)) + 1;
         return getFace();
     }
 
