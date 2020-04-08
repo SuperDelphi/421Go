@@ -42,11 +42,12 @@
         android:layout_width="232dp"
         android:layout_height="154dp"
         android:contentDescription="@string/logo_welcome"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/newGameBTN"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121"
+        app:layout_constraintVertical_bias="0.619"
         app:srcCompat="@drawable/logo" />
 
     <ImageButton
@@ -56,13 +57,11 @@
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/new_game"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546"
-        app:srcCompat="@drawable/new_game_btn" />
+        app:srcCompat="@drawable/new_game_btn"
+        tools:layout_editor_absoluteY="280dp" />
 
     <ImageButton
         android:id="@+id/rankBTN"
@@ -71,12 +70,10 @@
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/rank_welcome"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.728"
+        app:layout_constraintTop_toBottomOf="@+id/newGameBTN"
         app:srcCompat="@drawable/scores_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
