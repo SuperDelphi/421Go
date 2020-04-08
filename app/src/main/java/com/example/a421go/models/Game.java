@@ -146,4 +146,8 @@ public class Game {
     private void addRoundGroupToGame(){
         this.roundsGroupsList.add(roundGroupCreation(roundsCreation(getPlayersList())));
     }
+
+    public Round getCurrentRound() {
+        return currentRound;
+    }
 }

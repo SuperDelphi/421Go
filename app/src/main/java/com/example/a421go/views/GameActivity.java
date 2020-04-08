@@ -36,6 +36,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void init() {
+        gameController = GameController.getInstance(getApplicationContext());
         boardController = BoardController.getInstance(this);
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
         SimpleBoard.getInstance(boardLayout).addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
@@ -65,15 +66,10 @@ public class GameActivity extends AppCompatActivity {
                     BoardController controller = BoardController.getInstance(getApplicationContext());
                     SimpleBoard board = SimpleBoard.getInstance(boardLayout);
 
-                    ArrayList<Dice> dices = new ArrayList<>();
-                    dices.add(board.getDice(0));
-                    dices.add(board.getDice(1));
-                    dices.add(board.getDice(2));
-
-//                    controller.submitRound(
-//                            gameController.getCurrentRound(),
-//                            dices
-//                    );
+                    controller.submitRound(
+                            gameController.getCurrentRound(),
+                            board.getDices()
+                    );
 
                     gameController.getGame().nextPlayer();
                 } else {

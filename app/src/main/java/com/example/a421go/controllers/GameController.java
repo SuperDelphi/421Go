@@ -50,6 +50,10 @@ public class GameController extends Controller {
         return GameController.getInstance(getContext()).getGame().getCurrentPlayer();
     }
 
+    public Round getCurrentRound() {
+        return getGame().getCurrentRound();
+    }
+
     /**
      * Crée une nouvelle partie à partir des informations saisies par
      * l'utilisateur.
