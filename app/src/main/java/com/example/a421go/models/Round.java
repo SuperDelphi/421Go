@@ -64,4 +64,13 @@ public class Round implements Comparable<Round>{
         else if (gain > r.gain) return 1;
         else return -1;
     }
+
+    @Override
+    public String toString() {
+        return "Round{" +
+                "player=" + player +
+                ", gain=" + gain +
+                ", combination=" + combination +
+                '}';
+    }
 }

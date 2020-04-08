@@ -14,6 +14,7 @@ import com.example.a421go.controllers.BoardController;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Dice;
+import com.example.a421go.models.Round;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     private Button gameInfoBTN;
     private Button rollBTN;
     private LinearLayout boardLayout;
+    private Intent intent = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,20 +63,29 @@ public class GameActivity extends AppCompatActivity {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (rollBTN.getText().equals((String)getText(R.string.submit))) {
-                    LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
-                    BoardController controller = BoardController.getInstance(getApplicationContext());
-                    SimpleBoard board = SimpleBoard.getInstance(boardLayout);
+                Round lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size()-1);
+                if (lastRound.getCombination() == null){
+                    if (rollBTN.getText().equals((String)getText(R.string.submit))) {
+                        LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+                        BoardController controller = BoardController.getInstance(getApplicationContext());
+                        SimpleBoard board = SimpleBoard.getInstance(boardLayout);
 
-                    controller.submitRound(
-                            gameController.getCurrentRound(),
-                            board.getDices()
-                    );
+                        controller.submitRound(
+                                gameController.getCurrentRound(),
+                                board.getDices()
+                        );
 
-                    gameController.getGame().nextPlayer();
-                } else {
-                    rollBTN.setText(R.string.submit);
-                    boardController.roll();
+                        gameController.getGame().nextPlayer();
+                        // Boutton
+                        rollBTN.setText(R.string.restart_throws);
+                    } else {
+                        rollBTN.setText(R.string.submit);
+                        boardController.roll();
+                    }
+                }
+                else {
+                    intent = new Intent(GameActivity.this, RankingActivity.class);
+                    startActivity(intent);
                 }
 
                 update();
@@ -90,5 +101,7 @@ public class GameActivity extends AppCompatActivity {
         // Dés
         ArrayList<Dice> dices = boardController.getDices();
         SimpleBoard.getInstance().updateLayout();
+
+
     }
 }

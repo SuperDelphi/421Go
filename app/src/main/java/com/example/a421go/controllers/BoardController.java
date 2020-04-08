@@ -101,6 +101,8 @@ public class BoardController extends Controller {
     public void submitRound(Round currentRound, ArrayList<Dice> dices) {
         Combination combination = searchDices(dices);
         currentRound.addGain(combination.getPoints());
+        currentRound.setCombination(combination);
+        Log.i("var", "round : "+ currentRound.toString());
     }
 
     /**
