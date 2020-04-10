@@ -3,11 +3,12 @@ package com.example.a421go.models;
 /**
  * Représente un joueur.
  */
-public class Player {
+public class Player implements Comparable<Player>{
     // Properties
 
     private String name;
     private int victories = 0;
+    private int scoreFinal = 0;
 
     // Constructors
 
@@ -50,5 +51,27 @@ public class Player {
      */
     public int getVictories() {
         return victories;
+    }
+
+    /**
+     * @return le score final contenant la somme du score du joueur
+     */
+    public int getScoreFinal() {
+        return scoreFinal;
+    }
+
+    /**
+     * met à jour le score final d'un joueur
+     * @param scoreFinal
+     */
+    public void setScoreFinal(int scoreFinal) {
+        this.scoreFinal = scoreFinal;
+    }
+
+    @Override
+    public int compareTo(Player p) {
+        if (scoreFinal == p.scoreFinal) return 0;
+        else if (scoreFinal < p.scoreFinal) return 1;
+        else return -1;
     }
 }
