@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     private void listenExitBTN(){
         ((ImageButton) findViewById(R.id.exitBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                finishAndRemoveTask();
             }
         });
     }
