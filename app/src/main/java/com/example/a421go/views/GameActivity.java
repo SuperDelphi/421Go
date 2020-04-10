@@ -81,20 +81,17 @@ public class GameActivity extends AppCompatActivity {
         finishBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
-
                 LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
                 BoardController controller = BoardController.getInstance(getApplicationContext());
                 SimpleBoard board = SimpleBoard.getInstance(boardLayout);
-
-                if (lastRound.getCombination() == null) {
-                    controller.submitRound(
-                            gameController.getCurrentRound(),
-                            board.getDices()
-                    );
-                    gameController.getGame().nextPlayer();
-                    board.init();
-                } else {
+                controller.submitRound(
+                        gameController.getCurrentRound(),
+                        board.getDices()
+                );
+                gameController.getGame().nextPlayer();
+                board.init();
+                lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
+                if (lastRound.getCombination() != null) {
                     intent = new Intent(GameActivity.this, RankingActivity.class);
                     startActivity(intent);
                 }
