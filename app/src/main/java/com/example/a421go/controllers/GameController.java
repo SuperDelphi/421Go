@@ -54,6 +54,10 @@ public class GameController extends Controller {
         return getGame().getCurrentRound();
     }
 
+    public int getMaxThrowsPerRound() {
+        return getGame().getMaxThrowsPerRound();
+    }
+
     /**
      * Crée une nouvelle partie à partir des informations saisies par
      * l'utilisateur.

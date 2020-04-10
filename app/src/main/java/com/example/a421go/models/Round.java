@@ -8,6 +8,7 @@ public class Round implements Comparable<Round>{
     private Player player;
     private int gain;
     private Combination combination;
+    private RoundState state = RoundState.THREE_LEFT;
 
     /**
      * Le constructeur de la classe.
@@ -42,6 +43,14 @@ public class Round implements Comparable<Round>{
 
     public void setCombination(Combination combination) {
         this.combination = combination;
+    }
+
+    public RoundState getState() {
+        return state;
+    }
+
+    public void setState(RoundState state) {
+        this.state = state;
     }
 
     /**

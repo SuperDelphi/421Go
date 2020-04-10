@@ -24,34 +24,9 @@
         android:text="@string/remaining_throws"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
-
-    <Button
-        android:id="@+id/gameInfoBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/info_game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Button
-        android:id="@+id/rollBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_throws"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.787" />
+        app:layout_constraintTop_toBottomOf="@+id/gameInfoBTN"
+        app:layout_constraintVertical_bias="0.065" />
 
     <TextView
         android:id="@+id/reserveTV"
@@ -70,8 +45,36 @@
         android:layout_width="355dp"
         android:layout_height="407dp"
         android:layout_marginTop="88dp"
+        android:gravity="center_horizontal|top"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV"></LinearLayout>
+
+    <ImageButton
+        android:id="@+id/gameInfoBTN"
+        android:layout_width="217dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="72dp"
+        android:background="#FFFFFF"
+        android:foreground="@drawable/game_info_btn"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/game_info_btn" />
+
+    <ImageButton
+        android:id="@+id/rollBTN"
+        android:layout_width="215dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="788dp"
+        android:background="#FFFFFF"
+        android:foreground="@drawable/roll_dices_btn"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/reserveTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
 </androidx.constraintlayout.widget.ConstraintLayout>

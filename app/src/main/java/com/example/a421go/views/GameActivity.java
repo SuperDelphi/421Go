@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,8 +26,8 @@ public class GameActivity extends AppCompatActivity {
     private GameController gameController;
     private TextView playergameTV;
     private TextView remainingThrowsTV;
-    private Button gameInfoBTN;
-    private Button rollBTN;
+    private ImageButton gameInfoBTN;
+    private ImageButton rollBTN;
     private LinearLayout boardLayout;
     private Intent intent = null;
 
@@ -44,8 +45,8 @@ public class GameActivity extends AppCompatActivity {
         SimpleBoard.getInstance(boardLayout).addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
         playergameTV = (TextView) findViewById(R.id.playergameTV);
         remainingThrowsTV = (TextView) findViewById(R.id.remainingThrowsTV);
-        gameInfoBTN = (Button) findViewById(R.id.gameInfoBTN);
-        rollBTN = (Button) findViewById(R.id.rollBTN);
+        gameInfoBTN = (ImageButton) findViewById(R.id.gameInfoBTN);
+        rollBTN = (ImageButton) findViewById(R.id.rollBTN);
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
 
         // Affichage
@@ -65,7 +66,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Round lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size()-1);
                 if (lastRound.getCombination() == null){
-                    if (rollBTN.getText().equals((String)getText(R.string.submit))) {
+                    if (rollBTN.getText.equals((String)getText(R.string.submit))) {
                         LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
                         BoardController controller = BoardController.getInstance(getApplicationContext());
                         SimpleBoard board = SimpleBoard.getInstance(boardLayout);

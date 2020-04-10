@@ -14,6 +14,7 @@ public class Game {
 
     private Date creationDate = new Date();
     private int targetScore = 25;
+    private int maxThrowsPerRound = 3;
     private ArrayList<Player> playersList;
     private ArrayList<RoundGroup> roundsGroupsList;
     private Player currentPlayer;
@@ -76,6 +77,34 @@ public class Game {
      */
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setTargetScore(int targetScore) {
+        this.targetScore = targetScore;
+    }
+
+    public int getMaxThrowsPerRound() {
+        return maxThrowsPerRound;
+    }
+
+    public void setMaxThrowsPerRound(int maxThrowsPerRound) {
+        this.maxThrowsPerRound = maxThrowsPerRound;
+    }
+
+    public void setRoundsGroupsList(ArrayList<RoundGroup> roundsGroupsList) {
+        this.roundsGroupsList = roundsGroupsList;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public void setCurrentRound(Round currentRound) {
+        this.currentRound = currentRound;
     }
 
     /**
