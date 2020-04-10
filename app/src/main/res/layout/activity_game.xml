@@ -22,11 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/remaining_throws"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameInfoBTN"
-        app:layout_constraintVertical_bias="0.065" />
+        tools:layout_editor_absoluteY="132dp" />
 
     <TextView
         android:id="@+id/reserveTV"
@@ -38,17 +36,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/finishBTN"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <LinearLayout
         android:id="@+id/boardLayout"
-        android:layout_width="402dp"
-        android:layout_height="186dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="414dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="24dp"
         android:gravity="center_horizontal|top"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV"></LinearLayout>
 
@@ -56,11 +53,12 @@
         android:id="@+id/gameInfoBTN"
         android:layout_width="217dp"
         android:layout_height="48dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="28dp"
         android:background="#FFFFFF"
         android:foreground="@drawable/game_info_btn"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/game_info_btn" />
@@ -69,7 +67,7 @@
         android:id="@+id/rollBTN"
         android:layout_width="215dp"
         android:layout_height="66dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="#FFFFFF"
         android:foreground="@drawable/roll_dices_btn"
         android:scaleType="centerInside"
