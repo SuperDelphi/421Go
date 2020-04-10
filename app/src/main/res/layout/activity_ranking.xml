@@ -10,15 +10,13 @@
         android:id="@+id/gameFinishTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
         android:text="@string/game_finish"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/listLoserLL"
@@ -37,7 +35,7 @@
         android:id="@+id/winnerTV"
         android:layout_width="218dp"
         android:layout_height="37dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -57,29 +55,28 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/winnerTV"
-        app:layout_constraintVertical_bias="0.754"
+        app:layout_constraintVertical_bias="0.154"
         app:srcCompat="@drawable/trophy" />
 
     <ImageButton
         android:id="@+id/restartGameBTN"
-        android:layout_width="351dp"
-        android:layout_height="102dp"
+        android:layout_width="320dp"
+        android:layout_height="81dp"
         android:layout_marginBottom="144dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/restart_game"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listLoserLL"
-        app:layout_constraintVertical_bias="0.608"
+        app:layout_constraintVertical_bias="0.374"
         app:srcCompat="@drawable/replay_btn" />
 
     <ImageButton
         android:id="@+id/quitGameBTN"
-        android:layout_width="350dp"
-        android:layout_height="103dp"
+        android:layout_width="317dp"
+        android:layout_height="88dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/quit_game"
         android:scaleType="centerInside"
