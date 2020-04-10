@@ -32,6 +32,11 @@ public class GameController extends Controller {
     //Méthodes publiques
 
     //Getters
+
+    /**
+     * Renvoie la propriété game
+     * @return un objet Game
+     */
     public Game getGame() {
         return game;
     }
@@ -109,13 +114,13 @@ public class GameController extends Controller {
      * @return un nombre entier
      */
     public int getThrowsLeft(){
-
+        return getCurrentRound().getState().getThrowsLeft();
     }
 
     /**
      * Soustrait un lancer aux lancers restants
      */
     public void throwsSubstract(){
-
+        getCurrentRound().getState().decrease();
     }
 }

@@ -11,7 +11,7 @@ public class RoundState {
         return --this.throwsLeft;
     }
 
-    public int getState() {
+    public int getThrowsLeft() {
         return this.throwsLeft;
     }
 }
