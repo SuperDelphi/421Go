@@ -22,7 +22,7 @@
         android:id="@+id/listLoserLL"
         android:layout_width="147dp"
         android:layout_height="105dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:orientation="vertical"
         android:textAlignment="center"
@@ -48,7 +48,7 @@
         android:id="@+id/winnerCrownIV"
         android:layout_width="205dp"
         android:layout_height="166dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/winner_crown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -80,6 +80,6 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listLoserLL"
-        app:layout_constraintVertical_bias="0.812"
+        app:layout_constraintVertical_bias="0.913"
         app:srcCompat="@drawable/quit_game_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
