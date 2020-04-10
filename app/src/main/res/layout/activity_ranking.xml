@@ -24,46 +24,47 @@
         android:id="@+id/listLoserLL"
         android:layout_width="147dp"
         android:layout_height="105dp"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
         android:orientation="vertical"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintTop_toBottomOf="@+id/winnerCrownIV" />
 
     <TextView
         android:id="@+id/winnerTV"
         android:layout_width="218dp"
         android:layout_height="37dp"
+        android:layout_marginTop="44dp"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintTop_toBottomOf="@+id/gameFinishTV" />
 
     <ImageView
         android:id="@+id/winnerCrownIV"
-        android:layout_width="139dp"
-        android:layout_height="144dp"
+        android:layout_width="205dp"
+        android:layout_height="166dp"
+        android:layout_marginBottom="460dp"
         android:contentDescription="@string/winner_crown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33"
+        app:layout_constraintTop_toBottomOf="@+id/winnerTV"
+        app:layout_constraintVertical_bias="0.754"
         app:srcCompat="@drawable/trophy" />
 
     <ImageButton
         android:id="@+id/restartGameBTN"
-        android:layout_width="284dp"
-        android:layout_height="72dp"
+        android:layout_width="351dp"
+        android:layout_height="102dp"
+        android:layout_marginBottom="144dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/restart_game"
         android:scaleType="centerInside"
@@ -71,21 +72,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813"
+        app:layout_constraintTop_toBottomOf="@+id/listLoserLL"
+        app:layout_constraintVertical_bias="0.608"
         app:srcCompat="@drawable/replay_btn" />
 
     <ImageButton
         android:id="@+id/quitGameBTN"
-        android:layout_width="283dp"
-        android:layout_height="72dp"
+        android:layout_width="350dp"
+        android:layout_height="103dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/quit_game"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
+        app:layout_constraintTop_toBottomOf="@+id/restartGameBTN"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/quit_game_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
