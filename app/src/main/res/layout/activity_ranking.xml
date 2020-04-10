@@ -35,7 +35,7 @@
         android:id="@+id/winnerTV"
         android:layout_width="218dp"
         android:layout_height="37dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -55,22 +55,20 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/winnerTV"
-        app:layout_constraintVertical_bias="0.154"
+        app:layout_constraintVertical_bias="0.428"
         app:srcCompat="@drawable/trophy" />
 
     <ImageButton
         android:id="@+id/restartGameBTN"
         android:layout_width="320dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginTop="44dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/restart_game"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listLoserLL"
-        app:layout_constraintVertical_bias="0.374"
         app:srcCompat="@drawable/replay_btn" />
 
     <ImageButton
