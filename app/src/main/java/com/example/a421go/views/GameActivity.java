@@ -67,23 +67,27 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size()-1);
                 if (lastRound.getCombination() == null){
-                    if (rollBTN.getText.equals((String)getText(R.string.submit))) {
-                        LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
-                        BoardController controller = BoardController.getInstance(getApplicationContext());
-                        SimpleBoard board = SimpleBoard.getInstance(boardLayout);
+                    if (gameController.getThrowsLeft() > 0){
+                        if (rollBTN.getText.equals((String)getText(R.string.submit))) {
+                            LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+                            BoardController controller = BoardController.getInstance(getApplicationContext());
+                            SimpleBoard board = SimpleBoard.getInstance(boardLayout);
 
-                        controller.submitRound(
-                                gameController.getCurrentRound(),
-                                board.getDices()
-                        );
-                        // Boutton
-                        if (lastRound == gameController.getCurrentRound()){
-                            rollBTN.setText(R.string.end_game);
-                        } else {
-                            rollBTN.setText(R.string.start_throws);
+                            controller.submitRound(
+                                    gameController.getCurrentRound(),
+                                    board.getDices()
+                            );
+                    } else {
+                            // Boutton
+                            if (lastRound == gameController.getCurrentRound()){
+                                rollBTN.setText(R.string.end_game);
+                            } else {
+                                rollBTN.setText(R.string.start_throws);
+                            }
+                            // Tour suivant
+                            gameController.getGame().nextPlayer();
                         }
-                        // Tour suivant
-                        gameController.getGame().nextPlayer();
+
                     } else {
                         rollBTN.setText(R.string.submit);
                         boardController.roll();
