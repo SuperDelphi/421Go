@@ -154,7 +154,7 @@ public class Game {
     private ArrayList<Round> roundsCreation(ArrayList<Player> playersList){
         ArrayList<Round> roundsList = new ArrayList<Round>();
         for(Player p : playersList){
-            roundsList.add(new Round(p));
+            roundsList.add(new Round(p, getMaxThrowsPerRound()));
         }
         return roundsList;
     }
