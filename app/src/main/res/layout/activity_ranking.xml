@@ -72,13 +72,14 @@
         android:id="@+id/quitGameBTN"
         android:layout_width="317dp"
         android:layout_height="88dp"
-        android:layout_marginBottom="80dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/quit_game"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listLoserLL"
+        app:layout_constraintVertical_bias="0.812"
         app:srcCompat="@drawable/quit_game_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
