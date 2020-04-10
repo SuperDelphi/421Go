@@ -26,7 +26,6 @@ import java.util.Collections;
 public class BoardController extends Controller {
 
     private static BoardController instance = null;
-    private boolean dicesThrown = false;
 
     /**
      * Constructeur protégé de la classe BoardController.

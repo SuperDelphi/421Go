@@ -8,14 +8,15 @@ public class Round implements Comparable<Round>{
     private Player player;
     private int gain;
     private Combination combination;
-    private RoundState state = RoundState.THREE_LEFT;
+    private RoundState state;
 
     /**
      * Le constructeur de la classe.
      * @param player le joueur qui joue pendant ce tour.
      */
-    public Round(Player player) {
+    public Round(Player player, int maxThrows) {
         this.player = player;
+        this.state = new RoundState(maxThrows);
     }
 
     /**
