@@ -16,6 +16,7 @@ import com.example.a421go.controllers.BoardController;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Dice;
+import com.example.a421go.models.Game;
 import com.example.a421go.models.Round;
 
 import java.util.ArrayList;
@@ -62,20 +63,15 @@ public class GameActivity extends AppCompatActivity {
         update();
 
         listenRollDices();
+        listenFinish();
     }
 
     private void listenRollDices() {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
-                if (lastRound.getCombination() == null) {
-                    boardController.roll();
-                    gameController.throwsSubstract();
-                } else {
-                    intent = new Intent(GameActivity.this, RankingActivity.class);
-                    startActivity(intent);
-                }
+                boardController.roll();
+                gameController.throwsSubstract();
                 update();
             }
         });
@@ -85,14 +81,25 @@ public class GameActivity extends AppCompatActivity {
         finishBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
+
                 LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
                 BoardController controller = BoardController.getInstance(getApplicationContext());
                 SimpleBoard board = SimpleBoard.getInstance(boardLayout);
 
-                controller.submitRound(
-                        gameController.getCurrentRound(),
-                        board.getDices()
-                );
+                if (lastRound.getCombination() == null) {
+                    controller.submitRound(
+                            gameController.getCurrentRound(),
+                            board.getDices()
+                    );
+                    gameController.getGame().nextPlayer();
+                    board.init();
+                } else {
+                    intent = new Intent(GameActivity.this, RankingActivity.class);
+                    startActivity(intent);
+                }
+
+                update();
             }
         });
     }
@@ -100,20 +107,22 @@ public class GameActivity extends AppCompatActivity {
     private void update() {
         // Affichage
 
+        String textTemplate = (String) getText(R.string.your_turn);
+        this.playergameTV.setText(gameController.getInstance(getApplicationContext()).getCurrentPlayer().getName() + textTemplate);
+
         // S'il reste des lancers & qu'un lancer a déjà été effectué
         if (gameController.getThrowsLeft() > 0 && gameController.getThrowsLeft() < gameController.getMaxThrowsPerRound()) {
-            String textTemplate = (String) getText(R.string.your_turn);
-            this.playergameTV.setText(gameController.getInstance(getApplicationContext()).getCurrentPlayer().getName() + textTemplate);
             finishBTN.setVisibility(View.VISIBLE);
             rollBTN.setImageResource(R.drawable.roll_dices_again_btn);
         // Si aucun lancer n'a été effectué
         } else if (gameController.getThrowsLeft() == gameController.getMaxThrowsPerRound()) {
+            rollBTN.setVisibility(View.VISIBLE);
             finishBTN.setVisibility(View.INVISIBLE);
             rollBTN.setImageResource(R.drawable.roll_dices_btn);
         // Si tous les lancers ont été effectués
         } else {
+            rollBTN.setVisibility(View.INVISIBLE);
             finishBTN.setVisibility(View.VISIBLE);
-            this.playergameTV.setText(R.string.game_finish);
         }
 
         // Dés

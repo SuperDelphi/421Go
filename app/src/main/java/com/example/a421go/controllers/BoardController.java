@@ -102,7 +102,6 @@ public class BoardController extends Controller {
         Combination combination = searchDices(dices);
         currentRound.addGain(combination.getPoints());
         currentRound.setCombination(combination);
-        Log.i("var", "round : "+ currentRound.toString());
     }
 
     /**
