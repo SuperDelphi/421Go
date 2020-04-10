@@ -48,41 +48,39 @@
         android:id="@+id/winnerCrownIV"
         android:layout_width="205dp"
         android:layout_height="166dp"
-        android:layout_marginBottom="460dp"
+        android:layout_marginBottom="496dp"
         android:contentDescription="@string/winner_crown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/winnerTV"
-        app:layout_constraintVertical_bias="0.428"
+        app:layout_constraintVertical_bias="0.981"
         app:srcCompat="@drawable/trophy" />
 
     <ImageButton
         android:id="@+id/restartGameBTN"
         android:layout_width="320dp"
         android:layout_height="81dp"
-        android:layout_marginTop="44dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/restart_game"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/quitGameBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listLoserLL"
         app:srcCompat="@drawable/replay_btn" />
 
     <ImageButton
         android:id="@+id/quitGameBTN"
         android:layout_width="317dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/quit_game"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restartGameBTN"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/quit_game_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
