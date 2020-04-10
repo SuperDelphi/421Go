@@ -1,6 +1,6 @@
 package com.example.a421go.models;
 
-class RoundState {
+public class RoundState {
     private int throwsLeft;
 
     public RoundState(int throwsLeft) {
