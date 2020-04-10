@@ -11,7 +11,6 @@ import com.example.a421go.models.Round;
 import com.example.a421go.models.RoundGroup;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 
@@ -49,14 +48,26 @@ public class GameController extends Controller {
         return instance;
     }
 
+    /**
+     * Renvoie le joueur en cours
+     * @return un objet Player
+     */
     public Player getCurrentPlayer() {
         return GameController.getInstance(getContext()).getGame().getCurrentPlayer();
     }
 
+    /**
+     * Renvoie le tour en cours
+     * @return un objet Round
+     */
     public Round getCurrentRound() {
         return getGame().getCurrentRound();
     }
 
+    /**
+     * Renvoie le nombre maximum de lancer par tour
+     * @return un nombre entier
+     */
     public int getMaxThrowsPerRound() {
         return getGame().getMaxThrowsPerRound();
     }
@@ -76,6 +87,10 @@ public class GameController extends Controller {
     public void replayLastGame() {}
 
 
+    /**
+     * Calcul les résultats des joueurs et les classe en fonction de leurs scores finaux
+     * @return une Arraylist de Player
+     */
     public ArrayList<Player> playersRanking(){
         ArrayList<RoundGroup> roundsGroupsList = game.getRoundsGroupsList();
         ArrayList<Player> playersList = game.getPlayersList();
@@ -87,5 +102,20 @@ public class GameController extends Controller {
         }
         Collections.sort(playersList, new PlayerComparator());
         return playersList;
+    }
+
+    /**
+     * Renvoie le nombre de lancers restant
+     * @return un nombre entier
+     */
+    public int getThrowsLeft(){
+
+    }
+
+    /**
+     * Soustrait un lancer aux lancers restants
+     */
+    public void throwsSubstract(){
+
     }
 }
