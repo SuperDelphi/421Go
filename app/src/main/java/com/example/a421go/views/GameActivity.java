@@ -112,7 +112,7 @@ public class GameActivity extends AppCompatActivity {
             rollBTN.setImageResource(R.drawable.roll_dices_btn);
         // Si tous les lancers ont été effectués
         } else {
-            finishBTN.setVisibility(View.INVISIBLE);
+            finishBTN.setVisibility(View.VISIBLE);
             this.playergameTV.setText(R.string.game_finish);
         }
 
