@@ -30,8 +30,8 @@ public class BoardController extends Controller {
     /**
      * Constructeur protégé de la classe BoardController.
      */
-    protected BoardController(Context context) {
-        super(context);
+    protected BoardController() {
+        super();
     }
 
     /**
@@ -40,9 +40,9 @@ public class BoardController extends Controller {
      *
      * @return L'unique instance de la classe.
      */
-    public static BoardController getInstance(Context context) {
+    public static BoardController getInstance() {
         if (BoardController.instance == null) {
-            BoardController.instance = new BoardController(context);
+            BoardController.instance = new BoardController();
         }
         return instance;
     }

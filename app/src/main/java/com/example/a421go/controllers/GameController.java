@@ -28,8 +28,8 @@ public class GameController extends Controller {
     /**
      * Constructeur protégé de la classe GameController.
      */
-    protected GameController(Context context) {
-        super(context);
+    protected GameController() {
+        super();
     }
 
     //Méthodes publiques
@@ -49,9 +49,9 @@ public class GameController extends Controller {
      * retourne l'instance existante.
      * @return L'unique instance de la classe.
      */
-    public static GameController getInstance(Context context) {
+    public static GameController getInstance() {
         if (GameController.instance == null) {
-            GameController.instance = new GameController(context);
+            GameController.instance = new GameController();
         }
         return instance;
     }
@@ -61,7 +61,7 @@ public class GameController extends Controller {
      * @return un objet Player
      */
     public Player getCurrentPlayer() {
-        return GameController.getInstance(getContext()).getGame().getCurrentPlayer();
+        return GameController.getInstance().getGame().getCurrentPlayer();
     }
 
     /**
@@ -84,8 +84,10 @@ public class GameController extends Controller {
      * Crée une nouvelle partie à partir des informations saisies par
      * l'utilisateur.
      */
-    public void playGame(int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<RoundGroup> roundsGroupList) {
+    public void playGame(Context context, int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<RoundGroup> roundsGroupList) {
         game = new Game(creationDate, targetScore, listPlayers, roundsGroupList);
+        Intent intent = new Intent(context, GameActivity.class);
+        context.startActivity(intent);
     }
 
     /**
