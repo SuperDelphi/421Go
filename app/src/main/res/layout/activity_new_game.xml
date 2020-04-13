@@ -24,7 +24,7 @@
         android:id="@+id/titlePlayersTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="@string/players"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -80,11 +80,11 @@
         android:layout_height="182dp"
         android:orientation="vertical"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addPlayerET"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintTop_toBottomOf="@+id/titlePlayersTV"
+        app:layout_constraintVertical_bias="0.242" />
 
     <ImageButton
         android:id="@+id/returnBTN"
@@ -120,13 +120,12 @@
         android:id="@+id/startGameBTN"
         android:layout_width="317dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/start_game"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/lets_go_btn" />
 
