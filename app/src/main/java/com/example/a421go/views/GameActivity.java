@@ -54,9 +54,6 @@ public class GameActivity extends AppCompatActivity {
         finishBTN = (ImageButton) findViewById(R.id.finishBTN);
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
 
-        // Affichage
-        remainingThrowsTV.setText(R.string.remaining_throws);
-
         // Dés
         SimpleBoard.getInstance().init();
 
@@ -99,6 +96,7 @@ public class GameActivity extends AppCompatActivity {
     private void update() {
         // Affichage
 
+        this.remainingThrowsTV.setText(getText(R.string.remaining_throws) +" "+gameController.getGame().getCurrentRound().getState().getThrowsLeft());
         String textTemplate = (String) getText(R.string.your_turn);
         this.playergameTV.setText(gameController.getInstance().getCurrentPlayer().getName() + textTemplate);
 
