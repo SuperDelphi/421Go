@@ -24,29 +24,27 @@
         android:id="@+id/titlePlayersTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/players"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintTop_toBottomOf="@+id/targetScoreTV" />
 
     <EditText
         android:id="@+id/addPlayerET"
         android:layout_width="187dp"
         android:layout_height="49dp"
+        android:layout_marginBottom="30dp"
         android:contentDescription="@string/add_players"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/startGameBTN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.684" />
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/targetScoreET"
@@ -108,29 +106,28 @@
         android:id="@+id/addPlayerBTN"
         android:layout_width="80dp"
         android:layout_height="72dp"
+        android:layout_marginBottom="18dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/add_one_player"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/startGameBTN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.704"
         app:srcCompat="@drawable/add_player_btn" />
 
     <ImageButton
         android:id="@+id/startGameBTN"
         android:layout_width="317dp"
         android:layout_height="76dp"
+        android:layout_marginBottom="56dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/start_game"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.902"
         app:srcCompat="@drawable/lets_go_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
