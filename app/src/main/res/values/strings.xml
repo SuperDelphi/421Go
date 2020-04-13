@@ -24,4 +24,7 @@
     <string name="quit_game">Quitter</string>
     <string name="winner_crown">La courronne du vainqueur</string>
     <string name="end_game">Fin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

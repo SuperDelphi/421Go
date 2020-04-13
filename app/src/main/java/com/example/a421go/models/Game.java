@@ -16,6 +16,7 @@ public class Game {
     private int targetScore = 25;
     private int maxThrowsPerRound = 3;
     private ArrayList<Player> playersList;
+    private ArrayList<Player> currentPlayersList;
     private ArrayList<RoundGroup> roundsGroupsList;
     private Player currentPlayer;
     private Round currentRound;
@@ -70,6 +71,21 @@ public class Game {
      */
     public ArrayList<Player> getPlayersList() {
         return playersList;
+    }
+
+    /**
+     * @return le classement en cours de la partie
+     */
+    public ArrayList<Player> getCurrentPlayersList() {
+        return currentPlayersList;
+    }
+
+    /**
+     * Met à jour le classement en cours de la partie
+     * @param currentPlayersList
+     */
+    public void setCurrentPlayersList(ArrayList<Player> currentPlayersList) {
+        this.currentPlayersList = currentPlayersList;
     }
 
     /**

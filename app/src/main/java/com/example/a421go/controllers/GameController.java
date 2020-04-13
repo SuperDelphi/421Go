@@ -111,12 +111,17 @@ public class GameController extends Controller {
             }
         }
         Collections.sort(playersList, new PlayerComparator());
+        for (Player p : playersList){
+            Log.i("var", "playersList : " + p.getScoreFinal());
+        }
+
         return playersList;
     }
 
     public Boolean endGameTest(){
         Boolean test = false;
         ArrayList<Player> currentPlayersList = playersRanking();
+        game.setCurrentPlayersList(currentPlayersList);
         if (currentPlayersList.get(0).getScoreFinal() >= getGame().getTargetScore()){
             test = true;
         }
