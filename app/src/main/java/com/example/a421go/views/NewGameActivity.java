@@ -53,7 +53,7 @@ public class NewGameActivity extends AppCompatActivity {
         targetScoreET = (EditText) findViewById(R.id.targetScoreET);
         addPlayerET = (EditText) findViewById(R.id.addPlayerET);
         listPlayersLL = (LinearLayout) findViewById(R.id.listPlayersLL);
-        this.controller = GameController.getInstance(this);
+        this.controller = GameController.getInstance();
         targetScoreET.setText("25");
         listenaddPlayerBTN();
         listenreturnBTN();
@@ -116,11 +116,9 @@ public class NewGameActivity extends AppCompatActivity {
                     for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
                         playerslist.add(new Player((String) listPlayersLL.getChildAt(i).getTransitionName()));
                     }
-                    controller.playGame(targetScore, now, playerslist, roundsGroupsList);
-                    intent = new Intent(NewGameActivity.this, GameActivity.class);
-                    startActivity(intent);
+                    controller.playGame(NewGameActivity.this, targetScore, now, playerslist, roundsGroupsList);
                 } else {
-                    Toast.makeText(NewGameActivity.this, "Il faut minimum 2 joueurs pour démarrer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewGameActivity.this, getText(R.string.new_game_err_min_players), Toast.LENGTH_SHORT).show();
                 }
             }
         });

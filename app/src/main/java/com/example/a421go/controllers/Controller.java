@@ -2,19 +2,15 @@ package com.example.a421go.controllers;
 
 import android.content.Context;
 
+import com.example.a421go.metier.GlobalApplication;
 import com.example.a421go.models.GameDatabase;
 
 public class Controller {
-    protected Context context;
     protected GameDatabase database;
 
-    protected Controller(Context context) {
+    protected Controller() {
         super();
-        this.database = new GameDatabase(context);
-    }
-
-    public Context getContext() {
-        return context;
+        this.database = new GameDatabase(GlobalApplication.getAppContext());
     }
 
     public GameDatabase getDatabase() {

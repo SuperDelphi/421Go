@@ -42,7 +42,7 @@ public class RankingActivity extends AppCompatActivity {
      * Initialisation des liens avec les objets graphiques, triage des rounds dans l'ordre décroissant et  insertion des informations de fin de partie
      */
     private void init() {
-        controller = GameController.getInstance(this);
+        controller = GameController.getInstance();
         winnerTV = (TextView) findViewById(R.id.winnerTV);
         listLoserLL = (LinearLayout) findViewById(R.id.listLoserLL);
         restartGameBTN = (ImageButton) findViewById(R.id.restartGameBTN);
@@ -77,6 +77,7 @@ public class RankingActivity extends AppCompatActivity {
         ((ImageButton) findViewById(R.id.quitGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 intent = new Intent(RankingActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

@@ -43,8 +43,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void init() {
-        gameController = GameController.getInstance(getApplicationContext());
-        boardController = BoardController.getInstance(this);
+        gameController = GameController.getInstance();
+        boardController = BoardController.getInstance();
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
         SimpleBoard.getInstance(boardLayout).addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
         playergameTV = (TextView) findViewById(R.id.playergameTV);
@@ -82,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
-                BoardController controller = BoardController.getInstance(getApplicationContext());
+                BoardController controller = BoardController.getInstance();
                 SimpleBoard board = SimpleBoard.getInstance(boardLayout);
                 controller.submitRound(
                         gameController.getCurrentRound(),
@@ -105,7 +105,7 @@ public class GameActivity extends AppCompatActivity {
         // Affichage
 
         String textTemplate = (String) getText(R.string.your_turn);
-        this.playergameTV.setText(gameController.getInstance(getApplicationContext()).getCurrentPlayer().getName() + textTemplate);
+        this.playergameTV.setText(gameController.getInstance().getCurrentPlayer().getName() + textTemplate);
 
         // S'il reste des lancers & qu'un lancer a déjà été effectué
         if (gameController.getThrowsLeft() > 0 && gameController.getThrowsLeft() < gameController.getMaxThrowsPerRound()) {

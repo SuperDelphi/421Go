@@ -12,8 +12,8 @@ public class PlayerController extends Controller {
     /**
      * Constructeur protégé de la classe PlayerController.
      */
-    protected PlayerController(Context context) {
-        super(context);
+    protected PlayerController() {
+        super();
     }
 
     /**
@@ -21,9 +21,9 @@ public class PlayerController extends Controller {
      * retourne l'instance existante.
      * @return L'unique instance de la classe.
      */
-    public static PlayerController getInstance(Context context) {
+    public static PlayerController getInstance() {
         if (PlayerController.instance == null) {
-            PlayerController.instance = new PlayerController(context);
+            PlayerController.instance = new PlayerController();
         }
         return instance;
     }
