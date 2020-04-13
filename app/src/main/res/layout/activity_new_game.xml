@@ -16,76 +16,77 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintVertical_bias="0.051" />
 
     <TextView
         android:id="@+id/titlePlayersTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="@string/players"
         android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/targetScoreTV" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22" />
 
     <EditText
         android:id="@+id/addPlayerET"
-        android:layout_width="260dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="276dp"
+        android:layout_width="187dp"
+        android:layout_height="49dp"
         android:contentDescription="@string/add_players"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPlayersLL"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684" />
 
     <EditText
         android:id="@+id/targetScoreET"
-        android:layout_width="198dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="120dp"
+        android:layout_width="149dp"
+        android:layout_height="50dp"
         android:backgroundTint="#777777"
         android:ems="10"
         android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintHorizontal_bias="0.854"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154" />
 
     <TextView
         android:id="@+id/targetScoreTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
         android:text="@string/target_score_new_game"
         android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
 
     <LinearLayout
         android:id="@+id/listPlayersLL"
-        android:layout_width="318dp"
-        android:layout_height="207dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="269dp"
+        android:layout_height="182dp"
         android:orientation="vertical"
         android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlePlayersTV" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.446" />
 
     <ImageButton
         android:id="@+id/returnBTN"
@@ -107,30 +108,29 @@
         android:id="@+id/addPlayerBTN"
         android:layout_width="80dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="264dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/add_one_player"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="0.836"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPlayersLL"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.704"
         app:srcCompat="@drawable/add_player_btn" />
 
     <ImageButton
         android:id="@+id/startGameBTN"
         android:layout_width="317dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="80dp"
         android:backgroundTint="#00FFFFFF"
         android:contentDescription="@string/start_game"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902"
         app:srcCompat="@drawable/lets_go_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
