@@ -1,6 +1,7 @@
 package com.example.a421go.controllers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.example.a421go.metier.PlayerComparator;
@@ -9,6 +10,8 @@ import com.example.a421go.models.Game;
 import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;
 import com.example.a421go.models.RoundGroup;
+import com.example.a421go.views.GameActivity;
+import com.example.a421go.views.RankingActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,6 +112,20 @@ public class GameController extends Controller {
         return playersList;
     }
 
+    public Boolean endGameTest(){
+        Boolean test = false;
+        ArrayList<Player> currentPlayersList = playersRanking();
+        if (currentPlayersList.get(0).getScoreFinal() >= getGame().getTargetScore()){
+            test = true;
+        }
+        ArrayList<Player> playersList = game.getPlayersList();
+        for (Player p : playersList){
+            p.setScoreFinal(0);
+        }
+        game.setPlayersList(playersList);
+        return test;
+    }
+
     /**
      * Renvoie le nombre de lancers restant
      * @return un nombre entier
@@ -122,5 +139,17 @@ public class GameController extends Controller {
      */
     public void throwsSubstract(){
         getCurrentRound().getState().decrease();
+    }
+
+    public void checkGameState(Context context){
+        Round lastRound = getGame().getCurrentRoundGroup().getRoundsList().get(getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
+        if (lastRound.getCombination() != null) {
+            if (endGameTest()){
+                Intent intent = new Intent(context, RankingActivity.class);
+                context.startActivity(intent);
+            } else {
+                getGame().addRoundGroupToGame();
+            }
+        }
     }
 }

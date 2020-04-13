@@ -90,12 +90,7 @@ public class GameActivity extends AppCompatActivity {
                 );
                 gameController.getGame().nextPlayer();
                 board.init();
-                lastRound = gameController.getGame().getCurrentRoundGroup().getRoundsList().get(gameController.getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
-                if (lastRound.getCombination() != null) {
-                    intent = new Intent(GameActivity.this, RankingActivity.class);
-                    startActivity(intent);
-                }
-
+                gameController.checkGameState(getApplicationContext());
                 update();
             }
         });

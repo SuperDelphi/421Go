@@ -172,8 +172,9 @@ public class Game {
      * Ajout à la liste RoundsGroupsList de game, un nouvel objet RoundGroup qui prend un paramêtre
      * un nouvel objet RoundsList qui prend en paramêtre la liste des joueurs
      */
-    private void addRoundGroupToGame(){
+    public void addRoundGroupToGame(){
         this.roundsGroupsList.add(roundGroupCreation(roundsCreation(getPlayersList())));
+        currentRound();
     }
 
     public Round getCurrentRound() {
