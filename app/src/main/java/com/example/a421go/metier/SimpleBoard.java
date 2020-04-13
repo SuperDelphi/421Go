@@ -2,6 +2,7 @@ package com.example.a421go.metier;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +17,14 @@ public class SimpleBoard {
     private ViewGroup layout;
     private static SimpleBoard instance = null;
     private ArrayList<Dice> dices = new ArrayList<>();
+    private int[] selectedFaceIds = {
+            R.drawable.dice_1_selected,
+            R.drawable.dice_2_selected,
+            R.drawable.dice_3_selected,
+            R.drawable.dice_4_selected,
+            R.drawable.dice_5_selected,
+            R.drawable.dice_6_selected
+    };
     private int[] faceIds = {
             R.drawable.dice_1,
             R.drawable.dice_2,
@@ -76,6 +85,18 @@ public class SimpleBoard {
         return getDices().get(index);
     }
 
+    public Dice getDice(View v) {
+        int index = -1;
+        for (int i = 0; i < getLayout().getChildCount(); i++) {
+            if (getLayout().getChildAt(i).equals(v)) index = i;
+        }
+        if (index != -1) {
+            return getDice(index);
+        } else {
+            return null;
+        }
+    }
+
     public ArrayList<Dice> getDices() {
         return this.dices;
     }
@@ -115,11 +136,12 @@ public class SimpleBoard {
         return this;
     }
 
-    public Drawable getFaceDrawable(int faceNumber) {
+    public Drawable getFaceDrawable(int faceNumber, boolean isSelected) {
         Context context = getLayout().getContext();
+        int[] faceArray = isSelected ? this.selectedFaceIds : this.faceIds;
         Drawable face = null;
-        if ((faceNumber <= this.faceIds.length) && (faceNumber >= 1)) {
-            face = context.getDrawable(this.faceIds[faceNumber - 1]);
+        if ((faceNumber <= faceArray.length) && (faceNumber >= 1)) {
+            face = context.getDrawable(faceArray[faceNumber - 1]);
         }
         return face;
     }
@@ -145,7 +167,7 @@ public class SimpleBoard {
                 getDices()) {
             tmpView = new ImageView(context);
             tmpView.setLayoutParams(layoutParams);
-            tmpView.setImageDrawable(getFaceDrawable(dice.getFace()));
+            tmpView.setImageDrawable(getFaceDrawable(dice.getFace(), dice.isSelected()));
             getLayout().addView(tmpView);
         }
     }

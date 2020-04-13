@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,7 +15,6 @@ import com.example.a421go.controllers.BoardController;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Dice;
-import com.example.a421go.models.Game;
 import com.example.a421go.models.Round;
 
 import java.util.ArrayList;
@@ -61,6 +59,7 @@ public class GameActivity extends AppCompatActivity {
 
         listenRollDices();
         listenFinish();
+        listenSelectDices();
     }
 
     private void listenRollDices() {
@@ -72,6 +71,19 @@ public class GameActivity extends AppCompatActivity {
                 update();
             }
         });
+    }
+
+    private void listenSelectDices() {
+        final SimpleBoard board = SimpleBoard.getInstance(boardLayout);
+        for (int i = 0; i < boardLayout.getChildCount(); i++) {
+            boardLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    board.getDice(v).toggleSelection();
+                    update();
+                }
+            });
+        }
     }
 
     private void listenFinish() {
@@ -96,7 +108,7 @@ public class GameActivity extends AppCompatActivity {
     private void update() {
         // Affichage
 
-        this.remainingThrowsTV.setText(getText(R.string.remaining_throws) +" "+gameController.getGame().getCurrentRound().getState().getThrowsLeft());
+        this.remainingThrowsTV.setText(getText(R.string.remaining_throws) + " " + gameController.getGame().getCurrentRound().getState().getThrowsLeft());
         String textTemplate = (String) getText(R.string.your_turn);
         this.playergameTV.setText(gameController.getInstance().getCurrentPlayer().getName() + textTemplate);
 
@@ -104,12 +116,12 @@ public class GameActivity extends AppCompatActivity {
         if (gameController.getThrowsLeft() > 0 && gameController.getThrowsLeft() < gameController.getMaxThrowsPerRound()) {
             finishBTN.setVisibility(View.VISIBLE);
             rollBTN.setImageResource(R.drawable.roll_dices_again_btn);
-        // Si aucun lancer n'a été effectué
+            // Si aucun lancer n'a été effectué
         } else if (gameController.getThrowsLeft() == gameController.getMaxThrowsPerRound()) {
             rollBTN.setVisibility(View.VISIBLE);
             finishBTN.setVisibility(View.INVISIBLE);
             rollBTN.setImageResource(R.drawable.roll_dices_btn);
-        // Si tous les lancers ont été effectués
+            // Si tous les lancers ont été effectués
         } else {
             rollBTN.setVisibility(View.INVISIBLE);
             finishBTN.setVisibility(View.VISIBLE);
