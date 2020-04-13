@@ -1,9 +1,7 @@
 package com.example.a421go.metier;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -75,7 +73,7 @@ public class SimpleBoard {
     }
 
     public Dice getDice(int index) {
-        return getDices().get(0);
+        return getDices().get(index);
     }
 
     public ArrayList<Dice> getDices() {
