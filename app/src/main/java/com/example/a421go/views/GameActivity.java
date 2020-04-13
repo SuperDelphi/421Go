@@ -90,7 +90,7 @@ public class GameActivity extends AppCompatActivity {
                 );
                 gameController.getGame().nextPlayer();
                 board.init();
-                gameController.checkGameState(getApplicationContext());
+                gameController.checkGameState(GameActivity.this);
                 update();
             }
         });
