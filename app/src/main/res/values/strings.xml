@@ -2,6 +2,7 @@
     <string name="app_name">421 Go</string>
     <string name="logo_welcome">Logo accueil</string>
     <string name="new_game">Nouvelle partie</string>
+    <string name="new_game_err_min_players">Il faut au moins 2 joueurs pour lancer une partie.</string>
     <string name="rank_welcome">Scores</string>
     <string name="exit_welcome">Quitter</string>
     <string name="setting_welcome">Paramètres</string>
