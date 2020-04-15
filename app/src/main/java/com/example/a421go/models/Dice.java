@@ -39,7 +39,7 @@ public class Dice implements Comparable<Dice>{
         this.selected = true;
     }
 
-    public void desselect() {
+    public void deselect() {
         this.selected = false;
     }
 

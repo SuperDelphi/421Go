@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.a421go.R;
+import com.example.a421go.controllers.GameController;
 import com.example.a421go.lib.DimensionConverter;
 import com.example.a421go.models.Dice;
 
@@ -146,6 +147,20 @@ public class SimpleBoard {
         return face;
     }
 
+    public void setectAll() {
+        for (Dice dice :
+                getDices()) {
+            dice.select();
+        }
+    }
+
+    public void deselectAll() {
+        for (Dice dice :
+                getDices()) {
+            dice.deselect();
+        }
+    }
+
     public void init() {
         // Ajout des trois dés du début
         removeAllDices();
@@ -170,13 +185,16 @@ public class SimpleBoard {
             tmpView.setImageDrawable(getFaceDrawable(dice.getFace(), dice.isSelected()));
             getLayout().addView(tmpView);
 
-            tmpView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    getDice(v).toggleSelection();
-                    updateLayout();
-                }
-            });
+            GameController gameController = GameController.getInstance();
+            if (gameController.getThrowsLeft() < gameController.getMaxThrowsPerRound() && gameController.getThrowsLeft() > 0) {
+                tmpView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getDice(v).toggleSelection();
+                        updateLayout();
+                    }
+                });
+            }
         }
     }
 }
