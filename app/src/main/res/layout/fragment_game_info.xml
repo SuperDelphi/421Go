@@ -24,7 +24,7 @@
     <LinearLayout
         android:id="@+id/rankPlayersLL"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="104dp"
         android:layout_marginTop="40dp"
         android:orientation="vertical"></LinearLayout>
 
