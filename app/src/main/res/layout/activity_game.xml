@@ -92,13 +92,14 @@
     <fragment
         android:id="@+id/menuInfoFragment"
         android:name="com.example.a421go.views.GameInfoFragment"
-        android:layout_width="327dp"
-        android:layout_height="339dp"
+        android:layout_width="292dp"
+        android:layout_height="378dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063"
+        app:layout_constraintVertical_bias="0.047"
         tools:layout="@layout/fragment_game_info" />
 
     <LinearLayout

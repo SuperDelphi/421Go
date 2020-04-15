@@ -24,8 +24,12 @@
     <string name="quit_game">Quitter</string>
     <string name="winner_crown">La courronne du vainqueur</string>
     <string name="end_game">Fin</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="infos_de_jeu">Infos de jeu</string>
+    <string name="infos_de_jeu">INFOS DE JEU</string>
+    <string name="combinaisons_possibles">COMBINAISONS POSSIBLES</string>
+    <string name="_421_10_points">421 (10 points)</string>
+    <string name="fiche">Fiche [1,1,N] (N points)</string>
+    <string name="baraque">Baraque [N, N, N] (N points)</string>
+    <string name="exception_baraque">Exception : vaut 7 points si N est égal à 1.</string>
+    <string name="suite">Suite [N, N+1, N+2] (2 points)</string>
+    <string name="other_combination">Autres combinaisons : 1 point</string>
 </resources>

@@ -3,6 +3,7 @@ package com.example.a421go.views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.example.a421go.controllers.GameController;
 import com.example.a421go.lib.VibratorHelper;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Dice;
+import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;
 
 import java.util.ArrayList;
@@ -62,6 +64,7 @@ public class GameActivity extends AppCompatActivity {
         listenRollDices();
         listenFinish();
         listenGameInfoBTN();
+        listenGameInfoFragment();
     }
 
     private void listenRollDices() {
@@ -130,7 +133,31 @@ public class GameActivity extends AppCompatActivity {
     private void listenGameInfoBTN(){
         ((ImageButton) findViewById(R.id.gameInfoBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                LinearLayout rankPlayersList = (LinearLayout) findViewById(R.id.rankPlayersLL);
+                rankPlayersList.removeAllViews();
+                for (Player p : gameController.playersRanking()){
+                    TextView joueurET = new TextView(GameActivity.this);
+                    joueurET.setText((rankPlayersList.getChildCount()+1)+". "+p.getName()+" - "+p.getScoreFinal()+" pts");
+                    joueurET.setTextColor(Color.WHITE);
+                    joueurET.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    if (rankPlayersList.getChildCount() == 0) {
+                        joueurET.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.little_corona,0,  0);
+                    }
+                    rankPlayersList.addView(joueurET);
+                }
+                gameController.endGameTest();
                 menuInfoFragment.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    /**
+     * Ecoute de l'événement sur le fragment gameInfoFragment
+     */
+    private void listenGameInfoFragment(){
+        menuInfoFragment.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                menuInfoFragment.setVisibility(View.INVISIBLE);
             }
         });
     }
