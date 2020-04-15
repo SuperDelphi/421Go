@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B94500"
+    android:background="#E5B94500"
+    android:outlineProvider="none"
     android:textAlignment="center"
     tools:context=".views.GameInfoFragment">
 
@@ -12,11 +13,92 @@
         android:id="@+id/titleMenuGameInfoTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45px"
+        android:layout_marginTop="10dp"
         android:text="@string/infos_de_jeu"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FFCC38"
+        android:textSize="14sp"
         android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/rankPlayersLL"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"></LinearLayout>
+
+    <TextView
+        android:id="@+id/possibleCombinationTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="@string/combinaisons_possibles"
+        android:textAlignment="center"
+        android:textColor="#FFCC38"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/combinationLL"
+        android:layout_width="match_parent"
+        android:layout_height="218dp"
+        android:layout_marginTop="175dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/a421TV"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="@string/_421_10_points"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ficheTV"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="@string/fiche"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/baraqueTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/baraque"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/varianteBaraqueTV"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:text="@string/exception_baraque"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/suiteTV"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="@string/suite"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/otherCombinationTV"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:text="@string/other_combination"
+            android:textAlignment="center"
+            android:textColor="#FFCC38"
+            android:textSize="14sp" />
+    </LinearLayout>
 
 </FrameLayout>
