@@ -1,7 +1,6 @@
 package com.example.a421go.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import com.example.a421go.R;
 import com.example.a421go.controllers.BoardController;
 import com.example.a421go.controllers.GameController;
+import com.example.a421go.lib.VibratorHelper;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Dice;
 import com.example.a421go.models.Round;
@@ -25,12 +25,9 @@ public class GameActivity extends AppCompatActivity {
     // Propriété
     private BoardController boardController;
     private GameController gameController;
-    private TextView playergameTV;
-    private TextView remainingThrowsTV;
-    private ImageButton gameInfoBTN;
-    private ImageButton rollBTN;
-    private ImageButton finishBTN;
-    private LinearLayout boardLayout;
+    private TextView playergameTV, remainingThrowsTV;
+    private ImageButton gameInfoBTN, rollBTN, finishBTN;
+    private LinearLayout boardLayout, reserveLayout;
     private View menuInfoFragment;
     private Intent intent = null;
     private Round lastRound = null;
@@ -46,7 +43,8 @@ public class GameActivity extends AppCompatActivity {
         gameController = GameController.getInstance();
         boardController = BoardController.getInstance();
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
-        SimpleBoard.getInstance(boardLayout).addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
+        reserveLayout = (LinearLayout) findViewById(R.id.reserveLayout);
+        SimpleBoard.getInstance(boardLayout, reserveLayout).addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
         playergameTV = (TextView) findViewById(R.id.playergameTV);
         remainingThrowsTV = (TextView) findViewById(R.id.remainingThrowsTV);
         gameInfoBTN = (ImageButton) findViewById(R.id.gameInfoBTN);
@@ -70,6 +68,7 @@ public class GameActivity extends AppCompatActivity {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                VibratorHelper.vibrate(50);
                 boardController.roll();
                 gameController.throwsSubstract();
                 update();
@@ -83,10 +82,10 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
                 BoardController controller = BoardController.getInstance();
-                SimpleBoard board = SimpleBoard.getInstance(boardLayout);
+                SimpleBoard board = SimpleBoard.getInstance(boardLayout, reserveLayout);
                 controller.submitRound(
                         gameController.getCurrentRound(),
-                        board.getDices()
+                        board.getDicesFromEverywhere()
                 );
                 gameController.getGame().nextPlayer();
                 board.init();
@@ -122,7 +121,7 @@ public class GameActivity extends AppCompatActivity {
 
         ArrayList<Dice> dices = boardController.getDices();
         SimpleBoard.getInstance().deselectAll();
-        SimpleBoard.getInstance().updateLayout();
+        SimpleBoard.getInstance().updateLayouts();
     }
 
     /**

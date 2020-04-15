@@ -40,12 +40,13 @@
 
     <LinearLayout
         android:id="@+id/boardLayout"
-        android:layout_width="414dp"
-        android:layout_height="116dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="410dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="40dp"
         android:gravity="center_horizontal|top"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV" />
 
@@ -67,11 +68,10 @@
         android:id="@+id/rollBTN"
         android:layout_width="213dp"
         android:layout_height="74dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="20dp"
         android:background="#FFFFFF"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boardLayout" />
 
@@ -102,8 +102,10 @@
         tools:layout="@layout/fragment_game_info" />
 
     <LinearLayout
+        android:id="@+id/reserveLayout"
         android:layout_width="643dp"
         android:layout_height="137dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

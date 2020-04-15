@@ -2,6 +2,8 @@ package com.example.a421go.models;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 public class Dice implements Comparable<Dice>{
     private int faceCount = 6;
     private int face = 1;
@@ -57,5 +59,11 @@ public class Dice implements Comparable<Dice>{
         if (face == dice.face) return 0;
         else if (face > dice.face) return 1;
         else return -1;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Dé à " + getFaceCount() + " faces => " + getFace();
     }
 }
