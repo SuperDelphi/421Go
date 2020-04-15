@@ -3,12 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B94500"
+    android:textAlignment="center"
     tools:context=".views.GameInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/titleMenuGameInfoTV"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="45px"
+        android:text="@string/infos_de_jeu"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FFCC38"
+        android:textStyle="bold" />
 
 </FrameLayout>

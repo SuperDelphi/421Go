@@ -1,10 +1,12 @@
 package com.example.a421go.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ public class GameActivity extends AppCompatActivity {
     private ImageButton rollBTN;
     private ImageButton finishBTN;
     private LinearLayout boardLayout;
+    private View menuInfoFragment;
     private Intent intent = null;
     private Round lastRound = null;
 
@@ -50,6 +53,8 @@ public class GameActivity extends AppCompatActivity {
         rollBTN = (ImageButton) findViewById(R.id.rollBTN);
         finishBTN = (ImageButton) findViewById(R.id.finishBTN);
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
+        menuInfoFragment = (View) findViewById(R.id.menuInfoFragment);
+        menuInfoFragment.setVisibility(View.INVISIBLE);
 
         // Dés
         SimpleBoard.getInstance().init();
@@ -58,6 +63,7 @@ public class GameActivity extends AppCompatActivity {
 
         listenRollDices();
         listenFinish();
+        listenGameInfoBTN();
     }
 
     private void listenRollDices() {
@@ -117,5 +123,16 @@ public class GameActivity extends AppCompatActivity {
         ArrayList<Dice> dices = boardController.getDices();
         SimpleBoard.getInstance().deselectAll();
         SimpleBoard.getInstance().updateLayout();
+    }
+
+    /**
+     * Ecoute de l'événement sur le bouton gameInfoBTN
+     */
+    private void listenGameInfoBTN(){
+        ((ImageButton) findViewById(R.id.gameInfoBTN)).setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                menuInfoFragment.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
