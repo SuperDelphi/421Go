@@ -30,13 +30,13 @@
         android:id="@+id/reserveTV"
         android:layout_width="478dp"
         android:layout_height="30dp"
+        android:layout_marginBottom="140dp"
         android:gravity="center"
         android:text="@string/reserve_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/finishBTN"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/boardLayout"
@@ -47,7 +47,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV" />
 
     <ImageButton
         android:id="@+id/gameInfoBTN"
@@ -88,4 +88,12 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rollBTN" />
+
+    <LinearLayout
+        android:layout_width="558dp"
+        android:layout_height="138dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
