@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.BoardController;
@@ -116,6 +115,7 @@ public class GameActivity extends AppCompatActivity {
         // Dés
 
         ArrayList<Dice> dices = boardController.getDices();
+        SimpleBoard.getInstance().deselectAll();
         SimpleBoard.getInstance().updateLayout();
     }
 }
