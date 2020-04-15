@@ -30,13 +30,13 @@
         android:id="@+id/reserveTV"
         android:layout_width="478dp"
         android:layout_height="30dp"
+        android:layout_marginBottom="140dp"
         android:gravity="center"
         android:text="@string/reserve_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/finishBTN"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/boardLayout"
@@ -47,7 +47,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/remainingThrowsTV" />
 
     <ImageButton
         android:id="@+id/gameInfoBTN"
@@ -65,27 +65,27 @@
 
     <ImageButton
         android:id="@+id/rollBTN"
-        android:layout_width="215dp"
-        android:layout_height="66dp"
+        android:layout_width="213dp"
+        android:layout_height="74dp"
         android:layout_marginTop="56dp"
         android:background="#FFFFFF"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boardLayout" />
 
     <ImageButton
         android:id="@+id/finishBTN"
-        android:layout_width="215dp"
-        android:layout_height="66dp"
+        android:layout_width="213dp"
+        android:layout_height="71dp"
         android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:foreground="@drawable/finish_btn"
         android:scaleType="centerInside"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rollBTN" />
 
@@ -101,4 +101,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.047"
         tools:layout="@layout/fragment_game_info" />
+
+    <LinearLayout
+        android:layout_width="643dp"
+        android:layout_height="137dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@
     <string name="start_throws">Lancer les dés</string>
     <string name="restart_throws">Relancer</string>
     <string name="submit">Confirmer</string>
-    <string name="reserve_game">------------------------------- Réserve ------------------------------</string>
+    <string name="reserve_game">Réserve</string>
     <string name="round_finish">Tour terminé !</string>
     <string name="game_finish">Partie terminée !</string>
     <string name="restart_game">Rejouer</string>
