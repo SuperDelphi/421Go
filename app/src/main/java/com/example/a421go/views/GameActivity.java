@@ -59,7 +59,6 @@ public class GameActivity extends AppCompatActivity {
 
         listenRollDices();
         listenFinish();
-        listenSelectDices();
     }
 
     private void listenRollDices() {
@@ -71,19 +70,6 @@ public class GameActivity extends AppCompatActivity {
                 update();
             }
         });
-    }
-
-    private void listenSelectDices() {
-        final SimpleBoard board = SimpleBoard.getInstance(boardLayout);
-        for (int i = 0; i < boardLayout.getChildCount(); i++) {
-            boardLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    board.getDice(v).toggleSelection();
-                    update();
-                }
-            });
-        }
     }
 
     private void listenFinish() {

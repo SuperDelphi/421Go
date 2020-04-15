@@ -169,6 +169,14 @@ public class SimpleBoard {
             tmpView.setLayoutParams(layoutParams);
             tmpView.setImageDrawable(getFaceDrawable(dice.getFace(), dice.isSelected()));
             getLayout().addView(tmpView);
+
+            tmpView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getDice(v).toggleSelection();
+                    updateLayout();
+                }
+            });
         }
     }
 }
