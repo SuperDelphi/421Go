@@ -33,8 +33,17 @@ public class ReserveBoard {
         getDices().add(dice);
     }
 
-    public void addDices(ArrayList<Dice> dices) {
-        getDices().addAll(dices);
+    public ArrayList<Dice> addDices(ArrayList<Dice> dices) {
+        ArrayList<Dice> addedDices = new ArrayList<>();
+        for (Dice dice :
+                dices) {
+            if (!getDices().contains(dice)) {
+                getDices().add(dice);
+                addedDices.add(dice);
+            }
+        }
+
+        return addedDices;
     }
 
     public void setDices(ArrayList<Dice> dices) {

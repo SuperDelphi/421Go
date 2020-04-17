@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
@@ -15,10 +14,12 @@ import com.example.a421go.lib.DimensionConverter;
 import com.example.a421go.lib.VibratorHelper;
 import com.example.a421go.models.BoardCouple;
 import com.example.a421go.models.Dice;
+import com.example.a421go.views.GameActivity;
 
 import java.util.ArrayList;
 
 public class SimpleBoard {
+    private GameActivity gameActivity;
     private ViewGroup layout;
     private static SimpleBoard instance = null;
     private ArrayList<Dice> dices = new ArrayList<>();
@@ -40,7 +41,8 @@ public class SimpleBoard {
             R.drawable.dice_6
     };
 
-    public SimpleBoard(ViewGroup boardLayout, ViewGroup reserveLayout) {
+    public SimpleBoard(GameActivity gameActivity, ViewGroup boardLayout, ViewGroup reserveLayout) {
+        this.gameActivity = gameActivity;
         this.layout = boardLayout;
         this.reserve = new ReserveBoard(reserveLayout);
     }
@@ -52,9 +54,9 @@ public class SimpleBoard {
         return instance;
     }
 
-    public static SimpleBoard getInstance(ViewGroup boardLayout, ViewGroup reserveLayout) {
+    public static SimpleBoard getInstance(GameActivity gameActivity, ViewGroup boardLayout, ViewGroup reserveLayout) {
         if (SimpleBoard.instance == null) {
-            SimpleBoard.instance = new SimpleBoard(boardLayout, reserveLayout);
+            SimpleBoard.instance = new SimpleBoard(gameActivity, boardLayout, reserveLayout);
         }
         return instance;
     }
@@ -68,7 +70,9 @@ public class SimpleBoard {
         if (!isFirstRoll) {
             store(getUnselectedDicesFromEverywhere());
         }
-//        retrieve(getSelectedDicesFromEverywhere());
+
+        retrieve(getSelectedDicesFromEverywhere());
+
         for (Dice dice :
                 dicesToRoll) {
             dice.roll();
@@ -198,8 +202,7 @@ public class SimpleBoard {
     }
 
     public void store(ArrayList<Dice> dices) {
-        getReserve().addDices(dices);
-        removeDices(dices);
+        removeDices(getReserve().addDices(dices));
         updateLayouts();
     }
 
@@ -233,6 +236,7 @@ public class SimpleBoard {
         addDice(new Dice());
         addDice(new Dice());
         addDice(new Dice());
+
         updateLayouts();
     }
 
@@ -244,7 +248,7 @@ public class SimpleBoard {
         for (BoardCouple couple:
              boardCouples) {
 
-            Context context = couple.getLayout().getContext();
+            final Context context = couple.getLayout().getContext();
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     DimensionConverter.convertPixelToDP(context, 100),
                     DimensionConverter.convertPixelToDP(context, 100)
@@ -266,6 +270,7 @@ public class SimpleBoard {
                             VibratorHelper.vibrate(25);
                             getDiceFromEverywhere(v).toggleSelection();
                             updateLayouts();
+                            gameActivity.checkDiceSelection();
                         }
                     });
                 }
