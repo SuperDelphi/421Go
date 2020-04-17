@@ -114,7 +114,9 @@ public class NewGameActivity extends AppCompatActivity {
                     ArrayList<Player> playerslist = new ArrayList<Player>();
                     ArrayList<RoundGroup> roundsGroupsList = new ArrayList<RoundGroup>();
                     for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
-                        playerslist.add(new Player((String) listPlayersLL.getChildAt(i).getTransitionName()));
+                        Player p = new Player((String) listPlayersLL.getChildAt(i).getTransitionName());
+                        playerslist.add(p);
+                        controller.getDatabase().addPlayer(p);
                     }
                     controller.playGame(NewGameActivity.this, targetScore, now, playerslist, roundsGroupsList);
                 } else {

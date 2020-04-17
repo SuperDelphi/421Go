@@ -157,17 +157,18 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LinearLayout rankPlayersList = (LinearLayout) findViewById(R.id.rankPlayersLL);
                 rankPlayersList.removeAllViews();
-                for (Player p : gameController.playersRanking()) {
+
+                for (Player p : gameController.playersRanking()){
                     TextView joueurET = new TextView(GameActivity.this);
-                    joueurET.setText((rankPlayersList.getChildCount() + 1) + ". " + p.getName() + " - " + p.getScoreFinal() + " pts");
+                    joueurET.setText(p.getName()+" - "+p.getScoreFinal()+" pts");
                     joueurET.setTextColor(Color.WHITE);
                     joueurET.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    if (rankPlayersList.getChildCount() == 0) {
-                        joueurET.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.little_corona, 0, 0);
-                    }
+                    /*if (rankPlayersList.getChildCount() == 0) {
+                        joueurET.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.little_corona,0,  0);
+                    }*/
                     rankPlayersList.addView(joueurET);
                 }
-                gameController.endGameTest();
+                gameController.reInitGlobalScore();
                 menuInfoFragment.setVisibility(View.VISIBLE);
             }
         });
