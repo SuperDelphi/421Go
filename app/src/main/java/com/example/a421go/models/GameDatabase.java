@@ -55,7 +55,7 @@ public class GameDatabase {
      * Ajout les informations d'un nouveau tour d'un jeu
      * @param round
      */
-    public void addRound(Round round){
+    public void addRound(Round round, Game game){
         //Paramêtre globale de la méthode
         content = manager.getWritableDatabase();
         String req;
@@ -65,10 +65,15 @@ public class GameDatabase {
         gameCursor.moveToLast();
         int id_partie = gameCursor.getType(gameCursor.getColumnIndex("ID_PARTIE"));
         //Récupération du numéro de la manche
+        int num_manche = game.getRoundsGroupsList().size();
         //Récupération de l'id du joueur
+        req = "SELECT ID_JOUEUR FROM JOUEUR WHERE NOM = '"+ round.getPlayer().getName()+"';";
+        Cursor playerCursor = content.rawQuery(req, null);
+        playerCursor.moveToFirst();
+        int id_joueur = playerCursor.getType(playerCursor.getColumnIndex("ID_JOUEUR"));
         //Requête qui ajout le tour
         req = "INSERT INTO TOUR (ID_PARTIE, NUM_MANCHE, ID_JOUEUR, GAIN, COMBINAISON) " +
-                "VALUES ("+ id_partie +","+ 1 +","+ 1 +","+round.getGain()+","+ round.getCombination().getName()+");";
+                "VALUES ("+ id_partie +","+ num_manche +","+ num_manche +","+round.getGain()+","+ round.getCombination().getName()+");";
         content.execSQL(req);
     }
 }
