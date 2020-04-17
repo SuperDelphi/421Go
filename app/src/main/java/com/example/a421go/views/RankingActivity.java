@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
+import com.example.a421go.metier.PlayerComparator;
 import com.example.a421go.models.Player;
 import com.example.a421go.models.Round;
 import com.example.a421go.models.RoundGroup;
@@ -48,6 +49,7 @@ public class RankingActivity extends AppCompatActivity {
         restartGameBTN = (ImageButton) findViewById(R.id.restartGameBTN);
         quitGameBTN = (ImageButton) findViewById(R.id.quitGameBTN);
         ArrayList<Player> playersList = controller.playersRanking();
+        Collections.sort(playersList, new PlayerComparator());
         winnerTV.setText(playersList.get(0).getName()+" #1 - "+ playersList.get(0).getScoreFinal()+" pts");
         for (int i = 1; i < controller.getGame().getPlayersList().size(); i++){
             TextView joueurET = new TextView(RankingActivity.this);

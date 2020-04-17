@@ -110,11 +110,6 @@ public class GameController extends Controller {
                 playersList.get(cpt).setScoreFinal(newScoreFinal);
             }
         }
-        Collections.sort(playersList, new PlayerComparator());
-        for (Player p : playersList){
-            Log.i("var", "playersList : " + p.getScoreFinal());
-        }
-
         return playersList;
     }
 
@@ -122,15 +117,22 @@ public class GameController extends Controller {
         Boolean test = false;
         ArrayList<Player> currentPlayersList = playersRanking();
         game.setCurrentPlayersList(currentPlayersList);
-        if (currentPlayersList.get(0).getScoreFinal() >= getGame().getTargetScore()){
-            test = true;
+        for(Player p : game.getCurrentPlayersList()){
+            if (p.getScoreFinal() >= getGame().getTargetScore()){
+                test = true;
+            }
         }
+
+        game.setPlayersList(reInitGlobalScore());
+        return test;
+    }
+
+    public ArrayList<Player> reInitGlobalScore(){
         ArrayList<Player> playersList = game.getPlayersList();
         for (Player p : playersList){
             p.setScoreFinal(0);
         }
-        game.setPlayersList(playersList);
-        return test;
+        return playersList;
     }
 
     /**
