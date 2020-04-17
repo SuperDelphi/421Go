@@ -3,7 +3,6 @@ package com.example.a421go.models;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.a421go.metier.SQLiteManager;
 
