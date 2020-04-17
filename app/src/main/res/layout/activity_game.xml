@@ -96,11 +96,11 @@
         android:name="com.example.a421go.views.GameInfoFragment"
         android:layout_width="292dp"
         android:layout_height="378dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rollBTN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101"
+        app:layout_constraintTop_toBottomOf="@+id/boardLayout"
+        app:layout_constraintVertical_bias="0.479"
         tools:layout="@layout/fragment_game_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>
