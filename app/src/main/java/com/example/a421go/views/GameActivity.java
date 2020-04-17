@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
     // Propriété
     private BoardController boardController;
     private GameController gameController;
-    private TextView playergameTV, remainingThrowsTV;
+    private TextView remainingThrowsTV;
     private ImageButton gameInfoBTN, rollBTN, finishBTN;
     private LinearLayout boardLayout, reserveLayout;
     private View menuInfoFragment;
@@ -49,7 +49,6 @@ public class GameActivity extends AppCompatActivity {
         boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
         reserveLayout = (LinearLayout) findViewById(R.id.reserveLayout);
         SimpleBoard.getInstance(this, boardLayout, reserveLayout).addDice(new Dice()).addDice(new Dice()).addDice(new Dice());
-        playergameTV = (TextView) findViewById(R.id.playergameTV);
         remainingThrowsTV = (TextView) findViewById(R.id.remainingThrowsTV);
         gameInfoBTN = (ImageButton) findViewById(R.id.gameInfoBTN);
         rollBTN = (ImageButton) findViewById(R.id.rollBTN);
@@ -120,10 +119,9 @@ public class GameActivity extends AppCompatActivity {
 
     private void update() {
         // Affichage
-
-        this.remainingThrowsTV.setText(getText(R.string.remaining_throws) + " " + gameController.getGame().getCurrentRound().getState().getThrowsLeft());
-        String textTemplate = (String) getText(R.string.your_turn);
-        this.playergameTV.setText(gameController.getInstance().getCurrentPlayer().getName() + textTemplate);
+        String playerName = gameController.getInstance().getCurrentPlayer().getName();
+        this.remainingThrowsTV.setText("(" + playerName + ") "
+                + getText(R.string.remaining_throws) + " " + gameController.getGame().getCurrentRound().getState().getThrowsLeft());
 
         // S'il reste des lancers & qu'un lancer a déjà été effectué
         if (gameController.getThrowsLeft() > 0 && gameController.getThrowsLeft() < gameController.getMaxThrowsPerRound()) {

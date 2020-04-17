@@ -7,36 +7,26 @@
     tools:context=".views.GameActivity">
 
     <TextView
-        android:id="@+id/playergameTV"
+        android:id="@+id/remainingThrowsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/remaining_throws"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameInfoBTN" />
 
     <TextView
-        android:id="@+id/remainingThrowsTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/remaining_throws"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playergameTV" />
-
-    <TextView
         android:id="@+id/reserveTV"
         android:layout_width="478dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="96dp"
         android:gravity="center"
         android:text="@string/reserve_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
@@ -97,16 +87,15 @@
         android:layout_height="378dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047"
+        app:layout_constraintVertical_bias="0.067"
         tools:layout="@layout/fragment_game_info" />
 
     <LinearLayout
         android:id="@+id/reserveLayout"
-        android:layout_width="643dp"
-        android:layout_height="137dp"
+        android:layout_width="478dp"
+        android:layout_height="97dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
