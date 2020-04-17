@@ -3,7 +3,6 @@ package com.example.a421go.models;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.a421go.metier.SQLiteManager;
 
@@ -68,7 +67,6 @@ public class GameDatabase {
         //Récupération du numéro de la manche
         int num_manche = game.getRoundsGroupsList().size();
         //Récupération de l'id du joueur
-        Log.i("var", "NOmdu joueur : " + round.getPlayer().getName());
         req = "SELECT ID_JOUEUR FROM JOUEUR WHERE NOM = '"+ round.getPlayer().getName()+"';";
         Cursor playerCursor = content.rawQuery(req, null);
         playerCursor.moveToNext();
@@ -76,7 +74,6 @@ public class GameDatabase {
         //Requête qui ajout le tour
         req = "INSERT INTO TOUR (ID_PARTIE, NUM_MANCHE, ID_JOUEUR, GAIN, COMBINAISON) " +
                 "VALUES ("+ id_partie +","+ num_manche +","+ id_joueur +","+round.getGain()+",'"+ round.getCombination().getName()+"');";
-        Log.i("var", "REQ : "+req);
         content.execSQL(req);
     }
 }
