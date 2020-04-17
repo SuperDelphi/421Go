@@ -14,20 +14,19 @@ public class SQLiteManager extends SQLiteOpenHelper {
     /**
      * Script SQL permettant la création des tables.
      */
-    private String creationSQL =
-            "CREATE TABLE JOUEUR (\n" +
-                    "  ID_JOUEUR INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
-                    "  NOM VARCHAR(45) NOT NULL,\n" +
-                    "  NB_VICTOIRE INTEGER NOT NULL DEFAULT 0\n" +
-                    ");\n" +
-                    "\n" +
-                    "CREATE TABLE PARTIE (\n" +
+    private String joueurSQL =  "CREATE TABLE IF NOT EXISTS JOUEUR (\n" +
+            "  ID_JOUEUR INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
+            "  NOM VARCHAR(45) NOT NULL,\n" +
+            "  NB_VICTOIRE INTEGER NOT NULL DEFAULT 0\n" +
+            ");\n" +
+            "\n" ;
+    private String partieSQL = "CREATE TABLE IF NOT EXISTS PARTIE (\n" +
                     "  ID_PARTIE INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
                     "  DATE_CREATION DATE NOT NULL,\n" +
                     "  TARGET_SCORE INTEGER NOT NULL\n" +
                     ");\n" +
-                    "\n" +
-                    "CREATE TABLE TOUR (\n" +
+                    "\n" ;
+    private String tourSQL = "CREATE TABLE IF NOT EXISTS TOUR (\n" +
                     "  ID_PARTIE INTEGER NOT NULL,\n" +
                     "  NUM_MANCHE INTEGER NOT NULL,\n" +
                     "  ID_JOUEUR INTEGER NOT NULL,\n" +
@@ -55,7 +54,9 @@ public class SQLiteManager extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(creationSQL);
+        db.execSQL(joueurSQL);
+        db.execSQL(partieSQL);
+        db.execSQL(tourSQL);
     }
 
     /**

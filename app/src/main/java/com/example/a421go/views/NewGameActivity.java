@@ -116,7 +116,7 @@ public class NewGameActivity extends AppCompatActivity {
                     for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
                         Player p = new Player((String) listPlayersLL.getChildAt(i).getTransitionName());
                         playerslist.add(p);
-//                        controller.getDatabase().addPlayer(p); TODO Décommenter
+                        controller.getDatabase().addPlayer(p);
                     }
                     controller.playGame(NewGameActivity.this, targetScore, now, playerslist, roundsGroupsList);
                 } else {

@@ -23,6 +23,7 @@ public class GameDatabase {
      */
     public GameDatabase(Context context) {
         manager = new SQLiteManager(context, name, null, version);
+        content = manager.getWritableDatabase();
     }
 
     /**
