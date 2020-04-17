@@ -207,8 +207,15 @@ public class SimpleBoard {
     }
 
     public void retrieve(ArrayList<Dice> dices) {
-        getReserve().removeDices(dices);
-
+        ArrayList<Dice> addedDices = new ArrayList<>();
+        for (Dice dice :
+                dices) {
+            if (!getDices().contains(dice)) {
+                getDices().add(dice);
+                addedDices.add(dice);
+            }
+        }
+        getReserve().removeDices(addedDices);
     }
 
     public void selectAll() {
