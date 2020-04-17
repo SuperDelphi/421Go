@@ -86,6 +86,7 @@ public class GameController extends Controller {
      */
     public void playGame(Context context, int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<RoundGroup> roundsGroupList) {
         game = new Game(creationDate, targetScore, listPlayers, roundsGroupList);
+        getDatabase().addGame(game);
         Intent intent = new Intent(context, GameActivity.class);
         context.startActivity(intent);
     }

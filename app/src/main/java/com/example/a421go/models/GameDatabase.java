@@ -3,6 +3,7 @@ package com.example.a421go.models;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.a421go.metier.SQLiteManager;
 
@@ -60,20 +61,22 @@ public class GameDatabase {
         content = manager.getWritableDatabase();
         String req;
         //Récupération de l'id de la dernière partie
-        req = "SELECT PARTIE.ID_PARTIE FROM PARTIE";
+        req = "SELECT PARTIE.ID_PARTIE FROM PARTIE ORDER BY ID_PARTIE DESC";
         Cursor gameCursor = content.rawQuery(req, null);
-        gameCursor.moveToLast();
-        int id_partie = gameCursor.getType(gameCursor.getColumnIndex("ID_PARTIE"));
+        gameCursor.moveToFirst();
+        int id_partie = gameCursor.getInt(gameCursor.getColumnIndex("ID_PARTIE"));
         //Récupération du numéro de la manche
         int num_manche = game.getRoundsGroupsList().size();
         //Récupération de l'id du joueur
+        Log.i("var", "NOmdu joueur : " + round.getPlayer().getName());
         req = "SELECT ID_JOUEUR FROM JOUEUR WHERE NOM = '"+ round.getPlayer().getName()+"';";
         Cursor playerCursor = content.rawQuery(req, null);
-        playerCursor.moveToFirst();
-        int id_joueur = playerCursor.getType(playerCursor.getColumnIndex("ID_JOUEUR"));
+        playerCursor.moveToNext();
+        int id_joueur = playerCursor.getInt(playerCursor.getColumnIndex("ID_JOUEUR"));
         //Requête qui ajout le tour
         req = "INSERT INTO TOUR (ID_PARTIE, NUM_MANCHE, ID_JOUEUR, GAIN, COMBINAISON) " +
-                "VALUES ("+ id_partie +","+ num_manche +","+ num_manche +","+round.getGain()+","+ round.getCombination().getName()+");";
+                "VALUES ("+ id_partie +","+ num_manche +","+ id_joueur +","+round.getGain()+",'"+ round.getCombination().getName()+"');";
+        Log.i("var", "REQ : "+req);
         content.execSQL(req);
     }
 }

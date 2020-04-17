@@ -105,12 +105,14 @@ public class GameActivity extends AppCompatActivity {
                 LinearLayout boardLayout = (LinearLayout) findViewById(R.id.boardLayout);
                 BoardController controller = BoardController.getInstance();
                 SimpleBoard board = SimpleBoard.getInstance();
+                Round currentRound = gameController.getCurrentRound();
                 controller.submitRound(
                         gameController.getCurrentRound(),
                         board.getDicesFromEverywhere()
                 );
                 gameController.getGame().nextPlayer();
                 board.init();
+                gameController.getDatabase().addRound(currentRound, gameController.getGame());
                 gameController.checkGameState(GameActivity.this);
                 update();
             }
