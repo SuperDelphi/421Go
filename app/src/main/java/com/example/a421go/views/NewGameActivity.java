@@ -46,7 +46,7 @@ public class NewGameActivity extends AppCompatActivity {
      * Initialisation des liens avec les objets graphiques
      * Et création des listner sur les boutons de l'application
      */
-    private void init(){
+    private void init() {
         returnBTN = (ImageButton) findViewById(R.id.returnBTN);
         addPalyerBTN = (ImageButton) findViewById(R.id.addPlayerBTN);
         startGameBTN = (ImageButton) findViewById(R.id.startGameBTN);
@@ -64,7 +64,7 @@ public class NewGameActivity extends AppCompatActivity {
      * Ecoute de l'événement sur le bouton returnBTN
      * Retour vers l'accueil
      */
-    private void listenreturnBTN(){
+    private void listenreturnBTN() {
         ((ImageView) findViewById(R.id.returnBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 intent = new Intent(NewGameActivity.this, MainActivity.class);
@@ -79,20 +79,34 @@ public class NewGameActivity extends AppCompatActivity {
      * dans addPlayerET et si il y a moins de 4 joueurs dans la liste
      * Si les conditions ne sont plus remplis, des toats envoie un message explicatif à l'utilsateur
      */
-    private void listenaddPlayerBTN(){
+    private void listenaddPlayerBTN() {
         ((ImageButton) findViewById(R.id.addPlayerBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 String playerName = addPlayerET.getText().toString().trim();
-                if (!playerName.equals("") && listPlayersLL.getChildCount() < 4){
-                    int place = listPlayersLL.getChildCount()+1;
+                boolean isAlreadyExisting = false;
+                String tmpText;
+
+                for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
+                    tmpText = ((TextView) listPlayersLL.getChildAt(i)).getTransitionName().toString().trim();
+                    Log.i("var", "onClick: " + tmpText + "|" + playerName + "|"); // TODO Corriger BUG
+                    Log.i("var", "onClick: " + (tmpText.equalsIgnoreCase(playerName)));
+                    if (tmpText.equalsIgnoreCase(playerName)) {
+                        isAlreadyExisting = true;
+                    }
+                }
+
+                if (!playerName.equals("") && listPlayersLL.getChildCount() < 4 && !isAlreadyExisting) {
+                    int place = listPlayersLL.getChildCount() + 1;
                     TextView joueurET = new TextView(NewGameActivity.this);
-                    joueurET.setText(place+". "+addPlayerET.getText().toString().trim());
+                    joueurET.setText(place + ". " + addPlayerET.getText().toString().trim());
                     joueurET.setTransitionName(addPlayerET.getText().toString().trim());
                     listPlayersLL.addView(joueurET);
                     addPlayerET.setText("");
                 } else {
-                    if (listPlayersLL.getChildCount() >= 4){
+                    if (listPlayersLL.getChildCount() >= 4) {
                         Toast.makeText(NewGameActivity.this, "Le nombre de joueurs est limité à 4.", Toast.LENGTH_SHORT).show();
+                    } else if (isAlreadyExisting) {
+                        Toast.makeText(NewGameActivity.this, "Ce joueur est déjà inscrit.", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(NewGameActivity.this, "Veuillez saisir un nom valide.", Toast.LENGTH_SHORT).show();
                     }
@@ -105,7 +119,7 @@ public class NewGameActivity extends AppCompatActivity {
      * Ecoute de l'événement sur le bouton startGameBTN
      * Démarre l'activité GameActivity
      */
-    private void listenStartGamerBTN(){
+    private void listenStartGamerBTN() {
         ((ImageButton) findViewById(R.id.startGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 if (listPlayersLL.getChildCount() > 1) {
