@@ -2,7 +2,6 @@ package com.example.a421go.metier;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -152,7 +151,6 @@ public class SimpleBoard {
                 getDicesFromEverywhere()) {
             if (dice.isSelected()) result.add(dice);
         }
-        Log.i("var", "getSelectedDicesFromEverywhere: " + result.size());
         return result;
     }
 
