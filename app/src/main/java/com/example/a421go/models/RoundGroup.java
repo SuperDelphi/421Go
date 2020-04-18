@@ -2,6 +2,9 @@ package com.example.a421go.models;
 
 import java.util.ArrayList;
 
+/**
+ * Représente une manche contenant des tours
+ */
 public class RoundGroup {
 
     //Propriété

@@ -23,8 +23,15 @@ import com.example.a421go.models.RoundGroup;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Activity affichant un formulaire pour créer une nouvelle partie
+ */
 public class NewGameActivity extends AppCompatActivity {
 
+    /**
+     * Méthode utilisé lors de la création de l'activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

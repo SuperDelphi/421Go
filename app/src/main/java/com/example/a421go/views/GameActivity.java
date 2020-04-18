@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -24,6 +23,9 @@ import com.example.a421go.models.Round;
 
 import java.util.ArrayList;
 
+/**
+ * Activity affichant le jeu du 421 et son plateau
+ */
 public class GameActivity extends AppCompatActivity {
 
     // Propriété
@@ -36,6 +38,10 @@ public class GameActivity extends AppCompatActivity {
     private Intent intent = null;
     private Round lastRound = null;
 
+    /**
+     * Méthode utilisé lors de la création de l'activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,10 @@ public class GameActivity extends AppCompatActivity {
         init();
     }
 
+    /**
+     * Initialisation des liens avec les objets graphiques
+     * Et création des listner sur les boutons de l'application
+     */
     private void init() {
         gameController = GameController.getInstance();
         boardController = BoardController.getInstance();
@@ -68,6 +78,10 @@ public class GameActivity extends AppCompatActivity {
         listenGameInfoFragment();
     }
 
+    /**
+     * Ecoute de l'événement sur le bouton rollDices
+     * Lancement des dés
+     */
     private void listenRollDices() {
         rollBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +94,10 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    // Méthode appelée lorsque l'on clique sur l'écran
+    /**
+     *  Méthode appelée lorsque l'on clique sur l'écran
+     *  Sélection des dés
+     */
     public void checkDiceSelection() {
         SimpleBoard board = SimpleBoard.getInstance();
         // Si un lancer a déjà été effectué
@@ -98,6 +115,10 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Ecoute de l'événement sur le bouton finishBTN
+     * Conclure le tour du joueur en cours
+     */
     private void listenFinish() {
         finishBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +145,9 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Méthode qui permet de mettre à jour l'affichage du plateau de jeu durant la partie
+     */
     private void update() {
         // Affichage
         String playerName = gameController.getInstance().getCurrentPlayer().getName();
@@ -156,6 +180,7 @@ public class GameActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton gameInfoBTN
+     * Affichage des scores actuels des joueurs ainsi que des combinaisons possibles du jeu
      */
     private void listenGameInfoBTN() {
         ((ImageButton) findViewById(R.id.gameInfoBTN)).setOnClickListener(new Button.OnClickListener() {
@@ -181,6 +206,7 @@ public class GameActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le fragment gameInfoFragment
+     * Enlever l'affichage des infos de jeu
      */
     private void listenGameInfoFragment() {
         menuInfoFragment.setOnClickListener(new Button.OnClickListener() {

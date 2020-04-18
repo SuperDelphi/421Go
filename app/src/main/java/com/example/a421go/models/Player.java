@@ -40,21 +40,24 @@ public class Player implements Comparable<Player>{
     // Getters
 
     /**
-     * @return le nom du joueur.
+     * Permet de renvoyer le nom du joueur
+     * @return chaine de caractère.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @return le nombre de victoires obtenues par le joueur.
+     * Permet de renvoyer le nombre de victoires obtenues par le joueur
+     * @return entier
      */
     public int getVictories() {
         return victories;
     }
 
     /**
-     * @return le score final contenant la somme du score du joueur
+     * Permet de renvoyer le score final contenant la somme du score du joueur
+     * @return entier
      */
     public int getScoreFinal() {
         return scoreFinal;
@@ -76,6 +79,11 @@ public class Player implements Comparable<Player>{
         this.victories = victories;
     }
 
+    /**
+     * Permet de la comparaison des joueurs entre eux car la classe Player implément Comparable
+     * @param p
+     * @return
+     */
     @Override
     public int compareTo(Player p) {
         if (scoreFinal == p.scoreFinal) return 0;

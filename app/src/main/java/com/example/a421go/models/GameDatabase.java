@@ -83,6 +83,10 @@ public class GameDatabase {
         playerCursor.close();
     }
 
+    /**
+     * Récupére et envoie la liste des joueurs stockés dans la base de données
+     * @return
+     */
     public ArrayList<Player> getPlayers() {
         //Paramêtre globale de la méthode
         content = manager.getWritableDatabase();
@@ -100,6 +104,12 @@ public class GameDatabase {
         return playersList;
     }
 
+    /**
+     * Permet de renvoyer un objet Player en mettant à jour son nombre de victoire avec celui de la
+     * base de données en fonction du joueur passé en paramètre
+     * @param p un objet Player
+     * @return un objet Player
+     */
     public Player getVictoryPlayer(Player p){
         //Paramêtre globale de la méthode
         content = manager.getWritableDatabase();
@@ -112,6 +122,11 @@ public class GameDatabase {
         return p;
     }
 
+    /**
+     * Permet de mettre à jour le nombre de victoire stocké dans la base de données en fonction du
+     * joueur passé en paramètre
+     * @param p un objet Player
+     */
     public void setVictoryPlayer(Player p){
         //Paramêtre globale de la méthode
         content = manager.getWritableDatabase();

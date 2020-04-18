@@ -13,8 +13,15 @@ import android.widget.Toast;
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
 
+/**
+ * Activity affichant l'accueil de l'application
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Méthode utilisé lors de la création de l'activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton newGameBTN
+     * Démarre l'activité NewGameActivity
      */
     private void listenNewGameBTN(){
         ((ImageButton) findViewById(R.id.newGameBTN)).setOnClickListener(new Button.OnClickListener() {
@@ -59,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton rankBTN
+     * Démarre l'activty ScoreActivity
      */
     private void listenRankBTN(){
         ((ImageButton) findViewById(R.id.rankBTN)).setOnClickListener(new Button.OnClickListener() {
@@ -82,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton settingBTN
+     * Affiche les créateurs de l'application
      */
     private void listensettingBTN(){
         ((ImageButton) findViewById(R.id.settingBTN)).setOnClickListener(new Button.OnClickListener() {

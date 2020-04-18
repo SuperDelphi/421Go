@@ -3,7 +3,6 @@ package com.example.a421go.views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +14,13 @@ import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
 import com.example.a421go.metier.PlayerComparator;
 import com.example.a421go.models.Player;
-import com.example.a421go.models.Round;
-import com.example.a421go.models.RoundGroup;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Activity affichant le classemnt de fin d'une partie
+ */
 public class RankingActivity extends AppCompatActivity {
 
     // Propriété
@@ -32,6 +32,10 @@ public class RankingActivity extends AppCompatActivity {
     private Intent intent = null;
 
 
+    /**
+     * Méthode utilisé lors de la création de l'activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +44,8 @@ public class RankingActivity extends AppCompatActivity {
     }
 
     /**
-     * Initialisation des liens avec les objets graphiques, triage des rounds dans l'ordre décroissant et  insertion des informations de fin de partie
+     * Initialisation des liens avec les objets graphiques, triage des rounds
+     * dans l'ordre décroissant et  insertion des informations de fin de partie
      */
     private void init() {
         controller = GameController.getInstance();
@@ -63,6 +68,7 @@ public class RankingActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton restartGameBTN
+     * Permet de relancer une partie avec les mêmes caractéritiques que celle qui vient d'être jouée
      */
     private void listenRestartGameBTN(){
         ((ImageButton) findViewById(R.id.restartGameBTN)).setOnClickListener(new Button.OnClickListener() {
@@ -74,6 +80,7 @@ public class RankingActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton quitGameBTN
+     * Permet de retourner vers l'accueil
      */
     private void listenQuitGameBTN(){
         ((ImageButton) findViewById(R.id.quitGameBTN)).setOnClickListener(new Button.OnClickListener() {

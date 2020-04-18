@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * Activity affichant la liste des joueurs selon leurs vitcoires
+ */
 public class ScoreActivity extends AppCompatActivity {
 
     //Propriétés
@@ -26,6 +29,10 @@ public class ScoreActivity extends AppCompatActivity {
     private LinearLayout playersListLL;
     private GameController controller;
 
+    /**
+     * Méthode utilisé lors de la création de l'activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +64,10 @@ public class ScoreActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Méthode qui permet l'affichage des joueurs contenus dans la base de données
+     * en fonction de leurs scores finaux
+     */
     private void addPlayersList(){
         ArrayList<Player> playersList = controller.getDatabase().getPlayers();
         for (Player p : playersList){

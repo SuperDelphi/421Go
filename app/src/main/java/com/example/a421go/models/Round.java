@@ -1,9 +1,9 @@
 package com.example.a421go.models;
 
 /**
- * Représente
+ * Représente un tour d'un joueur
  */
-public class Round implements Comparable<Round>{
+public class Round {
 
     private Player player;
     private int gain;
@@ -34,22 +34,42 @@ public class Round implements Comparable<Round>{
         this.gain = gain;
     }
 
+    /**
+     * Permet de mettre à jour le joueur du tour
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
 
+    /**
+     * Permet de récupérer la combinaison du tour
+     * @return un objet Combination
+     */
     public Combination getCombination() {
         return combination;
     }
 
+    /**
+     * Permet de mettre à jour la combinaison du tour
+     * @param combination
+     */
     public void setCombination(Combination combination) {
         this.combination = combination;
     }
 
+    /**
+     * Permet de récupérer l'objet State contenant l'état du tour
+     * @return un objet State
+     */
     public RoundState getState() {
         return state;
     }
 
+    /**
+     * Permet de mettre à jour l'objet State
+     * @param state
+     */
     public void setState(RoundState state) {
         this.state = state;
     }
@@ -64,17 +84,18 @@ public class Round implements Comparable<Round>{
         return getGain();
     }
 
+    /**
+     * Permet de récupérer le joueur du tour
+     * @return un objet Player
+     */
     public Player getPlayer() {
         return player;
     }
 
-    @Override
-    public int compareTo(Round r) {
-        if (gain == r.gain) return 0;
-        else if (gain > r.gain) return 1;
-        else return -1;
-    }
-
+    /**
+     * Permet l'affichage des caractériques du tour (Conseil : utilisable dans les logs)
+     * @return une chaine de caractére
+     */
     @Override
     public String toString() {
         return "Round{" +
