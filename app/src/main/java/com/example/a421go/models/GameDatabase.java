@@ -107,6 +107,7 @@ public class GameDatabase {
         //Récupération du joueur depuis la BDD
         Cursor playerCursor = content.rawQuery(req, null);
         //Récupération des victoires du joueur
+        playerCursor.moveToNext();
         p.setVictories(playerCursor.getInt(playerCursor.getColumnIndex("NB_VICTOIRE")));
         return p;
     }
@@ -114,7 +115,7 @@ public class GameDatabase {
     public void setVictoryPlayer(Player p){
         //Paramêtre globale de la méthode
         content = manager.getWritableDatabase();
-        String req = "UPDATE JOUEUR SET NB_VICTOIRE WHERE NOM = '"+ p .getName()+"';";
+        String req = "UPDATE JOUEUR SET NB_VICTOIRE = "+ p .getVictories() +" WHERE NOM = '"+ p .getName()+"';";
         //Exécution de la requête
         content.execSQL(req);
     }
