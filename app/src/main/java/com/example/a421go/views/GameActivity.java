@@ -181,6 +181,7 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Ecoute de l'événement sur le bouton gameInfoBTN
      * Affichage des scores actuels des joueurs ainsi que des combinaisons possibles du jeu
+     * contenu dans le fragment {@link GameInfoFragment}
      */
     private void listenGameInfoBTN() {
         ((ImageButton) findViewById(R.id.gameInfoBTN)).setOnClickListener(new Button.OnClickListener() {
