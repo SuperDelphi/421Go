@@ -3,7 +3,9 @@ package com.example.a421go.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.a421go.R;
 import com.example.a421go.metier.PlayerComparator;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Game;
@@ -84,8 +86,8 @@ public class GameController extends Controller {
      * Crée une nouvelle partie à partir des informations saisies par
      * l'utilisateur.
      */
-    public void playGame(Context context, int targetScore, Date creationDate, ArrayList<Player> listPlayers, ArrayList<RoundGroup> roundsGroupList) {
-        game = new Game(creationDate, targetScore, listPlayers, roundsGroupList);
+    public void playGame(Context context, int targetScore, Date creationDate, ArrayList<Player> playersList) {
+        game = new Game(creationDate, targetScore, playersList);
         getDatabase().addGame(game);
         Intent intent = new Intent(context, GameActivity.class);
         context.startActivity(intent);
@@ -95,7 +97,29 @@ public class GameController extends Controller {
      * Relance une partie dans les mêmes conditions de la dernière
      * partie lancée.
      */
-    public void replayLastGame() {}
+    public void replayLastGame(Context context) {
+        SimpleBoard simpleBoard = SimpleBoard.getInstance();
+        getDatabase().addGame(game);
+
+        if (simpleBoard == null) {
+            Toast.makeText(context, context.getText(R.string.err_play_again), Toast.LENGTH_SHORT);
+        } else {
+            SimpleBoard.destroy();
+
+            int oldTargetScore = game.getTargetScore();
+            ArrayList<Player> oldPlayersList = game.getPlayersList();
+            game = new Game(new Date(), oldTargetScore, oldPlayersList);
+
+            reInitGlobalScore();
+
+            Intent intent = new Intent(context, GameActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            context.startActivity(intent);
+
+            // DEBUG
+            Log.i("var", "replayLastGame: " + game.toString());
+        }
+    }
 
 
     /**

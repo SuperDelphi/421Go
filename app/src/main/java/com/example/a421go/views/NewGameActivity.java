@@ -88,8 +88,6 @@ public class NewGameActivity extends AppCompatActivity {
 
                 for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
                     tmpText = ((TextView) listPlayersLL.getChildAt(i)).getTransitionName().toString().trim();
-                    Log.i("var", "onClick: " + tmpText + "|" + playerName + "|"); // TODO Corriger BUG
-                    Log.i("var", "onClick: " + (tmpText.equalsIgnoreCase(playerName)));
                     if (tmpText.equalsIgnoreCase(playerName)) {
                         isAlreadyExisting = true;
                     }
@@ -126,13 +124,12 @@ public class NewGameActivity extends AppCompatActivity {
                     Date now = new Date();
                     int targetScore = Integer.parseInt(targetScoreET.getText().toString());
                     ArrayList<Player> playerslist = new ArrayList<Player>();
-                    ArrayList<RoundGroup> roundsGroupsList = new ArrayList<RoundGroup>();
                     for (int i = 0; i < listPlayersLL.getChildCount(); i++) {
                         Player p = new Player((String) listPlayersLL.getChildAt(i).getTransitionName());
                         playerslist.add(p);
                         controller.getDatabase().addPlayer(p);
                     }
-                    controller.playGame(NewGameActivity.this, targetScore, now, playerslist, roundsGroupsList);
+                    controller.playGame(NewGameActivity.this, targetScore, now, playerslist);
                 } else {
                     Toast.makeText(NewGameActivity.this, getText(R.string.new_game_err_min_players), Toast.LENGTH_SHORT).show();
                 }

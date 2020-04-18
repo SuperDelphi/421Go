@@ -1,8 +1,7 @@
 package com.example.a421go.models;
 
-import android.util.Log;
+import androidx.annotation.NonNull;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -32,12 +31,12 @@ public class Game {
      * @param creationDate la date de création de la partie.
      * @param targetScore le score-cible à atteindre.
      */
-    public Game(Date creationDate, int targetScore, ArrayList<Player> playersList, ArrayList<RoundGroup> roundsGroupsList) {
+    public Game(Date creationDate, int targetScore, ArrayList<Player> playersList) {
         if (targetScore > 0)
             this.targetScore = targetScore;
         setPlayersList(playersList);
         this.creationDate = creationDate;
-        this.roundsGroupsList = roundsGroupsList;
+        this.roundsGroupsList = new ArrayList<>();
         addRoundGroupToGame();
         this.currentPlayer = playersList.get(0);
         currentRound();
@@ -195,5 +194,23 @@ public class Game {
 
     public Round getCurrentRound() {
         return currentRound;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String playersListString = "";
+
+        for (Player player :
+                getPlayersList()) {
+            playersListString += player.getName() + " ";
+        }
+
+        return "Game :\n" +
+                "Créée le : " + getCreationDate() + "\n" +
+                "Score cible : " + getTargetScore() + "\n" +
+                "Nombre maximum de lancers : " + getMaxThrowsPerRound() + "\n" +
+                "Joueurs : " + playersListString + "\n" +
+                "C'est au tour de " + getCurrentPlayer().getName() + " de jouer.";
     }
 }

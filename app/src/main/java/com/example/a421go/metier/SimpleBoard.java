@@ -61,6 +61,10 @@ public class SimpleBoard {
         return instance;
     }
 
+    public static void destroy() {
+        SimpleBoard.instance = null;
+    }
+
     public void rollDices() {
         GameController gameController = GameController.getInstance();
         boolean isFirstRoll = gameController.getThrowsLeft() == gameController.getMaxThrowsPerRound();

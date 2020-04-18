@@ -66,8 +66,7 @@ public class RankingActivity extends AppCompatActivity {
     private void listenRestartGameBTN(){
         ((ImageButton) findViewById(R.id.restartGameBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                intent = new Intent(RankingActivity.this, GameActivity.class);
-                startActivity(intent);
+                GameController.getInstance().replayLastGame(RankingActivity.this);
             }
         });
     }
