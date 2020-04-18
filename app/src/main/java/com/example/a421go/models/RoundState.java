@@ -1,7 +1,7 @@
 package com.example.a421go.models;
 
 /**
- * Représente l'état d'un tour ({@link Round}.
+ * Représente l'état d'un tour {@link Round}.
  */
 public class RoundState {
     private int throwsLeft;

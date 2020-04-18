@@ -3,7 +3,7 @@ package com.example.a421go.models;
 import java.util.ArrayList;
 
 /**
- * Représente la suite (une combinaison possible).
+ * Représente la combinaison Suite étendu à {@link Combination}
  */
 public class Suite extends Combination {
 
