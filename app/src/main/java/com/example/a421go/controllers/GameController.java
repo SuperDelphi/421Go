@@ -34,13 +34,12 @@ public class GameController extends Controller {
         super();
     }
 
-    //Méthodes publiques
+    // Méthodes publiques
 
-    //Getters
+    // Getters
 
     /**
-     * Renvoie la propriété game
-     * @return un objet Game
+     * @return la partie {@link Game} en cours.
      */
     public Game getGame() {
         return game;
@@ -49,6 +48,7 @@ public class GameController extends Controller {
     /**
      * Si aucune instance n'existe, crée une instance de la classe. Sinon,
      * retourne l'instance existante.
+     *
      * @return L'unique instance de la classe.
      */
     public static GameController getInstance() {
@@ -60,7 +60,8 @@ public class GameController extends Controller {
 
     /**
      * Renvoie le joueur en cours
-     * @return un objet Player
+     *
+     * @return un objet {@link Player}
      */
     public Player getCurrentPlayer() {
         return GameController.getInstance().getGame().getCurrentPlayer();
@@ -68,6 +69,7 @@ public class GameController extends Controller {
 
     /**
      * Renvoie le tour en cours
+     *
      * @return un objet Round
      */
     public Round getCurrentRound() {
@@ -76,6 +78,7 @@ public class GameController extends Controller {
 
     /**
      * Renvoie le nombre maximum de lancer par tour
+     *
      * @return un nombre entier
      */
     public int getMaxThrowsPerRound() {
@@ -123,13 +126,14 @@ public class GameController extends Controller {
 
 
     /**
-     * Calcul les résultats des joueurs et les classe en fonction de leurs scores finaux
-     * @return une Arraylist de Player
+     * Calcule les résultats des joueurs et les classe en fonction de leurs scores finaux.
+     *
+     * @return une {@link ArrayList} de {@link Player}
      */
-    public ArrayList<Player> playersRanking(){
+    public ArrayList<Player> playersRanking() {
         ArrayList<RoundGroup> roundsGroupsList = game.getRoundsGroupsList();
         ArrayList<Player> playersList = game.getPlayersList();
-        for (RoundGroup RG : roundsGroupsList){
+        for (RoundGroup RG : roundsGroupsList) {
             for (int cpt = 0; cpt < playersList.size(); cpt++) {
                 int newScoreFinal = playersList.get(cpt).getScoreFinal() + RG.getRoundsList().get(cpt).getGain();
                 playersList.get(cpt).setScoreFinal(newScoreFinal);
@@ -138,12 +142,17 @@ public class GameController extends Controller {
         return playersList;
     }
 
-    public Boolean endGameTest(){
+    /**
+     * Vérifie si un des joueurs a dépassé le score-cible.
+     *
+     * @return TRUE si un des joueurs a dépassé le score-cible, sinon FALSE.
+     */
+    public Boolean endGameTest() {
         Boolean test = false;
         ArrayList<Player> currentPlayersList = playersRanking();
         game.setCurrentPlayersList(currentPlayersList);
-        for(Player p : game.getCurrentPlayersList()){
-            if (p.getScoreFinal() >= getGame().getTargetScore()){
+        for (Player p : game.getCurrentPlayersList()) {
+            if (p.getScoreFinal() >= getGame().getTargetScore()) {
                 test = true;
             }
         }
@@ -152,33 +161,44 @@ public class GameController extends Controller {
         return test;
     }
 
-    public ArrayList<Player> reInitGlobalScore(){
+    /**
+     * Réinitialise le score global de chaque joueur.
+     *
+     * @return la liste des joueurs avec leur score réinitialisé.
+     */
+    public ArrayList<Player> reInitGlobalScore() {
         ArrayList<Player> playersList = game.getPlayersList();
-        for (Player p : playersList){
+        for (Player p : playersList) {
             p.setScoreFinal(0);
         }
         return playersList;
     }
 
     /**
-     * Renvoie le nombre de lancers restant
-     * @return un nombre entier
+     * Renvoie le nombre de lancers restants
+     *
+     * @return un nombre entier.
      */
-    public int getThrowsLeft(){
+    public int getThrowsLeft() {
         return getCurrentRound().getState().getThrowsLeft();
     }
 
     /**
-     * Soustrait un lancer aux lancers restants
+     * Soustrait un lancer aux lancers restants.
      */
-    public void throwsSubstract(){
+    public void throwsSubstract() {
         getCurrentRound().getState().decrease();
     }
 
-    public void checkGameState(Context context){
+    /**
+     * Vérifie si l'on doit mettre fin à la partie. Si c'est le cas, redirige vers la page d'affichage
+     * des résultats.
+     * @param context Le contexte
+     */
+    public void checkGameState(Context context) {
         Round lastRound = getGame().getCurrentRoundGroup().getRoundsList().get(getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
         if (lastRound.getCombination() != null) {
-            if (endGameTest()){
+            if (endGameTest()) {
                 Intent intent = new Intent(context, RankingActivity.class);
                 context.startActivity(intent);
             } else {

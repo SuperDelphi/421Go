@@ -14,7 +14,6 @@ import com.example.a421go.models.Suite;
 import com.example.a421go.models._421;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -45,9 +44,9 @@ public class BoardController extends Controller {
     }
 
     /**
-     * Fonction qui récupère les trois dés du jeu, les trie dans l'ordre croissant et cherche la combinaison obtenu (s'il y en a une)
+     * Méthode qui récupère les trois dés du jeu, les trie dans l'ordre croissant et cherche la combinaison obtenue (s'il y en a une)
      *
-     * @return renvoie un objet combination contenant le nom de la combinaison, les points obtenus et una Arraylist des 3 dés
+     * @return une instance de Combination contenant le nom de la combinaison, les points obtenus et une ArrayList des dés qui la forment.
      */
     public Combination searchDices(ArrayList<Dice> dices) {
         Collections.sort(dices, new DiceComparator());
@@ -66,10 +65,10 @@ public class BoardController extends Controller {
 
 
     /**
-     * Cherche s'il y a la combianison 421
+     * Recherche la présence de la combinaison 421.
      *
-     * @param dicesList liste des dés trié dans l'ordre croissant
-     * @return vrai s'il y a la combinaison, sinon faux
+     * @param dicesList la liste des dés, triés par ordre croissant.
+     * @return true s'il y a la combinaison, sinon faux.
      */
     public boolean search421(ArrayList<Dice> dicesList) {
         if (dicesList.get(0).getFace() == 1) {
@@ -87,14 +86,26 @@ public class BoardController extends Controller {
         }
     }
 
+    /**
+     * Lance tous les dés.
+     */
     public void roll() {
         SimpleBoard.getInstance().rollDices();
     }
 
+    /**
+     * @return les dés présents sur le plateau.
+     */
     public ArrayList<Dice> getDices() {
         return SimpleBoard.getInstance().getDices();
     }
 
+    /**
+     * Envoie le tour ({@link Round} actuel avec l'{@link ArrayList} des dés obtenus.
+     *
+     * @param currentRound le tour actuel.
+     * @param dices        l'{@link ArrayList} des dés obtenus.
+     */
     public void submitRound(Round currentRound, ArrayList<Dice> dices) {
         Combination combination = searchDices(dices);
         currentRound.addGain(combination.getPoints());
@@ -102,7 +113,7 @@ public class BoardController extends Controller {
     }
 
     /**
-     * Recherche s'il y a la combinaison "Fiche" soit 2 dés 1 et un autre dés quelconque
+     * Recherche la présence de la combinaison Suite (deux dés 1 + un dé quelconque).
      *
      * @param dicesList liste des dés trié dans l'ordre croissant
      * @return vrai s'il y a la combianison sinon faux
