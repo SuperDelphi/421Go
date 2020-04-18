@@ -179,7 +179,6 @@ public class GameController extends Controller {
         Round lastRound = getGame().getCurrentRoundGroup().getRoundsList().get(getGame().getCurrentRoundGroup().getRoundsList().size() - 1);
         if (lastRound.getCombination() != null) {
             if (endGameTest()){
-                addVictoryToWinner();
                 Intent intent = new Intent(context, RankingActivity.class);
                 context.startActivity(intent);
             } else {
@@ -191,9 +190,9 @@ public class GameController extends Controller {
     /**
      * Ajoute une victoire au gagnant de la partie.
      */
-    private void addVictoryToWinner() {
-        Player winner = database.getVictoryPlayer();
-        winner.addVictory();
-        database.setVictoryPlayer(winner);
+    public void addVictoryToWinner(Player winner) {
+        Player newWinner = database.getVictoryPlayer(winner);
+        newWinner.addVictory();
+        database.setVictoryPlayer(newWinner);
     }
 }

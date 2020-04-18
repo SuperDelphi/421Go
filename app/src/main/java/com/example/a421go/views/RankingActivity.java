@@ -56,6 +56,7 @@ public class RankingActivity extends AppCompatActivity {
             joueurET.setText(playersList.get(i).getName()+" #"+(listLoserLL.getChildCount()+2)+" - "+playersList.get(i).getScoreFinal()+" pts");
             listLoserLL.addView(joueurET);
         }
+        GameController.getInstance().addVictoryToWinner(playersList.get(0));
         listenQuitGameBTN();
         listenRestartGameBTN();
     }
