@@ -10,7 +10,7 @@ public class PlayerController extends Controller {
     private static PlayerController instance = null;
 
     /**
-     * Constructeur protégé de la classe PlayerController.
+     * Constructeur protégé de la classe {@link PlayerController}.
      */
     protected PlayerController() {
         super();
@@ -19,6 +19,7 @@ public class PlayerController extends Controller {
     /**
      * Si aucune instance n'existe, crée une instance de la classe. Sinon,
      * retourne l'instance existante.
+     *
      * @return L'unique instance de la classe.
      */
     public static PlayerController getInstance() {
