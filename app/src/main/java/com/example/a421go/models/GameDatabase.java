@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.a421go.metier.SQLiteManager;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -39,6 +40,7 @@ public class GameDatabase {
             req = "INSERT INTO JOUEUR (NOM) VALUES ('"+player.getName()+"')";
             content.execSQL(req);
         }
+        cursor.close();
     }
 
     /**
@@ -46,8 +48,10 @@ public class GameDatabase {
      * @param game
      */
     public void addGame(Game game){
+        //Paramêtre globale de la méthode
         content = manager.getWritableDatabase();
         String req = "INSERT INTO PARTIE (DATE_CREATION, TARGET_SCORE) VALUES ('"+ new Date() +"', "+game.getTargetScore()+")";
+        //Exécution
         content.execSQL(req);
     }
 
@@ -75,5 +79,25 @@ public class GameDatabase {
         req = "INSERT INTO TOUR (ID_PARTIE, NUM_MANCHE, ID_JOUEUR, GAIN, COMBINAISON) " +
                 "VALUES ("+ id_partie +","+ num_manche +","+ id_joueur +","+round.getGain()+",'"+ round.getCombination().getName()+"');";
         content.execSQL(req);
+        gameCursor.close();
+        playerCursor.close();
     }
+
+    public ArrayList<Player> getPlayers() {
+        //Paramêtre globale de la méthode
+        content = manager.getWritableDatabase();
+        String req = "SELECT * FROM JOUEUR";
+        ArrayList<Player> playersList = new ArrayList<Player>();
+        //Récupération de la liste des jouers
+        Cursor playersCursor = content.rawQuery(req, null);
+        //Création de la liste des joueurs
+        while(playersCursor.moveToNext()){
+            Player p = new Player(playersCursor.getString(playersCursor.getColumnIndex("NOM")));
+            p.setVictories(playersCursor.getInt(playersCursor.getColumnIndex("NB_VICTOIRE")));
+            playersList.add(p);
+        }
+        playersCursor.close();
+        return playersList;
+    }
+
 }

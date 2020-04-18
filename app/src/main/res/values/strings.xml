@@ -31,4 +31,5 @@
     <string name="exception_baraque">Exception : vaut 7 points si N est égal à 1.</string>
     <string name="suite">Suite [N, N+1, N+2] (2 points)</string>
     <string name="other_combination">Autres combinaisons : 1 point</string>
+    <string name="scores">Scores</string>
 </resources>
