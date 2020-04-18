@@ -100,4 +100,23 @@ public class GameDatabase {
         return playersList;
     }
 
+    public Player getVictoryPlayer(Player p){
+        //Paramêtre globale de la méthode
+        content = manager.getWritableDatabase();
+        String req = "SELECT NB_VICTOIRE FROM JOUEUR WHERE NOM = '"+ p .getName()+"';";
+        //Récupération du joueur depuis la BDD
+        Cursor playerCursor = content.rawQuery(req, null);
+        //Récupération des victoires du joueur
+        p.setVictories(playerCursor.getInt(playerCursor.getColumnIndex("NB_VICTOIRE")));
+        return p;
+    }
+
+    public void setVictoryPlayer(Player p){
+        //Paramêtre globale de la méthode
+        content = manager.getWritableDatabase();
+        String req = "UPDATE JOUEUR SET NB_VICTOIRE WHERE NOM = '"+ p .getName()+"';";
+        //Exécution de la requête
+        content.execSQL(req);
+    }
+
 }
