@@ -36,7 +36,7 @@ public class Dice implements Comparable<Dice>{
     }
 
     /**
-     * Permet de récupérer la face actuel du dé
+     * Permet de récupérer la face actuelle du dé
      * @return
      */
     public int getFace() {
