@@ -178,6 +178,11 @@ public class GameActivity extends AppCompatActivity {
         SimpleBoard.getInstance().updateLayouts();
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     /**
      * Ecoute de l'événement sur le bouton gameInfoBTN
      * Affichage des scores actuels des joueurs ainsi que des combinaisons possibles du jeu
@@ -194,9 +199,6 @@ public class GameActivity extends AppCompatActivity {
                     joueurET.setText(p.getName()+" - "+p.getScoreFinal()+" pts");
                     joueurET.setTextColor(Color.WHITE);
                     joueurET.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    /*if (rankPlayersList.getChildCount() == 0) {
-                        joueurET.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.little_corona,0,  0);
-                    }*/
                     rankPlayersList.addView(joueurET);
                 }
                 gameController.reInitGlobalScore();
