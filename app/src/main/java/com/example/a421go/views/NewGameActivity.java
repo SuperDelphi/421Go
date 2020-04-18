@@ -122,7 +122,7 @@ public class NewGameActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton startGameBTN
-     * Démarre l'activité GameActivity
+     * Démarre l'activité {@link GameActivity}
      */
     private void listenStartGamerBTN() {
         ((ImageButton) findViewById(R.id.startGameBTN)).setOnClickListener(new Button.OnClickListener() {

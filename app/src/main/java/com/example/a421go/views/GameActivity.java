@@ -205,7 +205,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
-     * Ecoute de l'événement sur le fragment gameInfoFragment
+     * Ecoute de l'événement sur le fragment {@link GameInfoFragment}
      * Enlever l'affichage des infos de jeu
      */
     private void listenGameInfoFragment() {

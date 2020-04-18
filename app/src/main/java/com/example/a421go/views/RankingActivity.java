@@ -80,7 +80,7 @@ public class RankingActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton quitGameBTN
-     * Permet de retourner vers l'accueil
+     * Permet de retourner vers l'accueil {@link MainActivity}
      */
     private void listenQuitGameBTN(){
         ((ImageButton) findViewById(R.id.quitGameBTN)).setOnClickListener(new Button.OnClickListener() {

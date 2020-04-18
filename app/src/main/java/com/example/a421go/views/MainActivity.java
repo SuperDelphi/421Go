@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton newGameBTN
-     * Démarre l'activité NewGameActivity
+     * Démarre l'activité {@link NewGameActivity}
      */
     private void listenNewGameBTN(){
         ((ImageButton) findViewById(R.id.newGameBTN)).setOnClickListener(new Button.OnClickListener() {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton rankBTN
-     * Démarre l'activty ScoreActivity
+     * Démarre l'activty {@link ScoreActivity}
      */
     private void listenRankBTN(){
         ((ImageButton) findViewById(R.id.rankBTN)).setOnClickListener(new Button.OnClickListener() {

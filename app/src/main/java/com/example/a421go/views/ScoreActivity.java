@@ -53,7 +53,7 @@ public class ScoreActivity extends AppCompatActivity {
 
     /**
      * Ecoute de l'événement sur le bouton returnBTN
-     * Retour vers l'accueil
+     * Retour vers l'accueil {@link MainActivity}
      */
     private void listenreturnBTN() {
         returnToWelcomeBTN.setOnClickListener(new Button.OnClickListener() {
