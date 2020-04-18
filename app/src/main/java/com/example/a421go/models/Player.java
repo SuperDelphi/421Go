@@ -61,11 +61,19 @@ public class Player implements Comparable<Player>{
     }
 
     /**
-     * met à jour le score final d'un joueur
+     * Met à jour le score final d'un joueur
      * @param scoreFinal
      */
     public void setScoreFinal(int scoreFinal) {
         this.scoreFinal = scoreFinal;
+    }
+
+    /**
+     * Met à jour le nombre de victoire d'un joueur
+     * @param victories
+     */
+    public void setVictories(int victories) {
+        this.victories = victories;
     }
 
     @Override

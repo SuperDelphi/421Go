@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.a421go.R;
 import com.example.a421go.controllers.GameController;
@@ -62,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
     private void listenRankBTN(){
         ((ImageButton) findViewById(R.id.rankBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                intent = new Intent(MainActivity.this, ScoreActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private void listensettingBTN(){
         ((ImageButton) findViewById(R.id.settingBTN)).setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                Toast.makeText(MainActivity.this, "Application créée par Simon Breil & Gabriel Krawczyk", Toast.LENGTH_SHORT).show();
             }
         });
     }
