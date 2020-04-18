@@ -17,10 +17,13 @@ import com.example.a421go.views.GameActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Représente le plateau de jeu.
+ */
 public class SimpleBoard {
+    private static SimpleBoard instance = null;
     private GameActivity gameActivity;
     private ViewGroup layout;
-    private static SimpleBoard instance = null;
     private ArrayList<Dice> dices = new ArrayList<>();
     private ReserveBoard reserve;
     private int[] selectedFaceIds = {
@@ -40,12 +43,25 @@ public class SimpleBoard {
             R.drawable.dice_6
     };
 
+    /**
+     * Constructeur de la classe.
+     *
+     * @param gameActivity  l'instance de la classe {@link GameActivity}
+     * @param boardLayout   le layout ({@link ViewGroup}) qui permet d'accueillir les dés du plateau de jeu
+     * @param reserveLayout le layout ({@link ViewGroup}) qui permet d'accueillir les dés de la réserve
+     */
     public SimpleBoard(GameActivity gameActivity, ViewGroup boardLayout, ViewGroup reserveLayout) {
         this.gameActivity = gameActivity;
         this.layout = boardLayout;
         this.reserve = new ReserveBoard(reserveLayout);
     }
 
+    /**
+     * Si aucune instance n'existe, crée une instance de la classe. Sinon,
+     * retourne l'instance existante.
+     *
+     * @return L'unique instance de la classe.
+     */
     public static SimpleBoard getInstance() {
         if (SimpleBoard.instance == null)
             return null;
@@ -53,6 +69,15 @@ public class SimpleBoard {
         return instance;
     }
 
+    /**
+     * Si aucune instance n'existe, crée une instance de la classe. Sinon,
+     * retourne l'instance existante.
+     *
+     * @param gameActivity  une instance de la classe {@link GameActivity}
+     * @param boardLayout   le layout ({@link ViewGroup}) qui permet d'accueillir les dés du plateau de jeu
+     * @param reserveLayout le le layout ({@link ViewGroup}) qui permet d'accueillir les dés de la réserve
+     * @return L'unique instance de la classe.
+     */
     public static SimpleBoard getInstance(GameActivity gameActivity, ViewGroup boardLayout, ViewGroup reserveLayout) {
         if (SimpleBoard.instance == null) {
             SimpleBoard.instance = new SimpleBoard(gameActivity, boardLayout, reserveLayout);
@@ -60,10 +85,17 @@ public class SimpleBoard {
         return instance;
     }
 
+    /**
+     * Détruit l'unique instance de la classe.
+     */
     public static void destroy() {
         SimpleBoard.instance = null;
     }
 
+    /**
+     * Lance les dés sélectionnés.
+     * Range les dés non sélectionnés par l'utilisateur dans la réserve.
+     */
     public void rollDices() {
         GameController gameController = GameController.getInstance();
         boolean isFirstRoll = gameController.getThrowsLeft() == gameController.getMaxThrowsPerRound();
@@ -82,19 +114,18 @@ public class SimpleBoard {
         }
     }
 
-//    public void rollDices(ArrayList<Dice> dices) {
-//        for (Dice dice :
-//                getDices()) {
-//            if (dices.indexOf(dice) != -1) {
-//                dice.roll();
-//            }
-//        }
-//    }
-
+    /**
+     * @param index la position du dé
+     * @return le dé situé à la position spécifiée
+     */
     public Dice getDice(int index) {
         return getDices().get(index);
     }
 
+    /**
+     * @param v la {@link View} représentant le dé
+     * @return le dé que la {@link View} spécifiée représente
+     */
     public Dice getDice(View v) {
         int index = -1;
         for (int i = 0; i < getLayout().getChildCount(); i++) {
@@ -107,6 +138,12 @@ public class SimpleBoard {
         }
     }
 
+    /**
+     * Équivalent à la méthode getDice, mais cherche aussi dans la réserve.
+     *
+     * @param v la {@link View} représentant le dé
+     * @return le dé que la {@link View} spécifiée représente
+     */
     public Dice getDiceFromEverywhere(View v) {
         Dice dice = getDice(v);
 
@@ -125,10 +162,27 @@ public class SimpleBoard {
         }
     }
 
+    /**
+     * @return la liste de tous les dés du plateau de jeu
+     */
     public ArrayList<Dice> getDices() {
         return this.dices;
     }
 
+    /**
+     * Définit la liste des dés à partir d'une nouvelle liste
+     *
+     * @param dices la nouvelle liste des dés
+     */
+    public void setDices(ArrayList<Dice> dices) {
+        this.dices = dices;
+    }
+
+    /**
+     * Équivalent à la méthode getDices, mais cherche aussi dans la réserve.
+     *
+     * @return la liste de tous les dés, qu'ils soient sur le plateau de jeu ou dans la réserve
+     */
     public ArrayList<Dice> getDicesFromEverywhere() {
         ArrayList<Dice> allDices = new ArrayList<>();
         allDices.addAll(getDices());
@@ -137,14 +191,23 @@ public class SimpleBoard {
         return allDices;
     }
 
+    /**
+     * @return le layout ({@link ViewGroup}) utilisé pour représenter le plateau de jeu
+     */
     public ViewGroup getLayout() {
         return layout;
     }
 
+    /**
+     * @return la réserve ({@link ReserveBoard})
+     */
     public ReserveBoard getReserve() {
         return this.reserve;
     }
 
+    /**
+     * @return la liste de tous les dés sélectionnés, qu'ils soient sur le plateau de jeu ou dans la réserve
+     */
     public ArrayList<Dice> getSelectedDicesFromEverywhere() {
         ArrayList<Dice> result = new ArrayList<>();
         for (Dice dice :
@@ -154,6 +217,9 @@ public class SimpleBoard {
         return result;
     }
 
+    /**
+     * @return la liste de tous les dés non sélectionnés, qu'ils soient sur le plateau de jeu ou dans la réserve
+     */
     public ArrayList<Dice> getUnselectedDicesFromEverywhere() {
         ArrayList<Dice> result = new ArrayList<>();
         for (Dice dice :
@@ -164,35 +230,68 @@ public class SimpleBoard {
         return result;
     }
 
-    public void setDices(ArrayList<Dice> dices) {
-        this.dices = dices;
-    }
-
+    /**
+     * Supprime un dé du plateau de jeu.
+     *
+     * @param index la position du dé
+     * @return le dé supprimé
+     */
     public Dice removeDice(int index) {
         return getDices().remove(index);
     }
 
+    /**
+     * Supprime un dé du plateau de jeu.
+     *
+     * @param dice le dé à supprimer
+     * @return TRUE si le dé a correctement été supprimé, sinon FALSE
+     */
     public boolean removeDice(Dice dice) {
         return getDices().remove(dice);
     }
 
+    /**
+     * Supprime des dés du plateau de jeu.
+     *
+     * @param dices la liste des dés à supprimer
+     * @return TRUE si la suppression s'est effectuée correctement, sinon FALSE
+     */
     public boolean removeDices(ArrayList<Dice> dices) {
         return getDices().removeAll(dices);
     }
 
+    /**
+     * Supprime tous les dés du plateau de jeu.
+     */
     public void removeAllDices() {
         getDices().clear();
     }
 
+    /**
+     * Ajoute un dé au plateau de jeu.
+     *
+     * @param dice le dé à ajouter
+     * @return l'unique instance de {@link SimpleBoard}
+     */
     public SimpleBoard addDice(Dice dice) {
         getDices().add(dice);
         return this;
     }
 
+    /**
+     * Ajoute des dés au plateau de jeu.
+     *
+     * @param dices la liste des dés à ajouter
+     */
     public void addDices(ArrayList<Dice> dices) {
         getDices().addAll(dices);
     }
 
+    /**
+     * @param faceNumber le numéro de la face
+     * @param isSelected TRUE pour la version "sélectionnée", sinon FALSE
+     * @return un {@link Drawable} représentant la face spécifiée
+     */
     public Drawable getFaceDrawable(int faceNumber, boolean isSelected) {
         Context context = getLayout().getContext();
         int[] faceArray = isSelected ? this.selectedFaceIds : this.faceIds;
@@ -203,11 +302,21 @@ public class SimpleBoard {
         return face;
     }
 
+    /**
+     * Transfère des dés du plateau de jeu vers la réserve.
+     *
+     * @param dices la liste des dés à transférer
+     */
     public void store(ArrayList<Dice> dices) {
         removeDices(getReserve().addDices(dices));
         updateLayouts();
     }
 
+    /**
+     * Récupère des dés de la réserve.
+     *
+     * @param dices la liste des dés à récupérer
+     */
     public void retrieve(ArrayList<Dice> dices) {
         ArrayList<Dice> addedDices = new ArrayList<>();
         for (Dice dice :
@@ -220,6 +329,9 @@ public class SimpleBoard {
         getReserve().removeDices(addedDices);
     }
 
+    /**
+     * Sélectionne tous les dés présents.
+     */
     public void selectAll() {
         for (Dice dice :
                 getDicesFromEverywhere()) {
@@ -229,6 +341,9 @@ public class SimpleBoard {
         updateLayouts();
     }
 
+    /**
+     * Désélectionne tous les dés présents.
+     */
     public void deselectAll() {
         for (Dice dice :
                 getDicesFromEverywhere()) {
@@ -238,6 +353,9 @@ public class SimpleBoard {
         updateLayouts();
     }
 
+    /**
+     * Initialise le plateau de jeu.
+     */
     public void init() {
         // Ajout des trois dés du début
         removeAllDices();
@@ -249,13 +367,16 @@ public class SimpleBoard {
         updateLayouts();
     }
 
+    /**
+     * Met à jour l'affiche du plateau de jeu et de la réserve.
+     */
     public void updateLayouts() {
         ArrayList<BoardCouple> boardCouples = new ArrayList<>();
         boardCouples.add(new BoardCouple(getLayout(), getDices()));
         boardCouples.add(new BoardCouple(getReserve().getLayout(), getReserve().getDices()));
 
-        for (BoardCouple couple:
-             boardCouples) {
+        for (BoardCouple couple :
+                boardCouples) {
 
             final Context context = couple.getLayout().getContext();
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
