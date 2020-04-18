@@ -1,8 +1,5 @@
 package com.example.a421go.controllers;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.example.a421go.metier.DiceComparator;
 import com.example.a421go.metier.SimpleBoard;
 import com.example.a421go.models.Autre;

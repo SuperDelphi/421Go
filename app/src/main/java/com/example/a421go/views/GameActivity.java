@@ -111,7 +111,7 @@ public class GameActivity extends AppCompatActivity {
                         board.getDicesFromEverywhere()
                 );
                 if (currentRound.getCombination().getName() == "Autre"){
-                    Toast.makeText(GameActivity.this, "Aucune combinaison obtenu - 1 point", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GameActivity.this, "Aucune combinaison obtenue - 1 point", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(GameActivity.this, currentRound.getCombination().getName()+" obtenu - "+ currentRound.getCombination().getPoints()+" points", Toast.LENGTH_SHORT).show();
                 }
