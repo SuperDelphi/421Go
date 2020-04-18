@@ -59,7 +59,6 @@ public class ScoreActivity extends AppCompatActivity {
 
     private void addPlayersList(){
         ArrayList<Player> playersList = controller.getDatabase().getPlayers();
-        Collections.sort(playersList, new PlayerComparator());
         for (Player p : playersList){
             TextView joueurET = new TextView(ScoreActivity.this);
             joueurET.setText(p.getName()+" #"+(playersListLL.getChildCount() + 1)+" "+p.getVictories());

@@ -86,7 +86,7 @@ public class GameDatabase {
     public ArrayList<Player> getPlayers() {
         //Paramêtre globale de la méthode
         content = manager.getWritableDatabase();
-        String req = "SELECT * FROM JOUEUR";
+        String req = "SELECT * FROM JOUEUR ORDER BY NB_VICTOIRE DESC";
         ArrayList<Player> playersList = new ArrayList<Player>();
         //Récupération de la liste des jouers
         Cursor playersCursor = content.rawQuery(req, null);
