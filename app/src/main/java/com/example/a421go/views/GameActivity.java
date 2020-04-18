@@ -110,6 +110,11 @@ public class GameActivity extends AppCompatActivity {
                         gameController.getCurrentRound(),
                         board.getDicesFromEverywhere()
                 );
+                if (currentRound.getCombination().getName() == "Autre"){
+                    Toast.makeText(GameActivity.this, "Aucune combinaison obtenu - 1 point", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(GameActivity.this, currentRound.getCombination().getName()+" obtenu - "+ currentRound.getCombination().getPoints()+" points", Toast.LENGTH_SHORT).show();
+                }
                 gameController.getGame().nextPlayer();
                 board.init();
                 gameController.getDatabase().addRound(currentRound, gameController.getGame());
@@ -122,7 +127,7 @@ public class GameActivity extends AppCompatActivity {
     private void update() {
         // Affichage
         String playerName = gameController.getInstance().getCurrentPlayer().getName();
-        this.remainingThrowsTV.setText("(" + playerName + ") "
+        this.remainingThrowsTV.setText("Tour de "+playerName + " - "
                 + getText(R.string.remaining_throws) + " " + gameController.getGame().getCurrentRound().getState().getThrowsLeft());
 
         // S'il reste des lancers & qu'un lancer a déjà été effectué
