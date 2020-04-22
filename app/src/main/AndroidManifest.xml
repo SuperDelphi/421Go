@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.a421go">
+    package="com.clutchapp.a421go">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name=".metier.GlobalApplication"
+        android:name="com.clutchapp.a421go.metier.GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_icon"
         android:label="421Go"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".views.ScoreActivity"></activity>
+        <activity android:name="com.clutchapp.a421go.views.ScoreActivity"></activity>
         <activity
-            android:name=".views.RankingActivity"
+            android:name="com.clutchapp.a421go.views.RankingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".views.GameActivity"
+            android:name="com.clutchapp.a421go.views.GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".views.NewGameActivity"
+            android:name="com.clutchapp.a421go.views.NewGameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".views.MainActivity"
+            android:name="com.clutchapp.a421go.views.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

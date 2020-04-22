@@ -93,7 +93,7 @@
 
     <fragment
         android:id="@+id/menuInfoFragment"
-        android:name="com.example.a421go.views.GameInfoFragment"
+        android:name="com.clutchapp.a421go.views.GameInfoFragment"
         android:layout_width="292dp"
         android:layout_height="378dp"
         app:layout_constraintBottom_toTopOf="@+id/rollBTN"

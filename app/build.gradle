@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.example.a421go"
+        applicationId 'com.clutchapp.a421go'
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
