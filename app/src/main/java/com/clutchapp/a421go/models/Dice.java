@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
  */
 public class Dice implements Comparable<Dice>{
 
-    //Prorpiétés
+    // Propriétés
     private int faceCount = 6;
     private int face = 1;
     private Coordinates coords;

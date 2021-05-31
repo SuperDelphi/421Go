@@ -4,6 +4,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
     defaultConfig {
         applicationId 'com.clutchapp.a421go'
         minSdkVersion 23
@@ -24,6 +29,9 @@ android {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0-M1'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
